@@ -11,15 +11,20 @@ if (isset($_POST['connect_user'])) {
 
         $user = readUser($name_user, $db);
 
-        if (password_verify($password_user, $user['password_user'])) {
+        if(empty($user)) {
+
+            $error_input =  'nom non valide';
+
+        } elseif (password_verify($password_user, $user['password_user'])) {
 
             $_SESSION['id_session'] = session_id();
             header('Location: ?p=crud.admin');
 
         } else {
-            header('Location: ?p=connect.public');
-        }
 
+            $error_input =  'mot de passe non valide';
+
+        }
     }
 }
 

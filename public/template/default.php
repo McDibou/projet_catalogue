@@ -23,7 +23,8 @@
     <ul>
         <?php if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) { ?>
 
-            <li><a href="?p=crud.admin">crud.admin</a></li>
+            <li><a href="?p=create.admin">create.admin</a></li>
+            <li><a href="?p=modify.admin">modify.admin</a></li>
             <li><a href="?p=disconnect.admin">disconnect.admin</a></li>
 
         <?php } else { ?>

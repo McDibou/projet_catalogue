@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`article` (
   `title_article` VARCHAR(80) NOT NULL,
   `price_article` DECIMAL(10,2) NOT NULL,
   `promo_article` TINYINT NOT NULL,
+  `show_article` TINYINT NOT NULL,
   `date_article` TIMESTAMP NOT NULL,
   `content_article` TINYTEXT NULL,
   `category_id_category` INT NOT NULL,

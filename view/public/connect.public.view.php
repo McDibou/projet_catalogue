@@ -3,3 +3,5 @@
     <input type="password" name="password_user" placeholder="" required>
     <button type="submit" name="connect_user">CONNECT</button>
 </form>
+
+<?= !empty($error_input) ? $error_input : '' ?>
