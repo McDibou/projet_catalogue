@@ -8,17 +8,31 @@
     <title>Gabbler</title>
 </head>
 <body>
-<!-- The navigation menu is used for the 'production mode'. Delete later ! -->
+<!-- MODE PRODUCTION -->
 <header>
+
     <ul>
         <li><a href="./">accueil.public</a></li>
         <li><a href="?p=aboutus.public">aboutus.public</a></li>
         <li><a href="?p=catalog.public">catalog.public</a></li>
         <li><a href="?p=contact.public">contact.public</a></li>
-        <li><a href="?p=connect.public">connect.public</a></li>
-        <li><a href="?p=crud.admin">crud.admin</a></li>
+
+
         <li><a href="?p=404">Page.404</a></li>
     </ul>
+    <ul>
+        <?php if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) { ?>
+
+            <li><a href="?p=crud.admin">crud.admin</a></li>
+            <li><a href="?p=disconnect.admin">disconnect.admin</a></li>
+
+        <?php } else { ?>
+
+            <li><a href="?p=connect.public">connect.public</a></li>
+
+        <?php } ?>
+    </ul>
+
 </header>
 <?= $content ?>
 </body>
