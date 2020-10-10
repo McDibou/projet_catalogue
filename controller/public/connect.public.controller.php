@@ -18,7 +18,7 @@ if (isset($_POST['connect_user'])) {
         } elseif (password_verify($password_user, $user['password_user'])) {
 
             $_SESSION['id_session'] = session_id();
-            header('Location: ?p=crud.admin');
+            header('Location: ?p=create.article.admin');
 
         } else {
 

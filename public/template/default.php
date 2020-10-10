@@ -8,7 +8,7 @@
     <title>Gabbler</title>
 </head>
 <body>
-<!-- MODE PRODUCTION -->
+
 <header>
 
     <ul>
@@ -16,15 +16,12 @@
         <li><a href="?p=aboutus.public">aboutus.public</a></li>
         <li><a href="?p=catalog.public">catalog.public</a></li>
         <li><a href="?p=contact.public">contact.public</a></li>
-
-
         <li><a href="?p=404">Page.404</a></li>
     </ul>
     <ul>
         <?php if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) { ?>
 
-            <li><a href="?p=create.admin">create.admin</a></li>
-            <li><a href="?p=modify.admin">modify.admin</a></li>
+            <li><a href="?p=create.article.admin">create.article.admin</a></li>
             <li><a href="?p=disconnect.admin">disconnect.admin</a></li>
 
         <?php } else { ?>
