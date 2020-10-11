@@ -1,13 +1,17 @@
 <?php
-
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'delete.img.admin.model.php';
 
-$id = $_GET['id'];
+$id = isset($_GET['id']) && ctype_digit($_GET['id']) ? $_GET['id'] : '';
+
 $id_article = selectIdArticle($id ,$db);
 
-if (isset($_GET['id'])) {
+if (!empty($id)) {
 
-    deleteImg($id, $db);
+    deleteArticle($id, $db);
+    header("Location: ?p=create.img.admin&id=$id_article");
+
+} else {
+
     header("Location: ?p=create.img.admin&id=$id_article");
 
 }

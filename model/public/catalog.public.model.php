@@ -1,33 +1,37 @@
 <?php
 
+function analyseData($data)
+{
+    return htmlspecialchars(strip_tags(trim($data)), ENT_QUOTES, 'UTF-8');
+}
+
+
 function readOptionCategory($db)
 {
-    return mysqli_query($db, "
-    SELECT * FROM category
-    ");
+    return mysqli_query($db, "SELECT * FROM `category`");
 }
 
 function readArticle($db, $where, $limit, $ndrArticle)
 {
-    return mysqli_query($db, "
-    SELECT * FROM article JOIN category ON id_category = category_id_category $where  ORDER BY date_article ASC LIMIT $limit,$ndrArticle
-    ");
+    return mysqli_query($db, "SELECT * FROM `article` JOIN `category` ON `id_category` = `fkey_id_category`  $where  ORDER BY `date_article` LIMIT $limit, $ndrArticle");
 }
 
 function countArticle($db, $where)
 {
-    $result = mysqli_query($db, "
-    SELECT * FROM article JOIN category ON id_category = category_id_category $where  ORDER BY date_article
-    ");
+    $result = mysqli_query($db, "SELECT * FROM `article` JOIN `category` ON `id_category` = `fkey_id_category` $where ORDER BY `date_article`");
 
     return mysqli_num_rows($result);
 }
 
 function countPrice($db)
 {
-    return mysqli_fetch_assoc(mysqli_query($db, "SELECT min(price_article) AS minPrice, max(price_article) AS maxPrice FROM article "));
+    return mysqli_fetch_assoc(mysqli_query($db, "SELECT min(`price_article`) AS minPrice, max(`price_article`) AS maxPrice FROM `article` "));
 }
 
+function readImg($id, $db)
+{
+    return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
+}
 
 function switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max)
 {

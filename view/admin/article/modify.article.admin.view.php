@@ -7,7 +7,7 @@
     <select name="category_id" required>
         <?php while ($item = mysqli_fetch_assoc($category)) { ?>
             <option value="<?= $item['id_category'] ?>"
-                <?= $select = ($item['id_category'] === $view_modify['category_id_category']) ? "selected" : ""; ?>>
+                <?= $select = ($item['id_category'] === $view_modify['fkey_id_category']) ? "selected" : ""; ?>>
                 <?= $item['name_category'] ?>
             </option>
         <?php } ?>
@@ -16,4 +16,5 @@
     <textarea name="content_article" placeholder="description"><?= $view_modify['content_article'] ?></textarea>
     <button type="submit" name="modify_article">modify</button>
 
+    <?= !empty($error_modify_article) ? $error_modify_article : ''; ?>
 </form>

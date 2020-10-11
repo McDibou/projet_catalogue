@@ -6,19 +6,25 @@
 
 <form method="post" enctype="multipart/form-data">
     <input name="name_img" id="name_img" type="file" accept="image/*" required>
-    <input name="title_article" type="text" placeholder="Titre" required>
-    <input name="price_article" type="text" placeholder="price" required>
-    <input name="promo_article" type="text" placeholder="promo" required>
+
+    <input value="<?= !empty($title_article) ? $title_article : ''; ?>" name="title_article" type="text" placeholder="Titre" required>
+    <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text" placeholder="price" required>
+    <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text" placeholder="promo" required>
+    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text" placeholder="date promo" required>
+
     <select name="category_id" required>
-        <option value="">--choose option--</option>
+        <option value="">--choose category--</option>
         <?php while ($item = mysqli_fetch_assoc($category)) { ?>
             <option value="<?= $item['id_category'] ?>"><?= $item['name_category'] ?></option>
         <?php } ?>
     </select>
-    <textarea name="content_article" id="" cols="30" rows="10" placeholder="description"></textarea>
+
+    <textarea name="content_article" id="" cols="30" rows="10" placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
+
     <button type="submit" name="create_article">create</button>
 </form>
 
+<p><?= (!empty($error_create_article)) ? $error_create_article : '' ?></p>
 <hr>
 
 <table>
@@ -50,15 +56,15 @@
 
             <td>
 
-                    <?php if ($item['show_article'] === '0') { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
-                    <?php } else { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
-                    <?php } ?>
+                <?php if ($item['show_article'] === '0') { ?>
+                    <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
+                <?php } else { ?>
+                    <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
+                <?php } ?>
 
-                    <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>
-                    <a href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">modify</a>
-                    <a href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">delete</a>
+                <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>
+                <a href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">modify</a>
+                <a href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">delete</a>
 
             </td>
         </tr>

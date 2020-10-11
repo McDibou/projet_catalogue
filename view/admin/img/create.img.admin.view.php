@@ -15,3 +15,5 @@
     </div>
 
 <?php } ?>
+
+<?= !empty($error_create_img) ? $error_create_img : '' ?>

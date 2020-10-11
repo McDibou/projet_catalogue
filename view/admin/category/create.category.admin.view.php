@@ -5,11 +5,11 @@
 </ul>
 
 <form method="post">
-    <input name="name_category" type="text" placeholder="Titre" required>
+    <input value="<?= !empty($name_category) ? $name_category : ''; ?>" name="name_category" type="text" placeholder="Titre" required>
     <button type="submit" name="create_category">create</button>
 </form>
-
-<hr>
+<?= !empty( $error_create_category) ?  $error_create_category : '' ?>
+<?= !empty( $error_delete_category) ?  $error_delete_category : '' ?>
 
 <table>
     <thead>

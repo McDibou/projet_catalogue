@@ -31,6 +31,8 @@
         <?php } ?>
     </ul>
 
+    <ul><li><a href="#" onclick="history.go(-1);">Back </a></li></ul>
+
 </header>
 <?= $content ?>
 </body>

@@ -1,4 +1,3 @@
-
 <form method="get">
     <input name="p" value="catalog.public" type="hidden">
 
@@ -7,7 +6,7 @@
         <?php while ($item = mysqli_fetch_assoc($category_option)) { ?>
             <option
                     value="<?= $item['name_category'] ?>"
-                    <?= ($item['name_category'] === $category) ? "selected" : ""; ?>
+                <?= ($item['name_category'] === $category) ? "selected" : ""; ?>
             >
                 <?= $item['name_category'] ?>
             </option>
@@ -37,6 +36,11 @@
     <em><?= $item['price_article'] ?></em>
     <p><?= $item['promo_article'] ?></p>
     <p><?= $item['name_category'] ?></p>
+
+    <?php $img = readImg($item['id_article'], $db); ?>
+    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+        <p><?= $affiche['name_img'] ?></p>
+    <?php } ?>
 
 <?php } ?>
 

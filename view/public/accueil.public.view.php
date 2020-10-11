@@ -4,6 +4,12 @@ promo
     <h1><?= $item['title_article'] ?></h1>
     <em><?= $item['price_article'] ?></em>
     <p><?= $item['promo_article'] ?></p>
+
+    <?php $img = readImg($item['id_article'], $db); ?>
+    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+        <p><?= $affiche['name_img'] ?></p>
+    <?php } ?>
+
 <?php } ?>
 
     <hr>
@@ -12,4 +18,10 @@ show
     <h1><?= $item['title_article'] ?></h1>
     <em><?= $item['price_article'] ?></em>
     <p><?= $item['promo_article'] ?></p>
+
+    <?php $img = readImg($item['id_article'], $db); ?>
+    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+        <p><?= $affiche['name_img'] ?></p>
+    <?php } ?>
+
 <?php } ?>

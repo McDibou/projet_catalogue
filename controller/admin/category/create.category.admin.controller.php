@@ -13,6 +13,10 @@ if (isset($_POST['create_category'])) {
         createCategory($name_category, $db);
         header('Location: ?p=create.category.admin');
 
+    } else {
+
+        $error_create_category = 'error_create_category';
+
     }
 }
 

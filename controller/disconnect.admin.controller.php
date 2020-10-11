@@ -1,4 +1,6 @@
 <?php
 
-session_destroy();
-header('Location: ./');
+if(isset($_SESSION['id_session'])) {
+    session_destroy();
+    header('Location: ./');
+}

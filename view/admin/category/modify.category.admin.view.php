@@ -4,3 +4,5 @@
     <button type="submit" name="modify_category">modify</button>
 
 </form>
+
+<?= !empty($error_modify_category) ? $error_modify_category : '' ?>
