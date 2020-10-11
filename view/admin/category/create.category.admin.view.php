@@ -26,10 +26,10 @@
             <th><?= $item['id_category'] ?></th>
             <th><?= $item['name_category'] ?></th>
 
-            <td>
+            <th>
                 <a href="?p=modify.category.admin&id=<?= $item['id_category'] ?>">modify</a>
                 <a href="?p=delete.category.admin&id=<?= $item['id_category'] ?>">delete</a>
-            </td>
+            </th>
         </tr>
         </tbody>
     <?php } ?>

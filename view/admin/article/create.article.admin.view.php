@@ -49,16 +49,17 @@
             <th><?= $item['date_article'] ?></th>
 
             <td>
-                <form method="post">
+
                     <?php if ($item['show_article'] === '0') { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>">on</a>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
                     <?php } else { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>">off</a>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
                     <?php } ?>
+
                     <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>
                     <a href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">modify</a>
                     <a href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">delete</a>
-                </form>
+
             </td>
         </tr>
         </tbody>

@@ -6,11 +6,11 @@ function analyseData($data)
 }
 
 
+
 function readCategory($db)
 {
     return mysqli_query($db, "SELECT * FROM category");
 }
-
 
 function createCategory($name_category, $db)
 {
