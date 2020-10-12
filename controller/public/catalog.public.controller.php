@@ -5,13 +5,13 @@ require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTO
 $category_option = readOptionCategory($db);
 $price = countPrice($db);
 
+
 if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = (int)$_GET['switch'];
     if (!$currentPage) $currentPage = 1;
 } else {
     $currentPage = 1;
 }
-
 
 $ndrArticle = 2;
 $limit = ($currentPage - 1) * $ndrArticle;

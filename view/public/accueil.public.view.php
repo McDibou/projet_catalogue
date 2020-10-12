@@ -1,26 +1,34 @@
-<hr>
-promo
-<?php while ($item = mysqli_fetch_assoc($promo)) { ?>
+
+<?php foreach ($promo as $item) { ?>
     <h1><?= $item['title_article'] ?></h1>
     <em><?= $item['price_article'] ?></em>
     <p><?= $item['promo_article'] ?></p>
 
+    <?php $category = readCategory($item['id_article'], $db) ?>
+    <?php foreach ($category as $cat) { ?>
+        <div><?= $cat['name_category'] ?></div>
+    <?php } ?>
+
     <?php $img = readImg($item['id_article'], $db); ?>
-    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+    <?php foreach ($img as $affiche) { ?>
         <p><?= $affiche['name_img'] ?></p>
     <?php } ?>
 
 <?php } ?>
 
-    <hr>
-show
-<?php while ($item = mysqli_fetch_assoc($show)) { ?>
+<?php foreach ($show as $item) { ?>
     <h1><?= $item['title_article'] ?></h1>
     <em><?= $item['price_article'] ?></em>
     <p><?= $item['promo_article'] ?></p>
 
+    <?php $category = readCategory($item['id_article'], $db) ?>
+    <?php foreach ($category as $cat) { ?>
+        <div><?= $cat['name_category'] ?></div>
+    <?php } ?>
+
+
     <?php $img = readImg($item['id_article'], $db); ?>
-    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+    <?php foreach ($img as $affiche) { ?>
         <p><?= $affiche['name_img'] ?></p>
     <?php } ?>
 

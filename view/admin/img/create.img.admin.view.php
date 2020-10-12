@@ -6,7 +6,7 @@
 <hr>
 
 
-<?php while ($item = mysqli_fetch_assoc($img)) { ?>
+<?php foreach ($img as $item) { ?>
 
     <div><?= $item['name_img'] ?></div>
 

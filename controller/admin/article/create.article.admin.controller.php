@@ -1,5 +1,4 @@
 <?php
-
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'create.article.admin.model.php';
 
 $article = readArticle($db);
@@ -13,7 +12,6 @@ if (isset($_POST['create_article'])) {
     $category_id = $_POST['category_id'];
     $content_article = analyseData($_POST['content_article']);
     $date_promo = analyseData($_POST['date_promo']);
-
 
 
     $img_article = date('U') . '_' . basename($_FILES['name_img']['name']);
