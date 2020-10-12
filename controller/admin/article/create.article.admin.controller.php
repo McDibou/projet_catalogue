@@ -10,9 +10,11 @@ if (isset($_POST['create_article'])) {
     $title_article = analyseData($_POST['title_article']);
     $price_article = analyseData($_POST['price_article']);
     $promo_article = analyseData($_POST['promo_article']);
-    $category_id = analyseData($_POST['category_id']);
+    $category_id = $_POST['category_id'];
     $content_article = analyseData($_POST['content_article']);
     $date_promo = analyseData($_POST['date_promo']);
+
+
 
     $img_article = date('U') . '_' . basename($_FILES['name_img']['name']);
 

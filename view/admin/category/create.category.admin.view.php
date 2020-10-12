@@ -15,7 +15,7 @@
     <thead>
     <tr>
         <th>id</th>
-        <th>price</th>
+        <th>name</th>
         <th></th>
     </tr>
     </thead>
@@ -33,5 +33,5 @@
         </tr>
         </tbody>
     <?php } ?>
-    
+
 </table>

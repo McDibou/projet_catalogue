@@ -1,3 +1,8 @@
+<?php $img = readImg($article['id_article'], $db); ?>
+<?php while ($item = mysqli_fetch_assoc($img)) { ?>
+    <div><?= $item['name_img'] ?></div>
+<?php } ?>
+
 <div>
     <h1><?= $article['title_article'] ?></h1>
     <p><?= $article['price_article'] ?></p>
@@ -7,8 +12,7 @@
     <em><?= $article['date_article'] ?></em>
 </div>
 <div>
-    <form method="post">
-        <a href="?p=modify.article.admin&id=<?= $article['id_article'] ?>">modify</a>
-        <a href="?p=delete.article.admin&id=<?= $article['id_article'] ?>">delete</a>
-    </form>
+    <a href="?p=create.img.admin&id=<?= $article['id_article'] ?>">modify.img</a>
+    <a href="?p=modify.article.admin&id=<?= $article['id_article'] ?>">modify</a>
+    <a href="?p=delete.article.admin&id=<?= $article['id_article'] ?>">delete</a>
 </div>

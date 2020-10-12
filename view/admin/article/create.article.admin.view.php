@@ -12,7 +12,7 @@
     <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text" placeholder="promo" required>
     <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text" placeholder="date promo" required>
 
-    <select name="category_id" required>
+    <select name="category_id[]" required multiple="multiple">
         <option value="">--choose category--</option>
         <?php while ($item = mysqli_fetch_assoc($category)) { ?>
             <option value="<?= $item['id_category'] ?>"><?= $item['name_category'] ?></option>
@@ -47,7 +47,14 @@
             <th><?= $item['id_article'] ?></th>
             <th><?= $item['title_article'] ?></th>
             <th><?= $item['price_article'] ?></th>
-            <th><?= $item['name_category'] ?></th>
+
+            <?php $category = readCategoryArticle($item['id_article'], $db); ?>
+            <th>
+            <?php while ($name = mysqli_fetch_assoc($category)) { ?>
+                <?= $name['name_category'] ?>
+            <?php } ?>
+            </th>
+
             <th><?= $item['promo_article'] ?></th>
             <th>
                 <a href="?p=create.img.admin&id=<?= $item['id_article'] ?>">modify.img</a>
