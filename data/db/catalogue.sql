@@ -28,17 +28,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `catalogue`.`category`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`category` (
-  `id_category` INT NOT NULL AUTO_INCREMENT,
-  `name_category` VARCHAR(80) NOT NULL,
-  `desc_category` TINYTEXT NULL,
-  PRIMARY KEY (`id_category`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `catalogue`.`article`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `catalogue`.`article` (
@@ -50,14 +39,7 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`article` (
   `date_article` TIMESTAMP NOT NULL,
   `date_promo_article` TIMESTAMP NULL,
   `content_article` TINYTEXT NULL,
-  `fkey_id_category` INT NOT NULL,
-  PRIMARY KEY (`id_article`),
-  INDEX `fk_article_category1_idx` (`fkey_id_category` ASC) VISIBLE,
-  CONSTRAINT `fk_article_category1`
-    FOREIGN KEY (`fkey_id_category`)
-    REFERENCES `catalogue`.`category` (`id_category`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id_article`))
 ENGINE = InnoDB;
 
 
@@ -80,6 +62,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `catalogue`.`category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `catalogue`.`category` (
+  `id_category` INT NOT NULL AUTO_INCREMENT,
+  `name_category` VARCHAR(80) NOT NULL,
+  `desc_category` TINYTEXT NULL,
+  PRIMARY KEY (`id_category`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `catalogue`.`shop`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `catalogue`.`shop` (
@@ -88,6 +81,28 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`shop` (
   `localisation_shop` VARCHAR(255) NOT NULL,
   `desc_shop` TINYTEXT NULL,
   PRIMARY KEY (`id_shop`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `catalogue`.`category_has_article`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `catalogue`.`category_has_article` (
+  `fkey_id_category` INT NOT NULL,
+  `fkey_id_article` INT NOT NULL,
+  PRIMARY KEY (`fkey_id_category`, `fkey_id_article`),
+  INDEX `fk_category_has_article_article1_idx` (`fkey_id_article` ASC) VISIBLE,
+  INDEX `fk_category_has_article_category1_idx` (`fkey_id_category` ASC) VISIBLE,
+  CONSTRAINT `fk_category_has_article_category1`
+    FOREIGN KEY (`fkey_id_category`)
+    REFERENCES `catalogue`.`category` (`id_category`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_category_has_article_article1`
+    FOREIGN KEY (`fkey_id_article`)
+    REFERENCES `catalogue`.`article` (`id_article`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
