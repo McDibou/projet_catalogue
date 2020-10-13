@@ -26,7 +26,7 @@
             max="<?= $price['maxPrice'] ?>"
             type="number">
 
-    <button name="search" type="submit">search</button>
+    <button type="submit">search</button>
 </form>
 
 

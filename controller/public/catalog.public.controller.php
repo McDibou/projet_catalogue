@@ -5,15 +5,13 @@ require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTO
 $category_option = readOptionCategory($db);
 $price = countPrice($db);
 
-
 if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = (int)$_GET['switch'];
-    if (!$currentPage) $currentPage = 1;
 } else {
     $currentPage = 1;
 }
 
-$ndrArticle = 1;
+$ndrArticle = 2;
 $limit = ($currentPage - 1) * $ndrArticle;
 
 $category = !empty($_GET['category']) ? analyseData($_GET['category']) : '';
@@ -22,7 +20,7 @@ $max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['ma
 
 $where = '';
 
-if (isset($_GET['search'])) {
+if (isset($_GET['category'])) {
 
     if ($category || $min || $max) {
 
@@ -45,6 +43,7 @@ if (isset($_GET['search'])) {
 
             $article = readGlobalArticle($db, $where, $limit, $ndrArticle);
 
+
         }
 
     } else {
@@ -59,8 +58,12 @@ if (isset($_GET['search'])) {
 
 }
 
-//$countArticle = countArticle($db, $where);
+if (!empty($category)) {
+    $countArticle = countWithArticle($db, $where);
+} else {
+    $countArticle = countArticle($db, $where);
+}
 
-//$switch = switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max);
+$switch = switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max);
 
 require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.view.php';
