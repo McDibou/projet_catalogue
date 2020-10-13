@@ -37,6 +37,7 @@
     <ul><li><a href="#" onclick="history.go(-1);">Back </a></li></ul>
 
 </header>
+
 <?= $content ?>
 
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"

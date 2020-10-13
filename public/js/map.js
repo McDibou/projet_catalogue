@@ -1,30 +1,33 @@
-let mymap = L.map('mapid').setView([50.847, 4.371], 5);
+let mymap = L.map('mapid').setView([50.827, 4.371], 12);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
+L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png256?apikey=06ab9be902d942468f7aed0766901751', {
+    attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+    minZoom: 10,
+    maxZoom: 16,
     tileSize: 512,
     zoomOffset: -1
 }).addTo(mymap);
 
 
-fetch('src/map.public.model.php')
-    .then( (response) => {return response.json()} )
+fetch('src/map.public.controller.php')
 
-    .then( (responseJSON) => {
+    .then( response => response.json() )
 
-        for(let i = 0; i < responseJSON.length; i++) {
-            let lat = responseJSON[i][2].split(',')
+    .then( (data) => {
+
+        for(let i = 0; i < data.length; i++) {
+
+            let lat = data[i][2].split(',')
             let marker = L.marker([lat[0], lat[1]]).addTo(mymap);
-            marker.bindPopup(responseJSON[i][3]).openPopup();
-
+            marker.bindPopup(data[i][3]);
 
         }
     });
 
 navigator.geolocation.getCurrentPosition(function(position) {
-    console.log(position.coords.latitude, position.coords.longitude);
+
     let markerHere = L.marker([''+position.coords.latitude, ''+position.coords.longitude]).addTo(mymap);
     markerHere.bindPopup("Vous êtes ici !").openPopup();
 
-
 });
+
