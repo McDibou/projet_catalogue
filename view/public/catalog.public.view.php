@@ -3,12 +3,12 @@
 
     <select name="category">
         <option value="">global</option>
-        <?php foreach ($category_option as $item) { ?>
+        <?php foreach ($category_option as $potion) { ?>
             <option
-                    value="<?= $item['name_category'] ?>"
-                <?= ($item['name_category'] === $category) ? "selected" : ""; ?>
+                    value="<?= $potion['name_category'] ?>"
+                <?= ($potion['name_category'] === $category) ? "selected" : ""; ?>
             >
-                <?= $item['name_category'] ?>
+                <?= $potion['name_category'] ?>
             </option>
         <?php } ?>
     </select>
@@ -26,22 +26,22 @@
             max="<?= $price['maxPrice'] ?>"
             type="number">
 
-    <button type="submit">search</button>
+    <button name="search" type="submit">search</button>
 </form>
 
 
-<?php foreach ($article as $item) { ?>
+<?php foreach ($article as $art) { ?>
 
-    <h1><?= $item['title_article'] ?></h1>
-    <em><?= $item['price_article'] ?></em>
-    <p><?= $item['promo_article'] ?></p>
+    <h1><?= $art['title_article'] ?></h1>
+    <em><?= $art['price_article'] ?></em>
+    <p><?= $art['promo_article'] ?></p>
 
-    <?php $category = readCategory($item['id_article'], $db) ?>
-    <?php foreach ($category as $item) { ?>
-        <div><?= $item['name_category'] ?></div>
+    <?php $category = readCategory($art['id_article'], $db) ?>
+    <?php foreach ($category as $cat) { ?>
+        <div><?= $cat['name_category'] ?></div>
     <?php } ?>
 
-    <?php $img = readImg($item['id_article'], $db); ?>
+    <?php $img = readImg($art['id_article'], $db); ?>
     <?php foreach ($img as $affiche) { ?>
         <p><?= $affiche['name_img'] ?></p>
     <?php } ?>

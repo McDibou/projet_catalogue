@@ -22,12 +22,19 @@ function readArticle($db, $where, $limit, $ndrArticle)
 
 function readGlobalArticle($db, $where, $limit, $ndrArticle)
 {
-    return mysqli_query($db, "SELECT * FROM `article` ORDER BY `date_article` $where  ORDER BY `date_article` LIMIT $limit, $ndrArticle ");
+    return mysqli_query($db, "SELECT * FROM `article`  $where ORDER BY `date_article` LIMIT $limit, $ndrArticle ");
 }
 
 function countArticle($db, $where)
 {
     $result = mysqli_query($db, "SELECT * FROM `article` JOIN `category_has_article` ON `id_article` = `fkey_id_article`  JOIN `category` ON `id_category` = `fkey_id_category` $where ORDER BY `date_article`");
+
+    return mysqli_num_rows($result);
+}
+
+function countWhitoutCategory($db, $where) {
+
+    $result = mysqli_query($db, "SELECT * FROM `article` $where ORDER BY `date_article`");
 
     return mysqli_num_rows($result);
 }
