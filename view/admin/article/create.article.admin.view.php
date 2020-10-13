@@ -7,19 +7,24 @@
 <form method="post" enctype="multipart/form-data">
     <input name="name_img" id="name_img" type="file" accept="image/*" required>
 
-    <input value="<?= !empty($title_article) ? $title_article : ''; ?>" name="title_article" type="text" placeholder="Titre" required>
-    <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text" placeholder="price" required>
-    <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text" placeholder="promo" required>
-    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text" placeholder="date promo" required>
+    <input value="<?= !empty($title_article) ? $title_article : ''; ?>" name="title_article" type="text"
+           placeholder="Titre" required>
+    <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text"
+           placeholder="price" required>
+    <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text"
+           placeholder="promo" required>
+    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text" placeholder="date promo"
+           required>
 
-    <select name="category_id" required>
+    <select name="category_id[]" required multiple="multiple">
         <option value="">--choose category--</option>
-        <?php while ($item = mysqli_fetch_assoc($category)) { ?>
+        <?php foreach ($category as $item) { ?>
             <option value="<?= $item['id_category'] ?>"><?= $item['name_category'] ?></option>
         <?php } ?>
     </select>
 
-    <textarea name="content_article" id="" cols="30" rows="10" placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
+    <textarea name="content_article" id="" cols="30" rows="10"
+              placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
 
     <button type="submit" name="create_article">create</button>
 </form>
@@ -41,13 +46,21 @@
     </tr>
     </thead>
 
-    <?php while ($item = mysqli_fetch_assoc($article)) { ?>
+    <?php foreach ($article as $item) { ?>
         <tbody>
         <tr>
             <th><?= $item['id_article'] ?></th>
             <th><?= $item['title_article'] ?></th>
             <th><?= $item['price_article'] ?></th>
-            <th><?= $item['name_category'] ?></th>
+
+            <?php $category = readCategoryArticle($item['id_article'], $db); ?>
+            <th>
+                <?php foreach ($category as $name) { ?>
+                    <?= $name['name_category'] ?>
+                <?php } ?>
+                <a href="?p=category.article.admin&id=<?= $item['id_article'] ?>">modify.category</a>
+            </th>
+
             <th><?= $item['promo_article'] ?></th>
             <th>
                 <a href="?p=create.img.admin&id=<?= $item['id_article'] ?>">modify.img</a>

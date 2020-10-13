@@ -5,22 +5,35 @@ function analyseData($data)
     return htmlspecialchars(strip_tags(trim($data)), ENT_QUOTES, 'UTF-8');
 }
 
-
 function readOptionCategory($db)
 {
     return mysqli_query($db, "SELECT * FROM `category`");
 }
 
-function readArticle($db, $where, $limit, $ndrArticle)
+function readCategory($id, $db)
 {
-    return mysqli_query($db, "SELECT * FROM `article` JOIN `category` ON `id_category` = `fkey_id_category`  $where  ORDER BY `date_article` LIMIT $limit, $ndrArticle");
+    return mysqli_query($db, "SELECT * FROM `article` JOIN `category_has_article` ON `id_article` = `fkey_id_article` JOIN `category` ON `id_category` = `fkey_id_category` WHERE `id_article` = '$id'");
 }
 
-function countArticle($db, $where)
+function readArticle($db, $where, $limit, $ndrArticle)
 {
-    $result = mysqli_query($db, "SELECT * FROM `article` JOIN `category` ON `id_category` = `fkey_id_category` $where ORDER BY `date_article`");
+    return mysqli_query($db, "SELECT * FROM `article` JOIN `category_has_article` ON `id_article` = `fkey_id_article` JOIN `category` ON `id_category` = `fkey_id_category` $where ORDER BY `date_article` LIMIT $limit, $ndrArticle");
+}
 
-    return mysqli_num_rows($result);
+function readGlobalArticle($db, $where, $limit, $ndrArticle)
+{
+    return mysqli_query($db, "SELECT * FROM `article` $where ORDER BY `date_article` LIMIT $limit, $ndrArticle ");
+}
+
+function countArticle($db, $where) {
+
+    $resp = mysqli_query($db, "SELECT * FROM `article` $where ORDER BY `date_article`");
+    return mysqli_num_rows($resp);
+}
+
+function countWithArticle($db, $where) {
+    $resp = mysqli_query($db, "SELECT * FROM `article` JOIN `category_has_article` ON `id_article` = `fkey_id_article` JOIN `category` ON `id_category` = `fkey_id_category` $where ORDER BY `date_article`");
+    return mysqli_num_rows($resp);
 }
 
 function countPrice($db)

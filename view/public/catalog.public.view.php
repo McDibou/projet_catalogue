@@ -3,12 +3,12 @@
 
     <select name="category">
         <option value="">global</option>
-        <?php while ($item = mysqli_fetch_assoc($category_option)) { ?>
+        <?php foreach ($category_option as $potion) { ?>
             <option
-                    value="<?= $item['name_category'] ?>"
-                <?= ($item['name_category'] === $category) ? "selected" : ""; ?>
+                    value="<?= $potion['name_category'] ?>"
+                <?= ($potion['name_category'] === $category) ? "selected" : ""; ?>
             >
-                <?= $item['name_category'] ?>
+                <?= $potion['name_category'] ?>
             </option>
         <?php } ?>
     </select>
@@ -30,19 +30,22 @@
 </form>
 
 
-<?php while ($item = mysqli_fetch_assoc($article)) { ?>
+<?php foreach ($article as $art) { ?>
 
-    <h1><?= $item['title_article'] ?></h1>
-    <em><?= $item['price_article'] ?></em>
-    <p><?= $item['promo_article'] ?></p>
-    <p><?= $item['name_category'] ?></p>
+    <h1><?= $art['title_article'] ?></h1>
+    <em><?= $art['price_article'] ?></em>
+    <p><?= $art['promo_article'] ?></p>
 
-    <?php $img = readImg($item['id_article'], $db); ?>
-    <?php while ($affiche = mysqli_fetch_assoc($img)) { ?>
+    <?php $category = readCategory($art['id_article'], $db) ?>
+    <?php foreach ($category as $cat) { ?>
+        <div><?= $cat['name_category'] ?></div>
+    <?php } ?>
+
+    <?php $img = readImg($art['id_article'], $db); ?>
+    <?php foreach ($img as $affiche) { ?>
         <p><?= $affiche['name_img'] ?></p>
     <?php } ?>
 
 <?php } ?>
-
 
 <?= $switch ?>
