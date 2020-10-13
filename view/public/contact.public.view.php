@@ -18,3 +18,5 @@
 
 <?= !empty($succes) ? $succes : '' ?>
 <?= !empty($error) ? $error : '' ?>
+
+<div id="mapid" style="height: 700px; position: relative">
