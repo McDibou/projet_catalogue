@@ -12,9 +12,9 @@
     <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text"
            placeholder="price" required>
     <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text"
-           placeholder="promo" required>
-    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text" placeholder="date promo"
-           required>
+           placeholder="promo">
+    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text"
+           placeholder="date promo">
 
     <select name="category_id[]" required multiple="multiple">
         <option value="">--choose category--</option>
@@ -30,58 +30,66 @@
 </form>
 
 <p><?= (!empty($error_create_article)) ? $error_create_article : '' ?></p>
+
 <hr>
 
-<table>
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>titre</th>
-        <th>price</th>
-        <th>category</th>
-        <th>promo</th>
-        <th>img</th>
-        <th>date</th>
-        <th></th>
-    </tr>
-    </thead>
-
-    <?php foreach ($article as $item) { ?>
-        <tbody>
+<form method="post" action="?p=delete.all.article.admin">
+    <table>
+        <thead>
         <tr>
-            <th><?= $item['id_article'] ?></th>
-            <th><?= $item['title_article'] ?></th>
-            <th><?= $item['price_article'] ?></th>
-
-            <?php $category = readCategoryArticle($item['id_article'], $db); ?>
-            <th>
-                <?php foreach ($category as $name) { ?>
-                    <?= $name['name_category'] ?>
-                <?php } ?>
-                <a href="?p=category.article.admin&id=<?= $item['id_article'] ?>">modify.category</a>
-            </th>
-
-            <th><?= $item['promo_article'] ?></th>
-            <th>
-                <a href="?p=create.img.admin&id=<?= $item['id_article'] ?>">modify.img</a>
-            </th>
-            <th><?= $item['date_article'] ?></th>
-
-            <td>
-
-                <?php if ($item['show_article'] === '0') { ?>
-                    <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
-                <?php } else { ?>
-                    <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
-                <?php } ?>
-
-                <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>
-                <a href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">modify</a>
-                <a href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">delete</a>
-
-            </td>
+            <th></th>
+            <th>id</th>
+            <th>titre</th>
+            <th>price</th>
+            <th>category</th>
+            <th>promo</th>
+            <th>date.promo</th>
+            <th>img</th>
+            <th>date</th>
+            <th></th>
         </tr>
-        </tbody>
-    <?php } ?>
-</table>
+        </thead>
 
+        <?php foreach ($article as $item) { ?>
+            <tbody>
+            <tr>
+                <th><input type="checkbox" name="article_all_id[]" value="<?= $item['id_article'] ?>"></th>
+                <th><?= $item['id_article'] ?></th>
+                <th><?= $item['title_article'] ?></th>
+                <th><?= $item['price_article'] ?></th>
+
+                <?php $category = readCategoryArticle($item['id_article'], $db); ?>
+                <th>
+                    <?php foreach ($category as $name) { ?>
+                        <?= $name['name_category'] ?>
+                    <?php } ?>
+                    <a href="?p=category.article.admin&id=<?= $item['id_article'] ?>">modify.category</a>
+                </th>
+
+                <th><?= $item['promo_article'] ?></th>
+                <th><?= ($item['date_article'] != $item['date_promo_article']) ? $item['date_promo_article'] : 'NULL' ?></th>
+                <th>
+                    <a href="?p=create.img.admin&id=<?= $item['id_article'] ?>">modify.img</a>
+                </th>
+                <th><?= $item['date_article'] ?></th>
+
+                <td>
+
+                    <?php if ($item['show_article'] === '0') { ?>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
+                    <?php } else { ?>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
+                    <?php } ?>
+
+                    <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>
+                    <a href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">modify</a>
+                    <a href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">delete</a>
+
+                </td>
+            </tr>
+            </tbody>
+        <?php } ?>
+
+    </table>
+    <button type="submit" name="article_all">delete all</button>
+</form>

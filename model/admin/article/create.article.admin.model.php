@@ -25,7 +25,7 @@ function createArticle($title_article, $price_article, $promo_article, $category
 
     mysqli_begin_transaction($db, MYSQLI_TRANS_START_READ_WRITE);
 
-    $article = mysqli_query($db, "INSERT INTO `article` ( `title_article`, `price_article`, `promo_article`, `show_article`, `date_article`,`date_promo_article`, `content_article` ) VALUES ( '$title_article', '$price_article', '$promo_article', '0', NOW(), NOW(), '$content_article');");
+    $article = mysqli_query($db, "INSERT INTO `article` ( `title_article`, `price_article`, `promo_article`, `show_article`, `date_article`,`date_promo_article`, `content_article` ) VALUES ( '$title_article', '$price_article', '$promo_article', '0', NOW(), '$date_promo', '$content_article');");
 
     $id_article = mysqli_insert_id($db);
 

@@ -7,7 +7,15 @@ $id_article = selectIdArticle($id ,$db);
 
 if (!empty($id)) {
 
-    deleteArticle($id, $db);
+    $img = selectImg($id,$db);
+
+    $img = "img/$img";
+
+    if (file_exists($img)) {
+        unlink($img);
+    }
+
+    deleteImg($id, $db);
     header("Location: ?p=create.img.admin&id=$id_article");
 
 } else {

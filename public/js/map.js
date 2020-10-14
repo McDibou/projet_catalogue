@@ -11,11 +11,11 @@ L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png256?api
 
 fetch('src/map.public.controller.php')
 
-    .then( response => response.json() )
+    .then(response => response.json())
 
-    .then( (data) => {
+    .then((data) => {
 
-        for(let i = 0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
 
             let lat = data[i][2].split(',')
             let marker = L.marker([lat[0], lat[1]]).addTo(mymap);
@@ -24,10 +24,9 @@ fetch('src/map.public.controller.php')
         }
     });
 
-navigator.geolocation.getCurrentPosition(function(position) {
+navigator.geolocation.getCurrentPosition(function (position) {
 
-    let markerHere = L.marker([''+position.coords.latitude, ''+position.coords.longitude]).addTo(mymap);
+    let markerHere = L.marker(['' + position.coords.latitude, '' + position.coords.longitude]).addTo(mymap);
     markerHere.bindPopup("Vous êtes ici !").openPopup();
 
 });
-

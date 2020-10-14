@@ -79,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`shop` (
   `id_shop` INT NOT NULL AUTO_INCREMENT,
   `name_shop` VARCHAR(80) NOT NULL,
   `localisation_shop` VARCHAR(255) NOT NULL,
+  `ville_shop` VARCHAR(80) NOT NULL,
   `desc_shop` TINYTEXT NULL,
   PRIMARY KEY (`id_shop`))
 ENGINE = InnoDB;

@@ -17,7 +17,7 @@ if (isset($_POST['create_img'])) {
     if (!empty($img) && !empty($id)) {
 
         createImg($img, $id, $db);
-        move_uploaded_file($_FILES['name_img']['tmp_name'], "public/img");
+        move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img");
         header("Location: ?p=create.img.admin&id=$id");
 
     } else {

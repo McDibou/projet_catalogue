@@ -11,16 +11,16 @@ if (isset($_POST['create_article'])) {
     $promo_article = analyseData($_POST['promo_article']);
     $category_id = $_POST['category_id'];
     $content_article = analyseData($_POST['content_article']);
-    $date_promo = analyseData($_POST['date_promo']);
-
+    $date_promo = ctype_digit($_POST['date_promo']) ? $_POST['date_promo'] : '';
+    $date_promo = date('Y-m-d H:i:s', strtotime('+' . $date_promo . ' day'));
 
     $img_article = date('U') . '_' . basename($_FILES['name_img']['name']);
 
-    if ( !empty($title_article) && !empty($price_article) && !empty($promo_article) && !empty($category_id) && !empty($content_article) && !empty($img_article) && !empty($date_promo) ) {
+    if (!empty($title_article) && !empty($price_article) && !empty($promo_article) && !empty($category_id) && !empty($content_article) && !empty($img_article) && !empty($date_promo)) {
 
         createArticle($title_article, $price_article, $promo_article, $category_id, $content_article, $img_article, $date_promo, $db);
-        move_uploaded_file($_FILES['name_img']['tmp_name'], "public/img");
 
+        move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img_article");
         header('Location: ?p=create.article.admin');
 
     } else {
