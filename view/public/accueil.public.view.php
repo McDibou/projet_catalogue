@@ -1,4 +1,4 @@
-<div id="body-accueil">
+<div class="body-accueil">
     <img src="img/src/accueil.jpg" alt="">
 </div>
 <h1 class="title-accueil">GUIT.DEV</h1>

@@ -1,20 +1,18 @@
-*{
+* {
     padding: 0;
     margin: 0;
 }
 
 
 /* ---------- MENU ---------- */
-.public-menu
-{
+.public-menu {
     position: absolute;
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.public-menu a
-{
+.public-menu a {
     position: relative;
     text-align: center;
     text-decoration: none;
@@ -33,17 +31,19 @@
 
 /* ---------- ACCUEIL ---------- */
 
-#body-accueil {
-    z-index: -1;
-    width: 1080px;
-
+.body-accueil img {
     position: fixed;
+    width: 100vw;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .title-accueil {
     position: absolute;
     top: 23%;
-    left:15%;
+    left: 15%;
     color: aliceblue;
     font-size: 80px;
 }
