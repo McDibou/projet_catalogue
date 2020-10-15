@@ -12,7 +12,8 @@ $img = readImg($id, $db);
 
 if (isset($_POST['create_img'])) {
 
-    $img = date('U') . '_' . basename($_FILES['name_img']['name']);
+    $img = analyseData($_FILES['name_img']['name']);
+    $img_article = date('U') . '_' . basename($img);
 
     if (!empty($img) && !empty($id)) {
 

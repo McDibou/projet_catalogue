@@ -1,11 +1,17 @@
 <?php
 
-
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'delete.article.admin.model.php';
 
 if (!empty($_POST['article_all_id'])) {
 
-    $id_all = $_POST['article_all_id'];
+    $id_all = [];
+    if (!empty($_POST['article_all_id'])) {
+        foreach ($_POST['article_all_id'] as $data) {
+            if (ctype_digit($data)) {
+                $id_all[] = $data;
+            }
+        }
+    }
 
     foreach ($id_all as $id) {
 

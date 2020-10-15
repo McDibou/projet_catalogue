@@ -12,18 +12,21 @@ $checked = checkedCategory($id, $db);
 
 if (isset($_POST['modify_catalog'])) {
 
-    $category_id = $_POST['category'];
+    $category_id = [];
+    if (!empty($_POST['category'])) {
+        foreach ($_POST['category'] as $data) {
+            if (ctype_digit($data)) {
+                $category_id[] = $data;
+            }
+        }
+    }
 
     if (!empty($category_id)) {
-
         updateCategory($category_id, $id, $db);
         header("Location: ?p=category.article.admin&id=$id");
-
-    } else {
-
-        $error_category_article = 'error_category_article';
-
     }
+
+    $error_category_article = 'error_category_article';
 
 }
 
