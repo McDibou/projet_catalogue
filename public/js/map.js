@@ -3,9 +3,7 @@ let mymap = L.map('mapid').setView([50.827, 4.371], 12);
 L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png256?apikey=06ab9be902d942468f7aed0766901751', {
     attribution: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
     minZoom: 10,
-    maxZoom: 16,
-    tileSize: 512,
-    zoomOffset: -1
+    maxZoom: 18
 }).addTo(mymap);
 
 

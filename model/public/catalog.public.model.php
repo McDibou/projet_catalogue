@@ -57,15 +57,15 @@ function switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min
     for ($i = 1; $i <= $numberPage; $i++) {
         if ($i == 1) {
             if ($i != $currentPage) {
-                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'>Previous</a> | ";
+                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'> < </a>";
             }
         }
-        $out .= ($i == $currentPage) ? "$i | " : "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a> | ";
+        $out .= ($i == $currentPage) ? " $i " : "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a>";
 
         if ($numberPage == $i) {
 
             if ($currentPage != $i) {
-                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'>Next</a> | ";
+                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'> > </a>";
             }
         }
     }
