@@ -12,13 +12,13 @@ $img = readImg($id, $db);
 
 if (isset($_POST['create_img'])) {
 
-    $img = analyseData($_FILES['name_img']['name']);
+    $img = $_FILES['name_img']['name'];
     $img_article = date('U') . '_' . basename($img);
 
-    if (!empty($img) && !empty($id)) {
+    if (!empty($img_article) && !empty($id)) {
 
-        createImg($img, $id, $db);
-        move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img");
+        createImg($img_article, $id, $db);
+        move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img_article");
         header("Location: ?p=create.img.admin&id=$id");
 
     } else {
