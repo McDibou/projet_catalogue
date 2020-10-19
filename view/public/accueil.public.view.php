@@ -26,7 +26,7 @@
             </div>
             <div>
                 <p id="prix"><?= $item['price_article'] ?> €</p>
-                <?= ($item['promo_article'] !== '0') ? '<p id="promo">SAVE ' . $item['promo_article'] . '%</p>' : ''; ?>
+                <p id="promo"><?= ($item['promo_article'] !== '0') ? 'SAVE ' . $item['promo_article'] . '%' : ''; ?></p>
             </div>
             <a class="link-pay" href="">ADD TO CARD</a>
 

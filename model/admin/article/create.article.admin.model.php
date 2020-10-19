@@ -20,12 +20,12 @@ function readCategoryArticle($id, $db)
     return mysqli_query($db, "SELECT * FROM `category` JOIN `category_has_article` ON `id_category` = `fkey_id_category` JOIN  `article` ON `id_article` = `fkey_id_article` WHERE `id_article` = $id");
 }
 
-function createArticle($title_article, $price_article, $promo_article, $category_id, $content_article, $img_article, $date_promo, $db)
+function createArticle($title_article, $price_article, $category_id, $content_article, $img_article, $db)
 {
 
     mysqli_begin_transaction($db, MYSQLI_TRANS_START_READ_WRITE);
 
-    $article = mysqli_query($db, "INSERT INTO `article` ( `title_article`, `price_article`, `promo_article`, `show_article`, `date_article`,`date_promo_article`, `content_article` ) VALUES ( '$title_article', '$price_article', '$promo_article', '0', NOW(), '$date_promo', '$content_article');");
+    $article = mysqli_query($db, "INSERT INTO `article` ( `title_article`, `price_article`, `show_article`, `date_article`, `content_article` ) VALUES ( '$title_article', '$price_article', '0', NOW(), '$content_article');");
 
     $id_article = mysqli_insert_id($db);
 

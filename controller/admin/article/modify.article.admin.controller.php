@@ -16,16 +16,9 @@ if (isset($_POST['modify_article'])) {
     $price_article = analyseData($_POST['price_article']);
     $content_article = analyseData($_POST['content_article']);
 
-    $date_promo = ctype_digit($_POST['date_promo']) ? $_POST['date_promo'] : '';
-    $date_promo = date('Y-m-d H:i:s', strtotime(time(),' + ' . $date_promo . ' day'));
-
-    $promo_article = analyseData($_POST['promo_article']);
-    $date_promo = ctype_digit(analyseData($_POST['date_promo'])) ? $_POST['date_promo'] : NULL;
-    $date_promo = date('Y-m-d H:i:s', strtotime('+' . $date_promo . ' day'));
-
     if (!empty($id) && !empty($title_article) && !empty($price_article) && !empty($content_article)) {
 
-        modifyArticle($id, $title_article, $price_article, $promo_article, $date_promo, $content_article, $db);
+        modifyArticle($id, $title_article, $price_article, $content_article, $db);
         header("Location: ?p=read.article.admin&id=$id");
 
     } else {
