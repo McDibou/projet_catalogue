@@ -11,7 +11,7 @@ if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = 1;
 }
 
-$ndrArticle = 2;
+$ndrArticle = 6;
 $limit = ($currentPage - 1) * $ndrArticle;
 
 $category = !empty($_GET['category']) ? analyseData($_GET['category']) : '';
