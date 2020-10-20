@@ -11,9 +11,9 @@ fetch('src/date.public.controller.php')
     });
 
 
-function promoUpdateDate(data) {
+let articleAll = document.querySelectorAll('#article');
 
-    let articleAll = document.querySelectorAll('#article');
+function promoUpdateDate(data) {
 
     for (let i = 0; i < articleAll.length; i++) {
 
@@ -35,24 +35,18 @@ function promoUpdateDate(data) {
             let minutes = Math.floor((date - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
             let secondes = Math.floor(date - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
-
             let test = jours + 'j ' + heures + 'h' + minutes + ':' + secondes;
 
             div3.append(test);
             articleAll[i].append(div3);
 
-
         }
     }
 }
 
-
 function calcPromo(data) {
-
-    let articleAll = document.querySelectorAll('#article');
-
     for (let i = 0; i < articleAll.length; i++) {
-        
+
         let promo = articleAll[i].querySelector('#promo').textContent.match(/\d+\.?\d*/g);
         let prix = articleAll[i].querySelector('#prix').textContent.match(/\d+\.?\d*/g);
 
@@ -66,7 +60,6 @@ function calcPromo(data) {
 
             let div = document.createElement('p');
             let div2 = document.createElement('p');
-
 
             div.classList.add('new-price')
             div2.classList.add('surligne')
@@ -87,7 +80,7 @@ function calcPromo(data) {
 
         } else {
 
-            articleAll[i].querySelector('#promo').remove()
+            articleAll[i].querySelector('#promo').remove();
 
         }
     }

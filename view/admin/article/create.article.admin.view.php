@@ -1,6 +1,7 @@
 <ul>
     <li>
         <a href="?p=create.category.admin">create.category.admin</a>
+        <a href="?p=create.shop.admin">create.shop.admin</a>
     </li>
 </ul>
 
