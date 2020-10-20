@@ -1,7 +1,7 @@
 <?php
 
 function readPromo($db) {
-    return mysqli_query($db, "SELECT * FROM `article` WHERE `promo_article` != 0 LIMIT 3");
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `date_promo_article` > NOW() LIMIT 3");
 }
 
 function readShow($db) {

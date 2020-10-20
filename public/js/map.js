@@ -6,7 +6,6 @@ L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png256?api
     maxZoom: 18
 }).addTo(mymap);
 
-
 fetch('src/map.public.controller.php')
 
     .then(response => response.json())
@@ -15,7 +14,7 @@ fetch('src/map.public.controller.php')
 
         for (let i = 0; i < data.length; i++) {
 
-            let lat = data[i][2].split(',')
+            let lat = data[i][2].split(',');
             let marker = L.marker([lat[0], lat[1]]).addTo(mymap);
             marker.bindPopup(data[i][3]);
 

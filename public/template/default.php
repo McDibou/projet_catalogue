@@ -14,7 +14,6 @@
 <body>
 
 <header>
-
     <nav class="public-menu">
         <a href="./">ACCUEIL</a>
         <a href="?p=aboutus.public">ABOUT US</a>
@@ -35,7 +34,6 @@
 
         <?php } ?>
     </nav>
-
 </header>
 
 <?= $content ?>
@@ -45,7 +43,6 @@
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
 <script src="js/map.js"></script>
-<script src="js/app.js"></script>
 <script src="js/date.js"></script>
 </body>
 </html>
