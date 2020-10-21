@@ -44,5 +44,6 @@
         crossorigin=""></script>
 <script src="js/map.js"></script>
 <script src="js/date.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

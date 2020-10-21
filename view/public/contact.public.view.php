@@ -19,4 +19,11 @@
 <?= !empty($succes) ? $succes : '' ?>
 <?= !empty($error) ? $error : '' ?>
 
-<div id="mapid" style="height: 700px; position: relative;">
+<div id="mapid" style="height: 700px; position: relative;"></div>
+
+
+<?php foreach ($readShop as $item) { ?>
+    <li>
+        <a href="?p=contact.public&loc=<?= $item['localisation_shop'] ?>"><?= $item['name_shop'] ?></a>
+    </li>
+<?php } ?>

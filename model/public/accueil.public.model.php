@@ -5,7 +5,11 @@ function readPromo($db) {
 }
 
 function readShow($db) {
-    return mysqli_query($db, "SELECT * FROM `article` WHERE `show_article` != 0 LIMIT 1");
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `show_article` != 0");
+}
+
+function readOneShow($db, $id){
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id");
 }
 
 function readImg($id, $db)
