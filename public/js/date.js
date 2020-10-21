@@ -62,7 +62,6 @@ function calcPromo(data) {
 
             if (data[i][0] === idArticle[j].value) {
                 tab.push(data[i])
-
             }
         }
     }
