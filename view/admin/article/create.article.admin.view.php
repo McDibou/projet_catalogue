@@ -1,34 +1,62 @@
-<ul>
-    <li>
-        <a href="?p=create.category.admin">create.category.admin</a>
-        <a href="?p=create.shop.admin">create.shop.admin</a>
-    </li>
-</ul>
+<div class="py-5"></div>
+<div class="py-5"></div>
+<div class="py-5">
+    <p class="text-center mx-auto font-weight-bold text-danger">
+    <p><?= (!empty($error_create_article)) ? $error_create_article : '' ?></p>
+</div>
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <div class="d-flex justify-content-center align-items-center">
 
-<form method="post" enctype="multipart/form-data">
-    <input name="name_img" id="name_img" type="file" accept="image/*" required>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="m-2" for="title_article">Title</label>
+                        <input class="form-control" id="title_article"
+                               value="<?= !empty($title_article) ? $title_article : ''; ?>"
+                               name="title_article" type="text"
+                               placeholder="Titre" required>
+                    </div>
 
-    <input value="<?= !empty($title_article) ? $title_article : ''; ?>" name="title_article" type="text"
-           placeholder="Titre" required>
-    <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text"
-           placeholder="price" required>
+                    <div class="form-group">
+                        <label class="m-2" for="price_article">Price</label>
+                        <input class="form-control" id="price_article"
+                               value="<?= !empty($price_article) ? $price_article : ''; ?>"
+                               name="price_article" type="text"
+                               placeholder="price" required>
+                    </div>
 
-    <select name="category_id[]" required multiple="multiple">
-        <option value="">--choose category--</option>
-        <?php foreach ($category as $item) { ?>
-            <option value="<?= $item['id_category'] ?>"><?= $item['name_category'] ?></option>
-        <?php } ?>
-    </select>
+                    <div class="form-group">
+                        <label class="m-2" for="name_category">Category</label>
+                        <select class="form-control" id="name_category" name="category_id[]" required
+                                multiple="multiple">
+                            <?php foreach ($category as $item) { ?>
+                                <option value="<?= $item['id_category'] ?>"><?= $item['name_category'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
 
-    <textarea name="content_article" id="" cols="30" rows="10"
-              placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
+                <div class="col-6">
+                    <div class="form-group">
+                        <input class="form-control-file" name="name_img" type="file" accept="image/*"
+                               required>
+                    </div>
 
-    <button type="submit" name="create_article">create</button>
-</form>
+                    <div class="form-group">
+                        <label class="m-2" for="content_article">Description</label>
+                        <textarea class="form-control" id="content_article" name="content_article" id="" cols="30"
+                                  rows="10"
+                                  placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
+                    </div>
+                </div>
 
-<p><?= (!empty($error_create_article)) ? $error_create_article : '' ?></p>
+            </div>
+            <button class="btn btn-primary col-4 m-2" type="submit" name="create_article">CREATE</button>
 
-<hr>
+        </form>
+    </div>
+</div>
 
 <form method="post" action="?p=delete.all.article.admin">
     <table>
