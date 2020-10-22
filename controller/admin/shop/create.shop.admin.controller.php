@@ -13,7 +13,7 @@ if (isset($_POST['create_shop'])) {
 
     if (!empty($name_shop) && !empty($localisation_shop) && !empty($ville_shop) && !empty($desc_shop) ) {
 
-        createShop($db, $name_shop, $name_shop, $name_shop, $desc_shop );
+        createShop($db, $name_shop, $localisation_shop, $ville_shop, $desc_shop );
         header('Location: ?p=create.shop.admin');
 
     } else {

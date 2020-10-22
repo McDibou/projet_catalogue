@@ -32,6 +32,7 @@
     </div>
     <button type="submit">search</button>
 </form>
+<a href="?p=catalog.public">refresh</a>
 
 <div class="catalog">
     <?php foreach ($article as $item) { ?>
