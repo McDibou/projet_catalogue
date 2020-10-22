@@ -1,11 +1,11 @@
 <?php
 
 session_start();
+date_default_timezone_set("Europe/Brussels");
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'connectToDB.model.php';
 
 ob_start();
-
 $db = connectToDB();
 
 if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) {

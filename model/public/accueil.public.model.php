@@ -1,11 +1,15 @@
 <?php
 
 function readPromo($db) {
-    return mysqli_query($db, "SELECT * FROM `article` WHERE `promo_article` != 0 LIMIT 3");
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `date_promo_article` > NOW() LIMIT 3");
 }
 
 function readShow($db) {
-    return mysqli_query($db, "SELECT * FROM `article` WHERE `show_article` != 0 LIMIT 1");
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `show_article` != 0");
+}
+
+function readOneShow($db, $id){
+    return mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id");
 }
 
 function readImg($id, $db)

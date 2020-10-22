@@ -2,6 +2,8 @@
 
 require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'contact.public.model.php';
 
+$readShop = readShop($db);
+
 if (isset($_POST['contact_mail'])) {
 
     $name_mail = analyseData($_POST['name_mail']);

@@ -1,6 +1,7 @@
 <ul>
     <li>
         <a href="?p=create.category.admin">create.category.admin</a>
+        <a href="?p=create.shop.admin">create.shop.admin</a>
     </li>
 </ul>
 
@@ -11,10 +12,6 @@
            placeholder="Titre" required>
     <input value="<?= !empty($price_article) ? $price_article : ''; ?>" name="price_article" type="text"
            placeholder="price" required>
-    <input value="<?= !empty($promo_article) ? $promo_article : ''; ?>" name="promo_article" type="text"
-           placeholder="promo">
-    <input value="<?= !empty($date_promo) ? $date_promo : ''; ?>" name="date_promo" type="text"
-           placeholder="date promo">
 
     <select name="category_id[]" required multiple="multiple">
         <option value="">--choose category--</option>
@@ -43,7 +40,6 @@
             <th>price</th>
             <th>category</th>
             <th>promo</th>
-            <th>date.promo</th>
             <th>img</th>
             <th>date</th>
             <th></th>
@@ -66,8 +62,15 @@
                     <a href="?p=category.article.admin&id=<?= $item['id_article'] ?>">modify.category</a>
                 </th>
 
-                <th><?= $item['promo_article'] ?></th>
-                <th><?= ($item['date_article'] != $item['date_promo_article']) ? $item['date_promo_article'] : 'NULL' ?></th>
+                <th>
+                    <?php if ($item['promo_article'] !== '0') { ?>
+                        <?= $item['promo_article'] ?>% /<?= $item['date_promo_article'] ?>
+                        <a href="?p=create.promo.admin&id=<?= $item['id_article'] ?>">modify.promo</a>
+                        <a href="?p=delete.promo.admin&id=<?= $item['id_article'] ?>">delete .promo</a>
+                    <?php } else { ?>
+                        <a href="?p=create.promo.admin&id=<?= $item['id_article'] ?>">add.promo</a>
+                    <?php } ?>
+                </th>
                 <th>
                     <a href="?p=create.img.admin&id=<?= $item['id_article'] ?>">modify.img</a>
                 </th>
@@ -76,9 +79,9 @@
                 <td>
 
                     <?php if ($item['show_article'] === '0') { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">on</a>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">OFF</a>
                     <?php } else { ?>
-                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">off</a>
+                        <a href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">ON</a>
                     <?php } ?>
 
                     <a href="?p=read.article.admin&id=<?= $item['id_article'] ?>">read</a>

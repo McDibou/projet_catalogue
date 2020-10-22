@@ -7,42 +7,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-          crossorigin=""/>
+    crossorigin=""/>
+    <link rel="stylesheet" href="css/style.css">
     <title>Catalog</title>
 </head>
 <body>
 
 <header>
+    <nav class="public-menu">
+        <a href="./">ACCUEIL</a>
+        <a href="?p=aboutus.public">ABOUT US</a>
+        <a href="?p=catalog.public">CATALOG</a>
+        <a href="?p=contact.public">CONTACT</a>
+        <div id="indicator"></div>
+    </nav>
 
-    <ul>
-        <li><a href="./">accueil.public</a></li>
-        <li><a href="?p=aboutus.public">aboutus.public</a></li>
-        <li><a href="?p=catalog.public">catalog.public</a></li>
-        <li><a href="?p=contact.public">contact.public</a></li>
-        <li><a href="?p=404">Page.404</a></li>
-    </ul>
-    <ul>
+    <nav class="admin-menu">
         <?php if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) { ?>
 
-            <li><a href="?p=create.article.admin">create.article.admin</a></li>
-            <li><a href="?p=disconnect.admin">disconnect.admin</a></li>
+            <a href="?p=create.article.admin">ESPACE</a>
+            <a href="?p=disconnect.admin">DISCONNECT</a>
 
         <?php } else { ?>
 
-            <li><a href="?p=connect.public">connect.public</a></li>
+            <a href="?p=connect.public">CONNECT</a>
 
         <?php } ?>
-    </ul>
-
-    <ul><li><a href="#" onclick="history.go(-1);">Back </a></li></ul>
-
+    </nav>
 </header>
 
 <?= $content ?>
 
+<script src="jQuery/jquery-3.5.1.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
 <script src="js/map.js"></script>
+<script src="js/date.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>

@@ -10,10 +10,6 @@ if (isset($_POST['create_article'])) {
     $price_article = analyseData($_POST['price_article']);
     $content_article = analyseData($_POST['content_article']);
 
-    $promo_article = ctype_digit(analyseData($_POST['promo_article'])) ? $_POST['promo_article'] : NULL;
-    $date_promo = ctype_digit(analyseData($_POST['date_promo'])) ? $_POST['date_promo'] : NULL;
-    $date_promo = date('Y-m-d H:i:s', strtotime('+' . $date_promo . ' day'));
-
     $img = analyseData($_FILES['name_img']['name']);
     $img_article = date('U') . '_' . basename($img);
 
@@ -28,7 +24,7 @@ if (isset($_POST['create_article'])) {
 
     if (!empty($title_article) && !empty($price_article) && !empty($category_id) && !empty($content_article) && !empty($img_article)) {
 
-        createArticle($title_article, $price_article, $promo_article, $category_id, $content_article, $img_article, $date_promo, $db);
+        createArticle($title_article, $price_article, $category_id, $content_article, $img_article, $db);
         move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img_article");
         header('Location: ?p=create.article.admin');
 
