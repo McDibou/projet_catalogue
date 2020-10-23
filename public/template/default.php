@@ -28,10 +28,10 @@
 
         <div class="position-fixed m-5">
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     ADMIN
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdown">
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownAdmin">
                     <a class="dropdown-item" href="?p=create.article.admin">create.article</a>
                     <a class="dropdown-item" href="?p=create.category.admin">create.category</a>
                     <a class="dropdown-item" href="?p=create.shop.admin">create.shop</a>
@@ -43,11 +43,13 @@
 
     <?php } else { ?>
 
-        <nav class="admin-menu">
+        <div class="admin-menu">
             <a href="?p=connect.public">CONNECT</a>
-        </nav>
+        </div>
 
     <?php } ?>
+
+
 </header>
 
 <?= $content ?>

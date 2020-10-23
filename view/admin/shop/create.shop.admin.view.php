@@ -1,52 +1,101 @@
+<div class="py-5"></div>
+<div class="py-5"></div>
+<div class="py-5">
+    <p class="text-center mx-auto font-weight-bold text-danger">
+    <p><?= !empty($error_shop) ? $error_shop : '' ?></p>
+</div>
+<div class="container-fluid">
+    <div class="row row-col-2 d-flex justify-content-center ">
+        <div class="col-4 m-5">
+            <form method="post">
 
-<form method="post">
+                <div class="form-group">
+                    <label class="m-2" for="name_shop">NAME</label>
+                    <input class="form-control" id="name_shop" value="<?= !empty($name_shop) ? $name_shop : ''; ?>"
+                           name="name_shop"
+                           type="text"
+                           placeholder="name_shop" required>
+                </div>
 
-    <input value="<?= !empty($name_shop) ? $name_shop : ''; ?>" name="name_shop" type="text"
-           placeholder="name_shop" required>
-    <input value="<?= !empty($localisation_shop) ? $localisation_shop : ''; ?>" name="localisation_shop" type="text"
-           placeholder="localisation_shop" required>
-    <input value="<?= !empty($ville_shop) ? $ville_shop : ''; ?>" name="ville_shop" type="text"
-           placeholder="ville_shop" required>
+                <div class="form-group">
+                    <label class="m-2" for="location_shop">LOCATION</label>
+                    <input class="form-control" id="location_shop"
+                           value="<?= !empty($localisation_shop) ? $localisation_shop : ''; ?>"
+                           name="localisation_shop"
+                           type="text"
+                           placeholder="localisation_shop" required>
+                </div>
 
-    <textarea name="desc_shop" id="" cols="30" rows="10"
-              placeholder="desc_shop"><?= !empty($desc_shop) ? $desc_shop : ''; ?></textarea>
+                <div class="form-group">
+                    <label class="m-2" for="city_shop">CITY</label>
+                    <input class="form-control" id="city_shop"
+                           value="<?= !empty($ville_shop) ? $ville_shop : ''; ?>" name="ville_shop"
+                           type="text"
+                           placeholder="ville_shop" required>
+                </div>
 
-    <button type="submit" name="create_shop">create</button>
+                <div class="form-group">
+                    <label class="m-2" for="desc_shop">ADDRESS</label>
+                    <textarea style="resize: none" class="form-control" name="desc_shop" id="desc_shop" cols="30" rows="4"
+                              placeholder="desc_shop"><?= !empty($desc_shop) ? $desc_shop : ''; ?></textarea>
+                </div>
 
-</form>
 
-<?= !empty($error_shop) ? $error_shop : '' ?>
+                <button class="btn btn-outline-success col-6 my-3 btn-lg btn-block mx-auto font-weight-bold"
+                        type="submit" name="create_shop">
+                    CREATE
+                </button>
 
-<table>
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>localisation</th>
-        <th>ville</th>
-        <th>desc</th>
-    </tr>
-    </thead>
+            </form>
+        </div>
+        <div class=" m-5 ">
+            <div class="img-thumbnail">
+                <div class="p-1" id="mapid" style="height: 500px; width: 600px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <?php foreach ($shop as $item) { ?>
-        <tbody>
-        <tr>
+<div class="container-fluid my-5">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <table class="table table-bordered text-center">
+                <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>LOCATION</th>
+                    <th>CITY</th>
+                    <th>ADDRESS</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-            <th><?= $item['id_shop'] ?></th>
-            <th><?= $item['name_shop'] ?></th>
-            <th><?= $item['localisation_shop'] ?></th>
-            <th><?= $item['ville_shop'] ?></th>
-            <th><?= $item['desc_shop'] ?></th>
+                <?php foreach ($shop as $item) { ?>
+                    <tbody>
+                    <tr>
 
-            <td>
 
-                <a href="?p=read.shop.admin&id=<?= $item['id_shop'] ?>">read</a>
-                <a href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">modify</a>
-                <a href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">delete</a>
+                        <th class="align-middle"><?= $item['name_shop'] ?></th>
+                        <th class="align-middle"><?= $item['localisation_shop'] ?></th>
+                        <th class="align-middle"><?= $item['ville_shop'] ?></th>
+                        <th class="align-middle"><?= $item['desc_shop'] ?></th>
 
-            </td>
-        </tr>
-        </tbody>
-    <?php } ?>
+                        <th class="align-middle">
+                            <a class="btn btn-outline-warning"
+                               href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
+                                MODIFY
+                            </a>
+                            <a class="btn btn-outline-danger"
+                               href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
+                                DELETE
+                            </a>
 
-</table>
+                        </th>
+                    </tr>
+                    </tbody>
+                <?php } ?>
+
+            </table>
+        </div>
+    </div>
+</div>

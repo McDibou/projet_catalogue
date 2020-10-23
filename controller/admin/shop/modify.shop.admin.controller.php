@@ -19,7 +19,7 @@ if (isset($_POST['modify_shop'])) {
     if (!empty($id) && !empty($name_shop) && !empty($localisation_shop) && !empty($ville_shop) && !empty($desc_shop)) {
 
         modifyArticle($id, $name_shop, $localisation_shop, $ville_shop, $desc_shop, $db);
-        header("Location: ?p=read.shop.admin&id=$id");
+        header("Location: ?p=create.shop.admin");
 
     } else {
 

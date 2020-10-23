@@ -1,3 +1,4 @@
+
 * {
     padding: 0;
     margin: 0;
@@ -30,7 +31,6 @@
 }
 
 /* ---------- ACCUEIL ---------- */
-
 .body-accueil img {
     position: fixed;
     width: 100vw;
@@ -68,8 +68,6 @@
 }
 
 /* ---------- CARD PROMO ---------- */
-
-
 .card {
     position: relative;
     background-color: #ffffff;

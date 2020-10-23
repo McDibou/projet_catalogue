@@ -4,6 +4,7 @@ require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' 
 $article = readArticle($db);
 $category = readOptionCategory($db);
 
+
 if (isset($_POST['create_article'])) {
 
     $title_article = analyseData($_POST['title_article']);

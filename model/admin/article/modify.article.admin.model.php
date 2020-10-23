@@ -14,3 +14,13 @@ function modifyArticle($id, $title_article, $price_article, $content_article, $d
 {
     mysqli_query($db, "UPDATE `article` SET `title_article` = '$title_article', `price_article` = '$price_article', `content_article` = '$content_article' WHERE `id_article` = $id;");
 }
+
+function readImg($db, $id)
+{
+    return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = $id");
+}
+
+function readCategory($db, $id)
+{
+    return mysqli_query($db, "SELECT * FROM `category` JOIN `category_has_article` ON `id_category` = `fkey_id_category` JOIN `article` ON `fkey_id_article` = `id_article` WHERE `id_article` = $id");
+}
