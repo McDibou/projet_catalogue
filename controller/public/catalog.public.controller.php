@@ -5,8 +5,8 @@ require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTO
 $category_option = readOptionCategory($db);
 $price = countPrice($db);
 
-$priceMin =  $price['minPrice'] - 10;
-$priceMax =  $price['maxPrice'] + 10;
+$priceMin =  floor($price['minPrice'] - 100);
+$priceMax =  ceil($price['maxPrice'] + 100);
 
 if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = (int)$_GET['switch'];
@@ -18,8 +18,8 @@ $ndrArticle = 6;
 $limit = ($currentPage - 1) * $ndrArticle;
 
 $category = !empty($_GET['category']) ? analyseData($_GET['category']) : '';
-$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $price['minPrice'];
-$max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['max']) : $price['maxPrice'];
+$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $priceMin;
+$max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['max']) : $priceMax;
 
 $where = '';
 

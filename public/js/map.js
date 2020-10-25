@@ -8,9 +8,11 @@ function readShop(position) {
     for (let i = 0; i < shop.length; i++) {
         if (position === shop[i].querySelector('#loc').value) {
             return `
-                        <div>${shop[i].querySelector('#name').innerHTML}</div>
-                        <div>${shop[i].querySelector('#desc').innerHTML}</div>
-                        <div>${shop[i].querySelector('#ville').innerHTML}</div>
+                        <div id="shop">
+                            <h4 id="name">${shop[i].querySelector('#name').innerHTML}</h4>
+                            <p id="desc">${shop[i].querySelector('#desc').innerHTML}</p>
+                            <em id="ville">${shop[i].querySelector('#ville').innerHTML}</em>
+                        </div>
                     `
         }
     }
@@ -44,9 +46,11 @@ fetch('src/map.public.controller.php')
 
             let lat = data[i][2].split(',');
             L.marker([lat[0], lat[1]]).addTo(mymap).bindPopup(`
-                        <div>${data[i][1]}</div>
-                        <div>${data[i][4]}</div>
-                        <div>${data[i][3]}</div>
+                        <div id="shop">
+                            <h4 id="name">${data[i][1]}</h4>
+                            <p id="desc">${data[i][4]}</p>
+                            <em id="ville">${data[i][3]}</em>
+                        </div>
                     `);
         }
     });
