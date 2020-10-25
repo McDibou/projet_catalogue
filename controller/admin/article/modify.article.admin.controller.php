@@ -9,6 +9,8 @@ if (empty($id)) {
 }
 
 $view_modify = readModifyArticle($id, $db);
+$category = readCategory($db, $id);
+$img = readImg($db, $id);
 
 if (isset($_POST['modify_article'])) {
 

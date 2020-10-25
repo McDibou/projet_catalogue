@@ -15,6 +15,10 @@ function readOptionCategory($db)
     return mysqli_query($db, "SELECT * FROM `category`");
 }
 
+function readImg($db, $id) {
+    return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = $id");
+}
+
 function readCategoryArticle($id, $db)
 {
     return mysqli_query($db, "SELECT * FROM `category` JOIN `category_has_article` ON `id_category` = `fkey_id_category` JOIN  `article` ON `id_article` = `fkey_id_article` WHERE `id_article` = $id");
