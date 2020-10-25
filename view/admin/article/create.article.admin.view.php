@@ -42,7 +42,8 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="m-2" for="content_article">Description</label>
-                        <textarea style="resize: none"  class="form-control" id="content_article" name="content_article" cols="30"
+                        <textarea style="resize: none" class="form-control" id="content_article" name="content_article"
+                                  cols="30"
                                   rows="8" maxlength="255"
                                   placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
                     </div>
@@ -68,30 +69,31 @@
     </div>
 </div>
 
-<div class="py-5"></div>
+<div class="py-3"></div>
 
 <div class="container-fluid my-5">
     <div class="row justify-content-center">
         <form method="post" action="?p=delete.all.article.admin">
-            <table class="table table-bordered text-center">
-                <thead>
+            <table class="table table-bordered text-center bg-white">
+                <thead >
                 <tr>
-                    <th scope="col"></th>
-                    <th scope="col">ID</th>
-                    <th scope="col">TITLE</th>
-                    <th scope="col">PRICE</th>
-                    <th scope="col">CATEGORY</th>
-                    <th scope="col">PROMOTION</th>
-                    <th scope="col">IMAGE</th>
-                    <th scope="col">SHOW</th>
-                    <th scope="col"></th>
+                    <th></th>
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>PRICE</th>
+                    <th colspan="2">CATEGORY</th>
+                    <th colspan="2">PROMOTION</th>
+                    <th colspan="2">IMAGE</th>
+                    <th>SHOW</th>
+                    <th></th>
                 </tr>
                 </thead>
 
                 <?php foreach ($article as $item) { ?>
                     <tbody>
                     <tr>
-                        <th class="align-middle"><input type="checkbox" name="article_all_id[]" value="<?= $item['id_article'] ?>"></th>
+                        <th class="align-middle"><input type="checkbox" name="article_all_id[]"
+                                                        value="<?= $item['id_article'] ?>"></th>
                         <th class="align-middle"><?= $item['id_article'] ?></th>
                         <th class="align-middle"><?= $item['title_article'] ?></th>
                         <th class="align-middle"><?= $item['price_article'] ?> €</th>
@@ -101,6 +103,8 @@
                             <?php foreach ($category as $name) { ?>
                                 <?= $name['name_category'] ?>
                             <?php } ?>
+                        </th>
+                        <th>
                             <a class="btn btn-outline-warning"
                                href="?p=category.article.admin&id=<?= $item['id_article'] ?>">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil"
@@ -110,10 +114,11 @@
                                 </svg>
                             </a>
                         </th>
-
                         <th class="align-middle">
+                            <?= ($item['promo_article'] !== '0') ? '<em>' . $item['promo_article'] . '%</em> / ' . $item['date_promo_article'] : '-' ?>
+                        </th>
+                        <th>
                             <?php if ($item['promo_article'] !== '0') { ?>
-                                <em><?= $item['promo_article'] ?>%</em> / <?= $item['date_promo_article'] ?>
                                 <a class="btn btn-outline-warning"
                                    href="?p=create.promo.admin&id=<?= $item['id_article'] ?>">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil"
@@ -144,8 +149,11 @@
                         <th class="align-middle">
                             <?php $readImg = readImg($db, $item['id_article']); ?>
                             <?php foreach ($readImg as $img) { ?>
-                                <img style="height: 2.5rem" class="img-thumbnail rounded" src="img/<?= $img['name_img'] ?>" alt="">
+                                <img style="height: 2.5rem" class="img-thumbnail rounded"
+                                     src="img/<?= $img['name_img'] ?>" alt="">
                             <?php } ?>
+                        </th>
+                        <th>
                             <a class="btn btn-outline-warning" href="?p=create.img.admin&id=<?= $item['id_article'] ?>">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil"
                                      fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -154,9 +162,7 @@
                                 </svg>
                             </a>
                         </th>
-
                         <th class="align-middle">
-
                             <?php if ($item['show_article'] === '0') { ?>
                                 <a class="btn btn-outline-danger"
                                    href="?p=show.article.admin&id=<?= $item['id_article'] ?>&show=<?= $item['show_article'] ?>">
@@ -178,15 +184,15 @@
                             <?php } ?>
                         </th>
                         <th class="align-middle">
-                            <a class="btn btn-outline-success"
+                            <a class="btn btn-outline-success font-weight-bold"
                                href="?p=read.article.admin&id=<?= $item['id_article'] ?>">
                                 READ
                             </a>
-                            <a class="btn btn-outline-warning"
+                            <a class="btn btn-outline-warning font-weight-bold"
                                href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">
                                 MODIFY
                             </a>
-                            <a class="btn btn-outline-danger"
+                            <a class="btn btn-outline-danger font-weight-bold"
                                href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">
                                 DELETE
                             </a>
@@ -196,7 +202,9 @@
                 <?php } ?>
 
             </table>
-            <button class="btn btn-outline-danger col-2 mx-3 my-1 font-weight-bold" type="submit" name="article_all">DELETE ALL</button>
+            <button class="btn btn-outline-danger col-2 mx-3 my-1 font-weight-bold" type="submit" name="article_all">
+                DELETE ALL
+            </button>
         </form>
     </div>
 </div>

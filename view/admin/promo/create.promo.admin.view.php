@@ -2,13 +2,23 @@
 <div class="py-5"></div>
 <div class="py-5">
     <p class="text-center mx-auto font-weight-bold text-danger">
-    <p>
         <?= !empty($error_create_promo) ? $error_create_promo : '' ?>
     </p>
 </div>
+
+<div class="position-fixed" style="top: 3rem; left: 10rem">
+    <a class="btn btn-outline-dark" href="?p=create.article.admin">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-left-fill" fill="currentColor"
+             xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+        </svg>
+    </a>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
+
             <form method="post">
                 <div class="form-group">
 
@@ -19,7 +29,7 @@
                                type="text"
                                placeholder="promo" required>
                         <div class="input-group-prepend">
-                            <span class="input-group-text">€</span>
+                            <span class="input-group-text">%</span>
                         </div>
                     </div>
                     <div class="form-group">

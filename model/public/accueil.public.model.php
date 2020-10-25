@@ -9,7 +9,7 @@ function readShow($db) {
 }
 
 function readOneShow($db, $id){
-    return mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id");
+    return mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id"));
 }
 
 function readImg($id, $db)

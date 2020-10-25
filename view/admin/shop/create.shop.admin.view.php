@@ -59,7 +59,7 @@
 <div class="container-fluid my-5">
     <div class="row justify-content-center">
         <div class="col-10">
-            <table class="table table-bordered text-center">
+            <table class="table table-bordered text-center bg-light">
                 <thead>
                 <tr>
                     <th>NAME</th>
