@@ -44,7 +44,12 @@ function promoUpdateDate(data) {
             let minutes = Math.floor((date - ((jours * 60 * 60 * 24 + heures * 60 * 60))) / 60);
             let secondes = Math.floor(date - ((jours * 60 * 60 * 24 + heures * 60 * 60 + minutes * 60)));
 
-            let test = jours + 'J ' + heures + 'h' + minutes + ':' + secondes;
+            jours = ( jours !== 0) ?  jours + 'J' : '';
+            heures = ( heures.toString().length === 1) ? '0' + heures : heures
+            minutes = ( minutes.toString().length === 1) ? '0' + minutes : minutes
+            secondes = ( secondes.toString().length === 1) ? '0' + secondes : secondes
+
+            let test = jours + heures + 'h' + minutes + ':' + secondes;
 
             div3.append(test);
             articleAll[i].append(div3);

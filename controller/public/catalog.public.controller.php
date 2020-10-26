@@ -5,8 +5,9 @@ require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTO
 $category_option = readOptionCategory($db);
 $price = countPrice($db);
 
-$priceMin =  floor($price['minPrice'] - 100);
+$priceMin =  5;
 $priceMax =  ceil($price['maxPrice'] + 100);
+
 
 if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = (int)$_GET['switch'];
