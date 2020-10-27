@@ -48,6 +48,16 @@ function readImg($id, $db)
     return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
 }
 
+function readOneImg($id, $db)
+{
+    return mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id' LIMIT 1"));
+}
+
+function readOneShow($db, $id)
+{
+    return mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id"));
+}
+
 function switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max)
 {
 

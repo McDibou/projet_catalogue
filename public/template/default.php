@@ -28,7 +28,7 @@
 <script src="js/map.js"></script>
 <script src="js/date.js"></script>
 <script src="js/carousel.js"></script>
+<script src="js/light.box.js"></script>
 <script src="js/app.js"></script>
-
 </body>
 </html>

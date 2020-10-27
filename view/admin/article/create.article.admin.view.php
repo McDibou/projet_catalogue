@@ -4,6 +4,7 @@
     <p class="text-center mx-auto font-weight-bold text-danger">
     <p><?= (!empty($error_create_article)) ? $error_create_article : '' ?></p>
 </div>
+
 <div class="container">
     <div class="row-10">
         <form method="post" enctype="multipart/form-data">

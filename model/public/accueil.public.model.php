@@ -1,20 +1,28 @@
 <?php
 
-function readPromo($db) {
+function readPromo($db)
+{
     return mysqli_query($db, "SELECT * FROM `article` WHERE `date_promo_article` > NOW() LIMIT 3");
 }
 
-function readShow($db) {
+function readShow($db)
+{
     return mysqli_query($db, "SELECT * FROM `article` WHERE `show_article` != 0");
 }
 
-function readOneShow($db, $id){
+function readOneShow($db, $id)
+{
     return mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `article` WHERE `id_article` = $id"));
 }
 
 function readImg($id, $db)
 {
     return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
+}
+
+function readOneImg($id, $db)
+{
+    return mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id' LIMIT 1"));
 }
 
 function readCategory($id, $db)

@@ -40,25 +40,25 @@
 .dropdown-catalog {
     display: none;
     position: absolute;
-    flex-direction: column;
+    align-items: center;
     text-transform: uppercase;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0.5rem;
-    z-index: 100;
+    left: -15%;
 }
 
 .dropdown-catalog a {
     font-size: 0.9rem;
-    line-height: 0.5rem;
+    line-height: 1rem;
     text-shadow: none;
     color: black;
 }
 
 /* ---------- ACCUEIL ---------- */
+
 .body-accueil img {
     position: fixed;
-    width: 110vw;
     z-index: -1;
     top: 50%;
     left: 50%;
@@ -78,7 +78,6 @@
     opacity: 30%;
     filter: blur(3px);
 }
-
 
 .intro-accueil {
     position: absolute;
@@ -249,6 +248,8 @@
     position: absolute;
     left: 93%;
     top: 92%;
+    border: none;
+    background-color: transparent;
 }
 
 /* ---------- CARD SHOW ---------- */
@@ -295,6 +296,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.show-art .link-show {
+    color: white;
+    border: none;
+    background-color: transparent;
 }
 
 /* ---------- ABOUT US ---------- */
@@ -579,3 +586,89 @@
     border-radius: 0.5rem;
 }
 
+/* ---------- LIGHT BOX ---------- */
+
+.light-box {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: black;
+    z-index: 100;
+}
+
+.light-box .box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 70%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.light-box .prev, .light-box .next {
+    position: absolute;
+    color: black;
+}
+
+.slidebox {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3%;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.view-slide {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    width: 90%;
+}
+
+.view-slide::-webkit-scrollbar {
+    height: 10px;
+}
+
+.view-slide::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 0.5rem;
+}
+
+.view-slide img {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin: 0.8rem 1rem;
+    height: 9rem;
+}
+
+.box .prev {
+    transform: rotate(90deg);
+    color: white;
+    left: 0;
+}
+
+.box .next {
+    transform: rotate(90deg);
+    color: white;
+    right: 0;
+}
+
+.back-box {
+    right: 0;
+    top: 0;
+    position: absolute;
+    color: white;
+}

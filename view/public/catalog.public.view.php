@@ -26,6 +26,7 @@
                     max="<?= $priceMax ?>"
                     step="5"
                     type="range">
+
             <input
                     id="upper"
                     value="<?= (!empty($max)) ? $max : null; ?>"
@@ -61,7 +62,7 @@
     <?php foreach ($article as $item) { ?>
         <div id="article" class="card">
             <div class="title">
-                <h2>GUIT.DEV/</h2>
+                <h3>GUIT.DEV/</h3>
                 <h5><?= $item['title_article'] ?></h5>
             </div>
             <div class="category">
@@ -74,28 +75,27 @@
                 <pre><?= $item['content_article'] ?></pre>
             </div>
             <div>
-                <p id="prix"><?= $item['price_article'] ?> €</p>
+                <p id="prix"><?= $item['price_article'] ?>€</p>
                 <p id="promo"><?= ($item['promo_article'] !== '0') ? 'SAVE ' . $item['promo_article'] . '%' : ''; ?></p>
             </div>
             <a class="link-pay" href="">ADD TO CARD</a>
 
             <div class="img">
-                <?php $img = readImg($item['id_article'], $db); ?>
-                <?php foreach ($img as $affiche) { ?>
-                    <img class="img2" src="img/<?= $affiche['name_img'] ?>">
-                    <img class="img1" src="img/<?= $affiche['name_img'] ?>">
-
-                <?php } ?>
+                <?php $img = readOneImg($item['id_article'], $db); ?>
+                <img class="img2" src="img/<?= $img['name_img'] ?>">
+                <img class="img1" src="img/<?= $img['name_img'] ?>">
             </div>
-            <input id="id-article" value="<?= $item['id_article'] ?>" type="hidden">
-            <div class="link-show">
-                <svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-arrow-right-square-fill"
-                     fill="currentColor"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                          d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 8.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
-                </svg>
-            </div>
+            <form method="post">
+                <input id="id-article" name="id_article" value="<?= $item['id_article'] ?>" type="hidden">
+                <button name="lightbox" type="submit" class="link-show">
+                    <svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-arrow-right-square-fill"
+                         fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm2.5 8.5a.5.5 0 0 1 0-1h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5z"/>
+                    </svg>
+                </button>
+            </form>
         </div>
     <?php } ?>
 </div>
