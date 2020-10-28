@@ -1,7 +1,7 @@
 let lowerSlider = document.querySelector('#lower');
 let upperSlider = document.querySelector('#upper');
 
-function updateMin(e, offset = 50) {
+function updateMin(e, offset = 100) {
     let lowerVal = parseInt(lowerSlider.value);
     let upperVal = parseInt(upperSlider.value);
     let upperMax = parseInt(upperSlider.max);
@@ -17,7 +17,7 @@ function updateMin(e, offset = 50) {
     }
 }
 
-function updateMax(e, offset = 50) {
+function updateMax(e, offset = 100) {
     let lowerVal = parseInt(lowerSlider.value);
     let upperVal = parseInt(upperSlider.value);
     let lowerMin = parseInt(lowerSlider.min);

@@ -30,13 +30,6 @@
     text-shadow: 0.1em 0.1em 0.3em #3b3b3b
 }
 
-
-
-.public-menu a:hover {
-
-}
-
-
 .admin-menu {
     position: absolute;
     bottom: 5%;
@@ -49,16 +42,16 @@
 
 .catalog-menu:hover .dropdown-catalog {
     display: flex;
-}
-
-.dropdown-catalog {
-    display: none;
     position: absolute;
     align-items: center;
     text-transform: uppercase;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0.5rem;
+}
+
+.dropdown-catalog {
+    display: none;
 }
 
 .dropdown-catalog a {
@@ -410,8 +403,8 @@
     pointer-events: none;
     background: linear-gradient(white, white) no-repeat center;
     background-size: 100% 2px;
-    top: 10%;
-    right: 110%;
+    top: 0.5rem;
+    right: 18.25rem;
     z-index: -1;
 }
 
@@ -429,6 +422,38 @@
 
 #upper {
     background: none;
+}
+
+#min, #max {
+    background-color: white;
+    width: 60px;
+    text-align: center;
+    font-weight: bolder;
+    border-radius: 0.1rem;
+    margin: 3px;
+    position: absolute;
+    top: -1px;
+    right: 26.8rem;
+}
+
+#max {
+    right: 13.6rem;
+}
+
+#left svg, #right svg {
+    color: white;
+}
+
+#left svg {
+    position: absolute;
+    top: 5.5px;
+    right: 26.3rem;
+}
+
+#right svg {
+    position: absolute;
+    top: 5.5px;
+    right: 17rem;
 }
 
 .search .price {
