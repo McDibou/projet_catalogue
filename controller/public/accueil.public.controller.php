@@ -27,7 +27,7 @@ if (isset($_POST['lightbox'])) {
 
             <?php foreach ($readImg as $img) : ?>
                 <div class="slidebox" style="display: none;">
-                    <img src="img/<?= $img['name_img'] ?>">
+                    <img src="img/original/<?= $img['name_img'] ?>">
                 </div>
             <?php endforeach; ?>
 
@@ -46,7 +46,7 @@ if (isset($_POST['lightbox'])) {
 
             <div class="view-slide">
                 <?php foreach ($readImg as $key => $img) : ?>
-                    <img onclick="currentSlide(<?= $key ?>)" src="img/<?= $img['name_img'] ?>">
+                    <img onclick="currentSlide(<?= $key ?>)" src="img/original/<?= $img['name_img'] ?>">
                 <?php endforeach; ?>
             </div>
 

@@ -12,15 +12,20 @@
 
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="m-2" for="title_article">Title</label>
-                        <input class="form-control" id="title_article"
+                        <label class="m-2" for="title_article">Title :</label>
+                        <input class="form-control"
+                               id="title_article"
                                value="<?= !empty($title_article) ? $title_article : ''; ?>"
-                               name="title_article" type="text"
-                               placeholder="Titre" required>
+                               name="title_article"
+                               type="text"
+                               maxlength="80"
+                               placeholder="max : 80"
+                               pattern="[A-Za-z0-9 '-]+$"
+                               required>
                     </div>
 
                     <div class="form-group">
-                        <label class="m-2" for="name_category">Category</label>
+                        <label class="m-2" for="name_category">Category :</label>
                         <select class="form-control" id="name_category" name="category_id[]" required
                                 multiple="multiple">
                             <?php foreach ($category as $item) { ?>
@@ -30,10 +35,14 @@
                     </div>
 
                     <div class="input-group">
-                        <input class="form-control" id="price_article"
+                        <input class="form-control"
+                               id="price_article"
                                value="<?= !empty($price_article) ? $price_article : ''; ?>"
-                               name="price_article" type="text"
-                               placeholder="price" required>
+                               name="price_article"
+                               type="text"
+                               placeholder="0.00"
+                               pattern="[0-9]+\.[0-9]{2}"
+                               required>
                         <div class="input-group-prepend">
                             <span class="input-group-text">€</span>
                         </div>
@@ -42,11 +51,17 @@
 
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="m-2" for="content_article">Description</label>
-                        <textarea style="resize: none" class="form-control" id="content_article" name="content_article"
+                        <label class="m-2" for="content_article">Description :</label>
+                        <textarea style="resize: none"
+                                  class="form-control"
+                                  id="content_article"
+                                  name="content_article"
                                   cols="30"
-                                  rows="8" maxlength="255"
-                                  placeholder="description"><?= !empty($content_article) ? $content_article : ''; ?></textarea>
+                                  rows="8"
+                                  maxlength="255"
+                                  pattern="[A-Za-z0-9]+$"
+                                  placeholder=""
+                                  required><?= !empty($content_article) ? $content_article : ''; ?></textarea>
                     </div>
 
                     <div class="input-group">
@@ -54,7 +69,10 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input class="custom-file-input" name="name_img" type="file" accept="image/*"
+                            <input class="custom-file-input"
+                                   name="name_img"
+                                   type="file"
+                                   accept=".jpg, .jpeg, .png"
                                    required>
                             <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
                         </div>
@@ -151,7 +169,7 @@
                             <?php $readImg = readImg($db, $item['id_article']); ?>
                             <?php foreach ($readImg as $img) { ?>
                                 <img style="height: 2.5rem" class="img-thumbnail rounded"
-                                     src="img/<?= $img['name_img'] ?>" alt="">
+                                     src="img/thumb/<?= $img['name_img'] ?>" alt="">
                             <?php } ?>
                         </th>
                         <th>

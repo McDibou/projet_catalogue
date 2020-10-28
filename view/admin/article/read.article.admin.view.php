@@ -33,8 +33,8 @@
 
     <div class="img">
         <?php foreach ($img as $affiche) { ?>
-            <img class="img2" src="img/<?= $affiche['name_img'] ?>">
-            <img class="img1" src="img/<?= $affiche['name_img'] ?>">
+            <img class="img2" src="img/original/<?= $affiche['name_img'] ?>">
+            <img class="img1" src="img/original/<?= $affiche['name_img'] ?>">
         <?php } ?>
     </div>
     <input id="id-article" value="<?= $article['id_article'] ?>" type="hidden">

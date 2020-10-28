@@ -22,7 +22,9 @@
                 <div class="form-group">
                     <label class="m-2" for="title_category">Category</label>
                     <input id="title_category" class="form-control" name="name_category" type="text"
-                           value="<?= $view_modify['name_category'] ?>" placeholder="name"
+                           value="<?= $view_modify['name_category'] ?>" maxlength="80"
+                           pattern="[A-Za-z0-9 '-]+$"
+                           placeholder="max : 80"
                            required>
                     <button class="btn btn-outline-success col-4 mx-auto my-3 btn-lg btn-block font-weight-bold"
                             type="submit" name="modify_category">

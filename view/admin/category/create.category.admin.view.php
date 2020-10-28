@@ -17,7 +17,9 @@
                     <input class="form-control" id="title_category"
                            value="<?= !empty($name_category) ? $name_category : ''; ?>"
                            name="name_category" type="text"
-                           placeholder="Titre" required>
+                           maxlength="80"
+                           pattern="[A-Za-z0-9 '-]+$"
+                           placeholder="max : 80" required>
                 </div>
                 <button class="btn btn-outline-success col-4 mx-auto my-3 btn-lg btn-block font-weight-bold"
                         type="submit" name="create_category">

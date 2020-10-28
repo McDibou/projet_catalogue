@@ -19,7 +19,7 @@ $ndrArticle = 6;
 $limit = ($currentPage - 1) * $ndrArticle;
 
 $category = !empty($_GET['category']) ? analyseData($_GET['category']) : '';
-$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $priceMin;
+$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $priceMin ;
 $max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['max']) : $priceMax;
 
 $where = '';
@@ -68,6 +68,10 @@ if (!empty($category)) {
     $countArticle = countArticle($db, $where);
 }
 
+if ($countArticle === 0) {
+    $message = 'NOT FOUND !';
+}
+
 $switch = switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max);
 
 
@@ -82,7 +86,7 @@ if (isset($_POST['lightbox'])) {
 
             <?php foreach ($readImg as $img) : ?>
                 <div class="slidebox" style="display: none;">
-                    <img src="img/<?= $img['name_img'] ?>">
+                    <img src="img/original/<?= $img['name_img'] ?>">
                 </div>
             <?php endforeach; ?>
 
@@ -101,7 +105,7 @@ if (isset($_POST['lightbox'])) {
 
             <div class="view-slide">
                 <?php foreach ($readImg as $key => $img) : ?>
-                    <img onclick="currentSlide(<?= $key ?>)" src="img/<?= $img['name_img'] ?>">
+                    <img onclick="currentSlide(<?= $key ?>)" src="img/original/<?= $img['name_img'] ?>">
                 <?php endforeach; ?>
             </div>
 

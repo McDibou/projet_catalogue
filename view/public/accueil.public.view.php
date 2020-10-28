@@ -40,8 +40,8 @@
 
             <div class="img">
                 <?php $img = readOneImg($item['id_article'], $db); ?>
-                <img class="img2" src="img/<?= $img['name_img'] ?>">
-                <img class="img1" src="img/<?= $img['name_img'] ?>">
+                <img class="img2" src="img/original/<?= $img['name_img'] ?>">
+                <img class="img1" src="img/original/<?= $img['name_img'] ?>">
             </div>
             <form method="post">
                 <input id="id-article" name="id_article" value="<?= $item['id_article'] ?>" type="hidden">

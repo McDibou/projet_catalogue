@@ -18,14 +18,15 @@
         </select>
 
         <div class="slider">
+
             <input
                     id="lower"
-                    value="<?= (!empty($min)) ? $min : null; ?>"
                     name="min"
+                    value="<?= (!empty($min)) ? $min : null; ?>"
                     min="<?= $priceMin ?>"
                     max="<?= $priceMax ?>"
-                    step="5"
                     type="range">
+            <div style="color:white"><span id="min"><?= $min ?></span> min</div>
 
             <input
                     id="upper"
@@ -33,8 +34,8 @@
                     name="max"
                     min="<?= $priceMin ?>"
                     max="<?= $priceMax ?>"
-                    step="5"
                     type="range">
+            <div style="color:white"><span id="max"><?= $max ?></span> max</div>
         </div>
 
         <button class="search-button button" type="submit">
@@ -82,8 +83,8 @@
 
             <div class="img">
                 <?php $img = readOneImg($item['id_article'], $db); ?>
-                <img class="img2" src="img/<?= $img['name_img'] ?>">
-                <img class="img1" src="img/<?= $img['name_img'] ?>">
+                <img class="img2" src="img/original/<?= $img['name_img'] ?>">
+                <img class="img1" src="img/original/<?= $img['name_img'] ?>">
             </div>
             <form method="post">
                 <input id="id-article" name="id_article" value="<?= $item['id_article'] ?>" type="hidden">
@@ -101,3 +102,4 @@
 </div>
 
 <?= $switch ?>
+<div class="message-catalog"><?= !empty($message) ? $message : '' ?></div>

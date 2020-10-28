@@ -12,20 +12,22 @@ $img = readImg($id, $db);
 
 if (isset($_POST['create_img'])) {
 
-    $img = $_FILES['name_img']['name'];
-    $img_article = date('U') . '_' . basename($img);
+    if (!empty($_FILES['name_img'])) {
 
-    if (!empty($img_article) && !empty($id)) {
+        $img_article = uploadImg($_FILES['name_img']);
 
-        createImg($img_article, $id, $db);
-        move_uploaded_file($_FILES['name_img']['tmp_name'], "img/$img_article");
-        header("Location: ?p=create.img.admin&id=$id");
+        if (is_array($img_article)) {
+            createImg($img_article[0], $id, $db);
+        } else {
+            $error_create_article = $img_article;
+        }
 
     } else {
-
-        $error_create_img = 'error_create_img';
-
+        $error_create_article = 'error_create_article';
     }
+
+    header("Location: ?p=create.img.admin&id=$id");
+
 }
 
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'create.img.admin.view.php';

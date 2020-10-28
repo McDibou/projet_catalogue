@@ -1,28 +1,37 @@
 let lowerSlider = document.querySelector('#lower');
 let upperSlider = document.querySelector('#upper');
 
-upperSlider.oninput = function () {
+function updateMin(e, offset = 50) {
     let lowerVal = parseInt(lowerSlider.value);
     let upperVal = parseInt(upperSlider.value);
+    let upperMax = parseInt(upperSlider.max);
 
-    if (upperVal < lowerVal + 50) {
-        lowerSlider.value = upperVal - 50;
-
-        if (upperVal === lowerVal - 50) {
-            lowerSlider.value = lowerVal - 50;
+    if (lowerVal < upperMax - offset) {
+        document.querySelector('#min').textContent = lowerVal;
+        if (upperVal < lowerVal + offset) {
+            document.querySelector('#max').textContent = lowerVal + offset;
+            upperSlider.value = lowerVal + offset;
         }
+    } else {
+        lowerSlider.value = upperMax - offset;
     }
-};
+}
 
-lowerSlider.oninput = function () {
+function updateMax(e, offset = 50) {
     let lowerVal = parseInt(lowerSlider.value);
     let upperVal = parseInt(upperSlider.value);
+    let lowerMin = parseInt(lowerSlider.min);
 
-    if (lowerVal > upperVal - 50) {
-        upperSlider.value = lowerVal + 50;
-
-        if (lowerVal === upperVal + 50) {
-            upperSlider.value = upperVal + 50;
+    if (upperVal > lowerMin + offset) {
+        document.querySelector('#max').textContent = upperVal;
+        if (upperVal < lowerVal + offset) {
+            document.querySelector('#min').textContent = upperVal - offset;
+            lowerSlider.value = upperVal - offset;
         }
+    } else {
+        upperSlider.value = lowerMin + offset;
     }
-};
+}
+
+lowerSlider.addEventListener('input', updateMin);
+upperSlider.addEventListener('input', updateMax);

@@ -9,10 +9,9 @@ if (!empty($id)) {
 
     $img = selectImg($id,$db);
 
-    $img = "img/$img";
-
-    if (file_exists($img)) {
-        unlink($img);
+    if (file_exists('img/original/' . $img) && file_exists('img/thumb/' . $img)) {
+        unlink('img/original/' . $img);
+        unlink('img/thumb/' . $img);
     }
 
     deleteImg($id, $db);

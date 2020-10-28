@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+::placeholder {
+    color: #838383;
+    font-style: italic;
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+
 /* ---------- MENU ---------- */
 .public-menu {
     position: absolute;
@@ -22,6 +29,13 @@
     padding: 10px 20px;
     text-shadow: 0.1em 0.1em 0.3em #3b3b3b
 }
+
+
+
+.public-menu a:hover {
+
+}
+
 
 .admin-menu {
     position: absolute;
@@ -45,7 +59,6 @@
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0.5rem;
-    left: -15%;
 }
 
 .dropdown-catalog a {
@@ -452,13 +465,22 @@
     font-weight: bolder;
 }
 
-/* ---------- CATALOG ---------- */
+.message-catalog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+}
+
+/* ---------- CONTACT ---------- */
 
 .contact {
     display: flex;
 }
 
-#mapid {
+.map {
     position: fixed;
     height: 100vh;
     width: 70vw;

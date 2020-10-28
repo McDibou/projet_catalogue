@@ -20,25 +20,30 @@
         <div class="col-4 m-5">
             <form method="post">
                 <div class="form-group">
-                    <label class="m-2" for="title_article">TITLE</label>
+                    <label class="m-2" for="title_article">Title :</label>
                     <input class="form-control" id="title_article" name="title_article" type="text"
                            value="<?= $view_modify['title_article'] ?>"
-                           placeholder="Titre"
+                           maxlength="80"
+                           placeholder="max : 80"
+                           pattern="[A-Za-z0-9 '-]+$"
                            required>
                 </div>
 
                 <div class="input-group">
                     <input class="form-control" id="price_article"
                            value="<?= $view_modify['price_article'] ?>"
-                           name="price_article" type="text"
-                           placeholder="price" required>
+                           name="price_article"
+                           type="text"
+                           placeholder="0.00"
+                           pattern="[0-9]+\.[0-9]{2}"
+                           required>
                     <div class="input-group-prepend">
                         <span class="input-group-text">€</span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="m-2" for="content_article">DESCRIPTION</label>
+                    <label class="m-2" for="content_article">Description :</label>
                     <textarea style="resize: none" class="form-control" rows="5" id="content_article"
                               name="content_article"
                               placeholder="description"><?= $view_modify['content_article'] ?></textarea>
@@ -74,8 +79,8 @@
 
                 <div class="img">
                     <?php foreach ($img as $affiche) { ?>
-                        <img class="img2" src="img/<?= $affiche['name_img'] ?>">
-                        <img class="img1" src="img/<?= $affiche['name_img'] ?>">
+                        <img class="img2" src="img/original/<?= $affiche['name_img'] ?>">
+                        <img class="img1" src="img/original/<?= $affiche['name_img'] ?>">
                     <?php } ?>
                 </div>
                 <input id="id-article" value="<?= $view_modify['id_article'] ?>" type="hidden">
