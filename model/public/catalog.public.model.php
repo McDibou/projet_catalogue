@@ -66,20 +66,31 @@ function switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min
 
     if ($numberPage < 2) return $out;
 
+    $out .= "<div class='switch-number'>";
     for ($i = 1; $i <= $numberPage; $i++) {
         if ($i == 1) {
             if ($i != $currentPage) {
-                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'> < </a>";
+                $out .= "<a class='switch-left' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'>
+                    <svg width='4em' height='4em' viewBox='0 0 16 16' class='bi bi-caret-left-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z'/>
+                    </svg>
+                </a>";
             }
-        }
-        $out .= ($i == $currentPage) ? " $i " : "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a>";
+        };
+        $out .= ($i == $currentPage) ? "<p class='switch-number-current'>$i</p> " : "<a class='switch-number-not' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a>";
+
 
         if ($numberPage == $i) {
 
             if ($currentPage != $i) {
-                $out .= "<a href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'> > </a>";
+                $out .= "<a class='switch-right' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'>
+                    <svg width='4em' height='4em' viewBox='0 0 16 16' class='bi bi-caret-right-fill' fill='currentColor' xmlns='http://www.w3.org/2000/svg'>
+                         <path d='M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z'/>
+                    </svg>
+                </a>";
             }
         }
     }
+    $out .= "</div>";
     return $out;
 }

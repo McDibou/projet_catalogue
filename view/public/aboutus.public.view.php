@@ -2,7 +2,12 @@
     <source src="video/video.aboutus.public.mp4" type="video/mp4">
 </video>
 
-<div>
+
+<div class="block-about-us">
+    <div class="about-us-img">
+        <img class="about-us-logo" src="img/src/logo.white.png">
+        <img class="about-us-pics" src="img/src/img.aboutus.jpg">
+    </div>
     <div class="about-us">
         <h2>ABOUT US</h2>
 
@@ -15,11 +20,5 @@
             Ab ad aperiam architecto delectus, dignissimos, dolore enim et ex excepturi labore laboriosam
             magni maiores nam nisi quaerat quasi quia quo quod reiciendis rem sit tempora unde vel veritatis voluptate.
         </p>
-    </div>
-    <div class="about-us-img">
-        <img height="350px" src="img/src/img.aboutus.jpg" alt="">
-    </div>
-    <div class="about-us-logo">
-        <img src="img/src/logo.white.png" alt="">
     </div>
 </div>

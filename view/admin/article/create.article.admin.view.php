@@ -94,7 +94,7 @@
     <div class="row justify-content-center">
         <form method="post" action="?p=delete.all.article.admin">
             <table class="table table-bordered text-center bg-white">
-                <thead >
+                <thead>
                 <tr>
                     <th></th>
                     <th>ID</th>
@@ -107,9 +107,9 @@
                     <th></th>
                 </tr>
                 </thead>
-
+                <tbody>
                 <?php foreach ($article as $item) { ?>
-                    <tbody>
+
                     <tr>
                         <th class="align-middle"><input type="checkbox" name="article_all_id[]"
                                                         value="<?= $item['id_article'] ?>"></th>
@@ -217,9 +217,9 @@
                             </a>
                         </th>
                     </tr>
-                    </tbody>
-                <?php } ?>
 
+                <?php } ?>
+                </tbody>
             </table>
             <button class="btn btn-outline-danger col-2 mx-3 my-1 font-weight-bold" type="submit" name="article_all">
                 DELETE ALL

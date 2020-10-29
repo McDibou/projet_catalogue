@@ -18,7 +18,6 @@
         </select>
 
         <div class="slider">
-
             <input
                     id="lower"
                     name="min"
@@ -27,6 +26,7 @@
                     max="<?= $priceMax ?>"
                     type="range"
                     step="5">
+
             <div id="min">
                 <?= $min ?>
             </div>
@@ -37,6 +37,7 @@
                     <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                 </svg>
             </div>
+
             <input
                     id="upper"
                     value="<?= (!empty($max)) ? $max : null; ?>"
@@ -45,18 +46,21 @@
                     max="<?= $priceMax ?>"
                     type="range"
                     step="5">
-            <div id="max">
-                <?= $max ?>
-            </div>
+
             <div id="right">
-                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-caret-left-fill" fill="currentColor"
+                <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-caret-left-fill"
+                     fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
                 </svg>
             </div>
+            <div id="max">
+                <?= $max ?>
+            </div>
+
         </div>
 
-        <button class="search-button button" type="submit">
+        <button class="search-button" type="submit">
             <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                  xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd"
