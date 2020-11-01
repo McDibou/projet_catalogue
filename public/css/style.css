@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-::placeholder {
+::placeholder, .placeholder {
     color: #838383;
     font-style: italic;
     font-size: 0.8rem;
@@ -49,7 +49,6 @@
     position: absolute;
     align-items: center;
     text-transform: uppercase;
-    padding: 0.6rem;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0.3rem;
 }
@@ -58,10 +57,12 @@
     font-size: 0.9rem;
     line-height: 1rem;
     text-shadow: none;
+    padding: 0.6rem;
     color: black;
 }
 
 /* ---------- ACCUEIL ---------- */
+
 
 .body-accueil img {
     position: fixed;
@@ -72,56 +73,50 @@
     z-index: -2;
 }
 
-.title-accueil img {
+
+.block-accueil {
     position: absolute;
-    top: 25%;
-    left: 13%;
-    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 75%;
 }
 
-.title-accueil .img2 {
-    top: 25.5%;
-    left: 13.5%;
-    opacity: 30%;
-    filter: blur(3px);
+.block-accueil div {
+    margin: auto 0;
+}
+
+.title-accueil img {
+    filter: drop-shadow(5px 5px 10px #000000);
+    width: 50%;
 }
 
 .intro-accueil {
-    position: absolute;
     color: white;
     font-size: 1.2rem;
     font-style: italic;
-    top: 43%;
-    left: 19%;
-    white-space: pre-wrap;
-    line-height: 2rem;
-    text-shadow: 0.2em 0.2em 0.3em black
+    text-shadow: 5px 5px 5px #000000;
+    padding-left: 25%;
+}
+
+.prev, .next {
+    color: white;
+    text-decoration: none;
+    margin: 0 auto;
 }
 
 .card-accueil {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 70%;
-    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10%;
 }
 
-.card-accueil .prev, .card-accueil .next {
-    color: white;
-    text-decoration: none;
-}
-
-.card-accueil .prev {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.card-accueil .next {
-    position: absolute;
-    top: -12%;
-    left: 50%;
-    transform: translateX(-50%);
+.card-accueil .card {
+    z-index: 100;
 }
 
 /* ---------- CARD PROMO ---------- */
@@ -133,7 +128,7 @@
     width: 450px;
     height: 400px;
     box-shadow: 0 0 10px 2px #666666;
-    z-index: -2;
+    z-index: 100;
     margin: 0 auto;
     place-self: center;
 }
@@ -324,18 +319,23 @@
     z-index: -2;
 }
 
+.block-about-us {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+}
+
 .about-us {
     background-color: rgba(255, 255, 255, 0.75);
     padding: 3rem;
-    position: absolute;
-    top: 50%;
-    right: 15%;
-    transform: translateY(-50%);
-    width: 20%;
-    height: 60%;
     border-radius: 0.5rem;
     overflow: auto;
-    z-index: 100;
+    text-align: justify;
 }
 
 .about-us::-webkit-scrollbar {
@@ -350,22 +350,23 @@
 .about-us-img {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 26%;
-    left: 48%;
+    justify-content: center;
+    margin: 5%;
 }
 
 .about-us-logo {
-    width: 15%;
-    margin-left: 10%;
+    margin: 5% auto;
+    width: 60%;
+    height: auto;
+    filter: drop-shadow(10px 10px 10px #000000);
 }
 
 .about-us-pics {
-    width: 35%;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.75);
-    margin: 1rem;
     border-radius: 0.5rem;
+    width: 100%;
+    height: auto;
 }
 
 /* ---------- CATALOG ---------- */
@@ -378,26 +379,11 @@
     box-shadow: 0 0 0.5rem 0.1rem #2d2d2d;
 }
 
-.catalog .title {
-    transform: scale(0.8);
-}
-
-.catalog {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2rem;
-    position: absolute;
-    left: 50%;
-    top: 18%;
-    transform: translateX(-50%) scale(0.75);
-    z-index: -1;
-}
-
 .search {
     position: absolute;
     top: 22%;
     right: 24%;
+    z-index: 2;
 }
 
 .search form, .search .slider {
@@ -494,30 +480,50 @@
     font-size: 3rem;
 }
 
+.block-catalog {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 11rem;
+    width: 80%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.catalog .title {
+    transform: scale(0.8);
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    z-index: -1;
+    transform: scale(0.7);
+    position: relative;
+}
+
 .switch-number {
     display: flex;
-    position: absolute;
-    bottom: 9%;
-    left: 50%;
-    transform: translateX(-50%);
+    font-weight: 700;
+    margin: 0 auto;
+    position: relative;
+    bottom: 5.5rem;
 }
 
-.switch-left {
-    position: absolute;
-    right: 40rem;
-    bottom: 21.3rem;
+.switch-left, .switch-right {
     color: white;
+    margin: auto 0;
 }
 
-.switch-right {
-    position: absolute;
-    left: 40rem;
-    bottom: 21.3rem;
-    color: white;
+
+.switch-left-not, .switch-right-not {
+    color: #cfcfcf;
+    margin: auto 0;
 }
 
 .switch-number-not, .switch-number-current {
-    display: inline-block;
     padding: 0.5rem 1rem;
     font-size: 1.2rem;
     margin: 0;
@@ -652,27 +658,42 @@
 
 .social-network {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     position: absolute;
     bottom: 5%;
-    left: 5%;
+    left: 2%;
     opacity: 70%;
+    width: 15%;
+}
+
+.social-network div {
+    display: flex;
+}
+
+.social-network p {
+    margin: auto 0;
+    padding-left: 5px;
 }
 
 .social-network a {
     padding: 5px;
-    margin: 2px;
     border: 2px solid black;
     border-radius: 0.5rem;
+    margin: 1%;
+}
+
+.social-network svg {
+    height: 1.7rem;
+    width: 1.7rem;
 }
 
 /* ---------- LIGHT BOX ---------- */
 
 .light-box {
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.80);
     color: black;
     z-index: 100;
 }
@@ -700,15 +721,14 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 3%;
     background-color: white;
     padding: 1.5rem;
     border-radius: 0.5rem;
 }
 
 .view-slide {
-    position: absolute;
-    bottom: 5%;
+    position: relative;
+    bottom: -47%;
     left: 50%;
     transform: translate(-50%);
     display: flex;

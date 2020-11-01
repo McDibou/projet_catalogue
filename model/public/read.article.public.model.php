@@ -1,7 +1,11 @@
 <?php
 
-function readArticle($id, $db)
+function readImg($id, $db)
 {
+    return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
+}
+
+function readArticle($id, $db) {
     return mysqli_fetch_assoc(mysqli_query($db, "SELECT
     *,
     (
@@ -28,11 +32,7 @@ function readArticle($id, $db)
 FROM
     `article` a
 JOIN category_has_article ON fkey_id_article = id_article
-JOIN category ON fkey_id_category = id_category 
-WHERE `id_article` = '$id'"));
-}
+JOIN category ON fkey_id_category = id_category
+WHERE `id_article` = $id GROUP BY id_article"));
 
-function readImg($id, $db)
-{
-    return mysqli_query($db, "SELECT * FROM `img` JOIN `article` ON `id_article` = `fkey_id_article` WHERE `id_article` = $id ");
 }

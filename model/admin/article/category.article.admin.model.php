@@ -2,7 +2,7 @@
 
 function readCategory($db)
 {
-    return mysqli_query($db, "SELECT * FROM `category`");
+    return mysqli_query($db, "SELECT * FROM `category` ORDER BY `name_category` ASC");
 }
 
 function checkedCategory($id, $db)

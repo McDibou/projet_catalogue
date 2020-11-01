@@ -3,13 +3,13 @@
 
 function readImg($id, $db)
 {
-return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
+    return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = '$id'");
 }
 
 
-function createImg($img,$id, $db)
+function createImg($img, $id, $db)
 {
-return mysqli_query($db, "INSERT INTO `img` (`name_img`, `fkey_id_article` ) VALUES ( '$img', '$id');");
+    return mysqli_query($db, "INSERT INTO `img` (`name_img`, `fkey_id_article` ) VALUES ( '$img', '$id');");
 }
 
 function resizeThumb($new_name_img, $imgWidth, $imgHeight, $extend)
@@ -24,19 +24,22 @@ function resizeThumb($new_name_img, $imgWidth, $imgHeight, $extend)
     $endWidth = round($imgWidth * $proportion);
     $endHeight = round($imgHeight * $proportion);
 
-    $new_thumb_img = imagecreatetruecolor($endWidth, $endHeight);
+    $background = imagecreatetruecolor($endWidth, $endHeight);
+    $whiteBackground = imagecolorallocate($background, 255, 255, 255);
+    imagefill($background, 0, 0, $whiteBackground);
 
     if ($extend == ".jpg" || $extend == ".jpeg") {
 
         $copy = imagecreatefromjpeg('img/original/' . $new_name_img);
-        imagecopyresampled($new_thumb_img, $copy, 0, 0, 0, 0, $endWidth, $endHeight, $imgWidth, $imgHeight);
-        imagejpeg($new_thumb_img, 'img/thumb/' . $new_name_img, 90);
+        imagecopyresampled($background, $copy, 0, 0, 0, 0, $endWidth, $endHeight, $imgWidth, $imgHeight);
+        imagejpeg($background, 'img/thumb/' . $new_name_img, 90);
 
     } elseif ($extend == ".png") {
 
         $copy = imagecreatefrompng('img/original/' . $new_name_img);
-        imagecopyresampled($new_thumb_img, $copy, 0, 0, 0, 0, $endWidth, $endHeight, $imgWidth, $imgHeight);
-        imagepng($new_thumb_img, 'img/thumb/' . $new_name_img);
+        imagecopyresampled($background, $copy, 0, 0, 0, 0, $endWidth, $endHeight, $imgWidth, $imgHeight);
+        imagepng($background, 'img/thumb/' . $new_name_img);
+
     }
 
 }

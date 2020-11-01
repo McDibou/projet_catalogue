@@ -11,33 +11,8 @@
     </a>
 </div>
 
-<div id="article" class="card">
-
-    <div class="title">
-        <h2>GUIT.DEV/</h2>
-        <h5><?= $article['title_article'] ?></h5>
-    </div>
-    <div class="category">
-        <?php foreach ($category as $cat) { ?>
-            <div><?= $cat['name_category'] ?></div>
-        <?php } ?>
-    </div>
-    <div class="desc">
-        <pre><?= $article['content_article'] ?></pre>
-    </div>
-    <div>
-        <p id="prix"><?= $article['price_article'] ?> €</p>
-        <p id="promo"><?= ($article['promo_article'] !== '0') ? 'SAVE ' . $article['promo_article'] . '%' : ''; ?></p>
-    </div>
-    <a class="link-pay" href="">ADD TO CARD</a>
-
-    <div class="img">
-        <?php foreach ($img as $affiche) { ?>
-            <img class="img2" src="img/original/<?= $affiche['name_img'] ?>">
-            <img class="img1" src="img/original/<?= $affiche['name_img'] ?>">
-        <?php } ?>
-    </div>
-    <input id="id-article" value="<?= $article['id_article'] ?>" type="hidden">
+<div id="article" class="card" style="z-index: 1;">
+    <?= cardModel($article) ?>
 </div>
 
 <div class="container-fluid">

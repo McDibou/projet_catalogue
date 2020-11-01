@@ -1,9 +1,34 @@
 <?php
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'create.article.admin.model.php';
 
-$article = readArticle($db);
-$category = readOptionCategory($db);
 
+if (isset($_POST['create_random'])) {
+
+    $number = $id = isset($_POST['nbr_article']) && ctype_digit($_POST['nbr_article']) ? $_POST['nbr_article'] : '';
+
+    if (!empty($number)) {
+        randomCreateArticle($number, $db);
+        header('Location: ?p=create.article.admin');
+    }
+}
+
+if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
+    $currentPage = (int)$_GET['switch'];
+} else {
+    $currentPage = 1;
+}
+
+$ndrArticle = 10;
+$limit = ($currentPage - 1) * $ndrArticle;
+
+$category = readOptionCategory($db);
+$totArticle = readCountArticle($db);
+$article = readArticle($db, $limit, $ndrArticle);
+
+$countArticle = mysqli_num_rows($article);
+$countCategory = mysqli_num_rows($category);
+
+$switchArticle = switchArticle($totArticle, $currentPage, $ndrArticle);
 
 if (isset($_POST['create_article'])) {
 
@@ -41,6 +66,7 @@ if (isset($_POST['create_article'])) {
     } else {
         $error_create_article = 'error_create_article';
     }
+
 }
 
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'create.article.admin.view.php';

@@ -24,7 +24,7 @@
                     <input class="form-control" id="location_shop"
                            value="<?= !empty($localisation_shop) ? $localisation_shop : ''; ?>"
                            name="localisation_shop"
-                           pattern="[0-9]{1,2})+(\.[0-9]{1,5}),([0-9]{1,2})+(\.[0-9]{1,5}"
+                           pattern="[0-9]{1,2})+(\.[0-9]),([0-9]{1,2})+(\.[0-9])"
                            type="text"
                            placeholder="ex : 50.82198,4.30070" required>
                 </div>
@@ -66,46 +66,50 @@
     </div>
 </div>
 
-<div class="container-fluid my-5">
-    <div class="row justify-content-center">
-        <div class="col-10">
-            <table class="table table-bordered text-center bg-light">
-                <thead>
-                <tr>
-                    <th>NAME</th>
-                    <th>LOCATION</th>
-                    <th>CITY</th>
-                    <th>ADDRESS</th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <?php foreach ($shop as $item) { ?>
-                    <tbody>
+<div class="py-3"></div>
+<?php if ($countShop !== 0) { ?>
+    <div class="container-fluid my-5">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <table class="table table-bordered text-center bg-light">
+                    <thead>
                     <tr>
-
-
-                        <th class="align-middle"><?= $item['name_shop'] ?></th>
-                        <th class="align-middle"><?= $item['localisation_shop'] ?></th>
-                        <th class="align-middle"><?= $item['ville_shop'] ?></th>
-                        <th class="align-middle"><?= $item['desc_shop'] ?></th>
-
-                        <th class="align-middle">
-                            <a class="btn btn-outline-warning"
-                               href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
-                                MODIFY
-                            </a>
-                            <a class="btn btn-outline-danger"
-                               href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
-                                DELETE
-                            </a>
-
-                        </th>
+                        <th>NAME</th>
+                        <th>LOCATION</th>
+                        <th>CITY</th>
+                        <th>ADDRESS</th>
+                        <th></th>
                     </tr>
-                    </tbody>
-                <?php } ?>
+                    </thead>
 
-            </table>
+                    <?php foreach ($shop as $item) { ?>
+                        <tbody>
+                        <tr>
+                            <th class="align-middle"><?= $item['name_shop'] ?></th>
+                            <th class="align-middle"><?= $item['localisation_shop'] ?></th>
+                            <th class="align-middle"><?= $item['ville_shop'] ?></th>
+                            <th class="align-middle"><?= $item['desc_shop'] ?></th>
+
+                            <th class="align-middle">
+                                <a class="btn btn-outline-warning"
+                                   href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
+                                    MODIFY
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
+                                    DELETE
+                                </a>
+
+                            </th>
+                        </tr>
+                        </tbody>
+                    <?php } ?>
+
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php } else { ?>
+    <div class="text-center mx-auto font-weight-bold">No shop, please add one</div>
+<?php } ?>
+<div class="py-3"></div>

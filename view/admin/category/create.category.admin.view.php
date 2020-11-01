@@ -30,38 +30,42 @@
         </div>
     </div>
 </div>
-
-<div class="container-fluid my-5">
-    <div class="row justify-content-center">
-        <div class="col-4">
-            <table class="table table-bordered text-center bg-white">
-                <thead>
-                <tr>
-                    <th>CATEGORY</th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <?php foreach ($category as $item) { ?>
-                    <tbody>
+<div class="py-3"></div>
+<?php if ($countCategory !== 0) { ?>
+    <div class="container-fluid my-5">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <table class="table table-bordered text-center bg-white">
+                    <thead>
                     <tr>
-                        <th class="align-middle"><?= $item['name_category'] ?></th>
-
-                        <th class="align-middle">
-                            <a class="btn btn-outline-warning"
-                               href="?p=modify.category.admin&id=<?= $item['id_category'] ?>">
-                                MODIFY
-                            </a>
-                            <a class="btn btn-outline-danger"
-                               href="?p=delete.category.admin&id=<?= $item['id_category'] ?>">
-                                DELETE
-                            </a>
-                        </th>
+                        <th>CATEGORY</th>
+                        <th></th>
                     </tr>
-                    </tbody>
-                <?php } ?>
+                    </thead>
 
-            </table>
+                    <?php foreach ($category as $item) { ?>
+                        <tbody>
+                        <tr>
+                            <th class="align-middle"><?= $item['name_category'] ?></th>
+
+                            <th class="align-middle">
+                                <a class="btn btn-outline-warning"
+                                   href="?p=modify.category.admin&id=<?= $item['id_category'] ?>">
+                                    MODIFY
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="?p=delete.category.admin&id=<?= $item['id_category'] ?>">
+                                    DELETE
+                                </a>
+                            </th>
+                        </tr>
+                        </tbody>
+                    <?php } ?>
+
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php } else { ?>
+    <div class="text-center mx-auto font-weight-bold">No category, please add one</div>
+<?php } ?>

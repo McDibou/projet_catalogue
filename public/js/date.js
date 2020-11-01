@@ -93,8 +93,8 @@ function calcPromo(data) {
             let calc = (prix - ((prix / 100) * promo));
             calc = parseFloat(calc).toFixed(2)
 
-            let result = calc + ' €';
-            let result2 = prix + ' €';
+            let result = calc + '€';
+            let result2 = prix + '€';
 
             div.append(result);
             div2.append(result2);
