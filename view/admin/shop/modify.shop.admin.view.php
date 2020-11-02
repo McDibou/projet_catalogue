@@ -1,6 +1,5 @@
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5">
+
+<div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= !empty($error_modify_article) ? $error_modify_article : ''; ?>
     </p>

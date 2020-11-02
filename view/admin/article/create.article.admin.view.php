@@ -1,6 +1,5 @@
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5">
+
+<div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= (!empty($error_create_article)) ? $error_create_article : '' ?>
     </p>
@@ -10,7 +9,7 @@
 <div class="container">
     <div class="row-10">
         <div class="form-row justify-content-end mr-5">
-            <form class="form-group d-flex" method="post">
+            <form class="form-group d-flex" method="post" action="?p=random.article.admin">
                 <label class="mt-2 col-8 text-muted font-italic" for="nbr-article">number of article to be randomly
                     created : </label>
                 <input class="form-control col-2 mr-2" id="nbr-article" name="nbr_article" step="5" min="0" max="50"

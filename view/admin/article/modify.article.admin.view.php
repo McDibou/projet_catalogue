@@ -1,6 +1,5 @@
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5">
+
+<div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= !empty($error_modify_article) ? $error_modify_article : ''; ?>
     </p>
@@ -57,33 +56,8 @@
             </form>
         </div>
         <div class=" m-5 ">
-            <div id="article" class="card">
-
-                <div class="title">
-                    <h2>GUIT.DEV/</h2>
-                    <h5><?= $view_modify['title_article'] ?></h5>
-                </div>
-                <div class="category">
-                    <?php foreach ($category as $cat ) { ?>
-                        <div><?= $cat['name_category'] ?></div>
-                    <?php } ?>
-                </div>
-                <div class="desc">
-                    <pre><?= $view_modify['content_article'] ?></pre>
-                </div>
-                <div>
-                    <p id="prix"><?= $view_modify['price_article'] ?> €</p>
-                    <p id="promo"><?= ($view_modify['promo_article'] !== '0') ? 'SAVE ' . $view_modify['promo_article'] . '%' : ''; ?></p>
-                </div>
-                <a class="link-pay" href="">ADD TO CARD</a>
-
-                <div class="img">
-                    <?php foreach ($img as $affiche) { ?>
-                        <img class="img2" src="img/original/<?= $affiche['name_img'] ?>">
-                        <img class="img1" src="img/original/<?= $affiche['name_img'] ?>">
-                    <?php } ?>
-                </div>
-                <input id="id-article" value="<?= $view_modify['id_article'] ?>" type="hidden">
+            <div id="article" class="card" style="z-index: 1">
+                <?= cardModel($article) ?>
             </div>
         </div>
     </div>

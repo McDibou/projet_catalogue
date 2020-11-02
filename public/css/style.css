@@ -13,10 +13,12 @@
 
 /* ---------- MENU ---------- */
 .public-menu {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: 10rem;
+    margin: 7% auto;
+    z-index: 100;
 }
 
 .public-menu a {
@@ -31,7 +33,7 @@
 }
 
 .admin-menu {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
     right: 5%;
 }
@@ -51,6 +53,8 @@
     text-transform: uppercase;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 0.3rem;
+    left: 36.8%;
+    padding: 7px;
 }
 
 .dropdown-catalog a {
@@ -183,7 +187,7 @@
     font-family: Tahoma, sans-serif;
     border-radius: 0.2rem;
     padding: 0.55rem;
-    background-color: #ac0000;
+    background-color: #790000;
     position: absolute;
     font-weight: bold;
     top: 15.7rem;
@@ -232,7 +236,7 @@
 }
 
 .card .date {
-    background-color: #ac0000;
+    background-color: #790000;
     color: white;
     width: 10.5rem;
     font-family: Tahoma, sans-serif;
@@ -291,7 +295,7 @@
 }
 
 .show-art .link {
-    background-color: #008c68;
+    background-color: #7f5441;
     padding: 0.7rem;
     border-top-right-radius: 0.5rem;
     font-family: Tahoma, sans-serif;
@@ -381,7 +385,7 @@
 
 .search {
     position: absolute;
-    top: 22%;
+    top: 25%;
     right: 24%;
     z-index: 2;
 }
@@ -484,10 +488,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: 11rem;
+    top: -5rem;
     width: 80%;
     margin: 0 auto;
-    z-index: 1;
+    z-index: -1;
 }
 
 .catalog .title {
@@ -549,6 +553,7 @@
     height: 100vh;
     width: 70vw;
     left: 30%;
+    top: 0;
     z-index: -1;
     clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
 }
@@ -696,6 +701,7 @@
     background-color: rgba(0, 0, 0, 0.80);
     color: black;
     z-index: 100;
+    top: 0;
 }
 
 .light-box .box {
@@ -771,4 +777,227 @@
     top: 0;
     position: absolute;
     color: white;
+}
+
+@media screen and (max-width: 1300px) {
+
+    /* ---------- HOME ---------- */
+    .card-accueil {
+        transform: scale(0.8);
+        padding: 0;
+    }
+
+    .show-art {
+        transform: scale(0.9);
+        left: -1%;
+    }
+
+    /* ---------- ABOUT US---------- */
+    .block-about-us {
+        width: 60%;
+        height: 55%;
+        top: 55%;
+    }
+
+    /* ---------- CATALOG ---------- */
+    .search {
+        top: 22%;
+    }
+
+    .search select {
+        top: 2.5rem;
+        left: 14rem;
+    }
+
+    .search a {
+        position: absolute;
+        top: 2.7rem;
+        left: 27.7rem;
+    }
+
+    #lower, #upper {
+        right: 7.5rem;
+    }
+
+    .block-catalog {
+        width: 100%;
+    }
+
+    .catalog {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    /* ---------- CONTACT ---------- */
+    .form-contact {
+        transform: scale(0.9);
+    }
+
+    .social-network {
+        transform: scale(0.8);
+    }
+
+    .social-network p {
+        display: none;
+    }
+
+    .position {
+        width: 30%;
+        transform: scale(0.8);
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+
+    .link-show {
+        display: none;
+    }
+
+    /* ---------- MENU ---------- */
+    .catalog-menu:hover .dropdown-catalog {
+        display: none;
+    }
+
+    /* ---------- HOME ---------- */
+    .block-accueil {
+        flex-direction: column;
+        top: 36%;
+        transform: translateX(-50%);
+    }
+
+    .title-accueil img {
+        width: 90%;
+    }
+
+    .show-art {
+        left: -2%;
+        top: 33%;
+    }
+
+    /* ---------- ABOUT US ---------- */
+    .block-about-us {
+        display: block;
+        margin: 10% auto;
+        position: relative;
+        transform: none;
+        right: inherit;
+    }
+
+    /* ---------- CATALOG ---------- */
+    .search {
+        top: 28%;
+    }
+
+    .catalog {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        top: -7rem;
+    }
+
+    .message-catalog {
+        top: 75%;
+        font-size: 2rem;
+    }
+
+    .switch-number {
+        bottom: 27.5rem;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact {
+        display: block;
+    }
+
+    .form-contact {
+        width: 400px;
+        margin: 0 auto;
+        position: relative;
+        left: inherit;
+    }
+
+    .social-network {
+        position: fixed;
+    }
+
+    .map {
+        width: 500px;
+        height: 400px;
+        position: relative;
+        clip-path: none;
+        left: initial;
+        margin: 10% auto;
+        border: 1px solid #bdbdbd;
+        z-index: 100;
+    }
+
+    .position {
+        display: none;
+    }
+
+    #here {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    /* ---------- MENU ---------- */
+    .public-menu {
+        flex-direction: column;
+    }
+
+    /* ---------- ACCUEIL ---------- */
+    .show-art {
+        display: none;
+    }
+
+    .intro-accueil {
+        font-size: 1rem;
+    }
+
+    /* ---------- ABOUT US ---------- */
+    .block-about-us {
+         width: 90%;
+     }
+
+    /* ---------- CATALOG ---------- */
+    .search {
+        right: 3%;
+        top: 35%;
+        transform: scale(0.9);
+    }
+
+    #lower, #upper {
+        right: 5.3rem;
+    }
+
+    .search button {
+        top: 4rem;
+        left: 5rem;
+        position: absolute;
+        transform: scale(1.5);
+    }
+
+    .search a {
+        top: 4rem;
+        left: 8rem;
+        position: absolute;
+        transform: scale(1.5);
+    }
+
+    /* ---------- CONTACT ---------- */
+    #mapid {
+        width: 400px;
+        height: 300px;
+    }
+
+    .social-network {
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        margin: 5%;
+    }
+
 }

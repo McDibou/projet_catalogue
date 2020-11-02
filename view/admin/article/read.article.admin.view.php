@@ -1,6 +1,5 @@
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5"></div>
+
+<div class="py-3"></div>
 
 <div class="position-fixed" style="top: 3rem; left: 10rem">
     <a class="btn btn-outline-dark" href="?p=create.article.admin">

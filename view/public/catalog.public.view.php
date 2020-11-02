@@ -8,12 +8,12 @@
             <input name="p" value="catalog.public" type="hidden">
             <select name="category">
                 <option value="">global</option>
-                <?php foreach ($category_option as $potion) { ?>
+                <?php foreach ($category_option as $option) { ?>
                     <option
-                            value="<?= $potion['name_category'] ?>"
-                        <?= ($potion['name_category'] === $category) ? "selected" : ""; ?>
+                            value="<?= $option['name_category'] ?>"
+                        <?= ($option['name_category'] === $category) ? "selected" : ""; ?>
                     >
-                        <?= $potion['name_category'] ?>
+                        <?= $option['name_category'] ?>
                     </option>
                 <?php } ?>
             </select>

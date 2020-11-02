@@ -15,7 +15,7 @@
 
     <?php if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) { ?>
 
-        <div class="position-fixed m-5" style="z-index: 1000">
+        <div class="fixed-top m-4" style="z-index: 1000">
             <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" id="dropdownAdmin" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
