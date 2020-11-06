@@ -1,12 +1,13 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.model.php';
+require_once dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.model.php';
 
 $category_option = readOptionCategory($db);
 $price = countPrice($db);
 
-$priceMin =  $price['minPrice'] - 10;
-$priceMax =  $price['maxPrice'] + 10;
+$priceMin = 5;
+$priceMax = ceil($price['maxPrice'] + 100);
+
 
 if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
     $currentPage = (int)$_GET['switch'];
@@ -18,8 +19,8 @@ $ndrArticle = 6;
 $limit = ($currentPage - 1) * $ndrArticle;
 
 $category = !empty($_GET['category']) ? analyseData($_GET['category']) : '';
-$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $price['minPrice'];
-$max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['max']) : $price['maxPrice'];
+$min = !empty($_GET['min']) && ctype_digit($_GET['min']) ? analyseData($_GET['min']) : $priceMin;
+$max = !empty($_GET['max']) && ctype_digit($_GET['max']) ? analyseData($_GET['max']) : $priceMax;
 
 $where = '';
 
@@ -44,20 +45,20 @@ if (isset($_GET['category'])) {
 
             $where .= " `price_article` BETWEEN '$min' AND '$max' ";
 
-            $article = readGlobalArticle($db, $where, $limit, $ndrArticle);
+            $article = readArticle($db, $where, $limit, $ndrArticle);
 
 
         }
 
     } else {
 
-        $article = readGlobalArticle($db, $where, $limit, $ndrArticle);
+        $article = readArticle($db, $where, $limit, $ndrArticle);
 
     }
 
 } else {
 
-    $article = readGlobalArticle($db, $where, $limit, $ndrArticle);
+    $article = readArticle($db, $where, $limit, $ndrArticle);
 
 }
 
@@ -67,6 +68,22 @@ if (!empty($category)) {
     $countArticle = countArticle($db, $where);
 }
 
+if ($countArticle === 0) {
+    $message = 'NOT FOUND !';
+}
+
+
 $switch = switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max);
 
-require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.view.php';
+
+if (isset($_POST['lightbox'])) {
+
+    $id = isset($_POST['id_article']) && ctype_digit($_POST['id_article']) ? $_POST['id_article'] : '';
+    $readImg = readImg($id, $db);
+    $countImg = mysqli_num_rows($readImg);
+
+    echo lightBoxModel($readImg, $countImg);
+
+}
+
+require_once dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.view.php';

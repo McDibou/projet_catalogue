@@ -1,6 +1,5 @@
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5">
+<div class="p-5"></div><div class="p-5"></div>
+<div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
     <p><?= !empty($error_shop) ? $error_shop : '' ?></p>
 </div>
@@ -10,34 +9,44 @@
             <form method="post">
 
                 <div class="form-group">
-                    <label class="m-2" for="name_shop">NAME</label>
+                    <label class="m-2" for="name_shop">Name :</label>
                     <input class="form-control" id="name_shop" value="<?= !empty($name_shop) ? $name_shop : ''; ?>"
                            name="name_shop"
                            type="text"
-                           placeholder="name_shop" required>
+                           pattern="[A-Za-z0-9 '-]+$"
+                           maxlength="80"
+                           placeholder="max : 80" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="m-2" for="location_shop">LOCATION</label>
+                    <label class="m-2" for="location_shop">Location :</label>
                     <input class="form-control" id="location_shop"
                            value="<?= !empty($localisation_shop) ? $localisation_shop : ''; ?>"
                            name="localisation_shop"
+                           pattern="[0-9]{1,2})+(\.[0-9]),([0-9]{1,2})+(\.[0-9])"
                            type="text"
-                           placeholder="localisation_shop" required>
+                           placeholder="ex : 50.82198,4.30070" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="m-2" for="city_shop">CITY</label>
+                    <label class="m-2" for="city_shop">City :</label>
                     <input class="form-control" id="city_shop"
                            value="<?= !empty($ville_shop) ? $ville_shop : ''; ?>" name="ville_shop"
                            type="text"
-                           placeholder="ville_shop" required>
+                           pattern="[A-Za-z0-9 '-]+$"
+                           maxlength="80"
+                           placeholder="max : 80" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="m-2" for="desc_shop">ADDRESS</label>
-                    <textarea style="resize: none" class="form-control" name="desc_shop" id="desc_shop" cols="30" rows="4"
-                              placeholder="desc_shop"><?= !empty($desc_shop) ? $desc_shop : ''; ?></textarea>
+                    <label class="m-2" for="desc_shop">Address :</label>
+                    <textarea style="resize: none" class="form-control"
+                              name="desc_shop"
+                              id="desc_shop"
+                              cols="30"
+                              rows="4"
+                              pattern="[A-Za-z0-9 '-]+$"
+                              placeholder="street, number, zip code, city, country"><?= !empty($desc_shop) ? $desc_shop : ''; ?></textarea>
                 </div>
 
 
@@ -56,46 +65,50 @@
     </div>
 </div>
 
-<div class="container-fluid my-5">
-    <div class="row justify-content-center">
-        <div class="col-10">
-            <table class="table table-bordered text-center bg-light">
-                <thead>
-                <tr>
-                    <th>NAME</th>
-                    <th>LOCATION</th>
-                    <th>CITY</th>
-                    <th>ADDRESS</th>
-                    <th></th>
-                </tr>
-                </thead>
-
-                <?php foreach ($shop as $item) { ?>
-                    <tbody>
+<div class="py-3"></div>
+<?php if ($countShop !== 0) { ?>
+    <div class="container-fluid my-5">
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <table class="table table-bordered text-center bg-light">
+                    <thead>
                     <tr>
-
-
-                        <th class="align-middle"><?= $item['name_shop'] ?></th>
-                        <th class="align-middle"><?= $item['localisation_shop'] ?></th>
-                        <th class="align-middle"><?= $item['ville_shop'] ?></th>
-                        <th class="align-middle"><?= $item['desc_shop'] ?></th>
-
-                        <th class="align-middle">
-                            <a class="btn btn-outline-warning"
-                               href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
-                                MODIFY
-                            </a>
-                            <a class="btn btn-outline-danger"
-                               href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
-                                DELETE
-                            </a>
-
-                        </th>
+                        <th>NAME</th>
+                        <th>LOCATION</th>
+                        <th>CITY</th>
+                        <th>ADDRESS</th>
+                        <th></th>
                     </tr>
-                    </tbody>
-                <?php } ?>
+                    </thead>
 
-            </table>
+                    <?php foreach ($shop as $item) { ?>
+                        <tbody>
+                        <tr>
+                            <th class="align-middle"><?= $item['name_shop'] ?></th>
+                            <th class="align-middle"><a class="text-reset" href="?p=create.shop.admin&loc=<?= $item['localisation_shop'] ?>"><?= $item['localisation_shop'] ?><sup><?= SVG_LINK ?></sup></a></th>
+                            <th class="align-middle"><?= $item['ville_shop'] ?></th>
+                            <th class="align-middle"><?= $item['desc_shop'] ?></th>
+
+                            <th class="align-middle">
+                                <a class="btn btn-outline-warning"
+                                   href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
+                                    MODIFY
+                                </a>
+                                <a class="btn btn-outline-danger"
+                                   href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
+                                    DELETE
+                                </a>
+
+                            </th>
+                        </tr>
+                        </tbody>
+                    <?php } ?>
+
+                </table>
+            </div>
         </div>
     </div>
-</div>
+<?php } else { ?>
+    <div class="text-center mx-auto font-weight-bold">No shop, please add one</div>
+<?php } ?>
+<div class="py-3"></div>

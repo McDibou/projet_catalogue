@@ -2,6 +2,7 @@
 require_once dirname(dirname(dirname(__DIR__))) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'shop' . DIRECTORY_SEPARATOR . 'create.shop.admin.model.php';
 
 $shop = readShop($db);
+$countShop = mysqli_num_rows($shop);
 
 if (isset($_POST['create_shop'])) {
 

@@ -4,9 +4,7 @@ if (isset($_SESSION['id_session'])) {
 }
 ?>
 
-<div class="py-5"></div>
-<div class="py-5"></div>
-<div class="py-5">
+<div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger"><?= !empty($error_input) ? $error_input : '' ?></p>
 </div>
 

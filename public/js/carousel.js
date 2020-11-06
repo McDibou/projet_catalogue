@@ -7,11 +7,11 @@ function sliderMove(value) {
     idSlideMove += value;
     direction = value === 1 ? "right" : "left";
 
-    if ( idSlideMove >= slide.length) {
+    if (idSlideMove >= slide.length) {
         idSlideMove = 0;
     }
 
-    if ( idSlideMove < 0) {
+    if (idSlideMove < 0) {
         idSlideMove = slide.length - 1;
     }
 
@@ -29,11 +29,11 @@ function sliderFade() {
     let value = direction === "right" ? 1 : -1;
     idSlideMove += value;
 
-    if ( idSlideMove >= slide.length) {
+    if (idSlideMove >= slide.length) {
         idSlideMove = 0;
     }
 
-    if ( idSlideMove < 0) {
+    if (idSlideMove < 0) {
         idSlideMove = slide.length - 1;
     }
 

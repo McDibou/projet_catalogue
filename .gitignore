@@ -1,3 +1,5 @@
 .idea
 config.php
 data/db/catalogue.mwb.bak
+public/img/original/
+public/img/thumb/

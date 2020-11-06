@@ -5,17 +5,23 @@ function analyseData($data)
     return htmlspecialchars(strip_tags(trim($data)), ENT_QUOTES, 'UTF-8');
 }
 
-function readArticle($db)
+function readArticle($db, $limit, $ndrArticle)
 {
-    return mysqli_query($db, "SELECT * FROM `article` ORDER BY `date_article`");
+    return mysqli_query($db, "SELECT * FROM `article` LIMIT $limit, $ndrArticle");
+}
+
+function readCountArticle($db)
+{
+    return mysqli_num_rows(mysqli_query($db, "SELECT * FROM `article`"));
 }
 
 function readOptionCategory($db)
 {
-    return mysqli_query($db, "SELECT * FROM `category`");
+    return mysqli_query($db, "SELECT * FROM `category` ORDER BY `name_category` ASC");
 }
 
-function readImg($db, $id) {
+function readImg($db, $id)
+{
     return mysqli_query($db, "SELECT * FROM `img` WHERE `fkey_id_article` = $id");
 }
 
@@ -45,4 +51,38 @@ function createArticle($title_article, $price_article, $category_id, $content_ar
         return mysqli_rollback($db);
     }
 
+}
+
+function switchArticle($countArticle, $currentPage, $ndrArticle)
+{
+    $outRead = "";
+    $numberPage = ceil($countArticle / $ndrArticle);
+
+    if ($numberPage < 2) return $outRead;
+
+    $outRead .= "<ul class='pagination'>";
+
+    $outRead .= ($currentPage == 1) ? "<li class='page-item disabled'><a class='page-link'>&laquo;</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage - 1) . "'><span aria-hidden='true'>&laquo;</span></a></li>";
+    $outRead .= ($currentPage == 1) ? "<li class='page-item disabled'><a class='page-link'>1</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=1'><span aria-hidden='true'>1</span></a></li>";
+
+    $i = max(2, $currentPage - 2);
+
+    if ($i > 2) {
+        $outRead .= "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+    }
+
+    for (; $i < min($currentPage + 3, $numberPage); $i++) {
+        $outRead .= ($i == $currentPage) ? "<li class='page-item disabled'><a class='page-link'>$i</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=$i'>$i</a></li>";
+    }
+
+    if ($i < $numberPage) {
+        $outRead .= "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+    }
+
+    $outRead .= ($currentPage == $numberPage) ? "<li class='page-item disabled'><a class='page-link'>" . $numberPage . "</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . $numberPage . "'><span aria-hidden='true'>" . $numberPage . "</span></a></li>";
+    $outRead .= ($currentPage == $numberPage) ? "<li class='page-item disabled'><a class='page-link'>&raquo;</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage + 1) . "'><span aria-hidden='true'>&raquo;</span></a></li>";
+
+
+    $outRead .= "</div>";
+    return $outRead;
 }
