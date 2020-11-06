@@ -19,13 +19,21 @@ if ($countShow !== 0) {
 }
 
 if ($countPromo !== 0) {
+
     $tabId = [];
     foreach ($promoId as $id) {
         $tabId[] = $id['id_article'];
     }
 
-    $Id = array_rand($tabId, 3);
-    $tabId = $tabId[$Id[0]] . ',' . $tabId[$Id[1]] . ',' . $tabId[$Id[2]];
+    if (count($tabId) === 1) {
+        $tabId = $tabId[0];
+    } elseif (count($tabId)  === 2 ) {
+        $tabId = $tabId[0] . ',' . $tabId[1];
+    } else {
+        $Id = array_rand($tabId, 3);
+        $tabId = $tabId[$Id[0]] . ',' . $tabId[$Id[1]] . ',' . $tabId[$Id[2]];
+    }
+
     $promo = readThreePromo($tabId, $db);
 
 }

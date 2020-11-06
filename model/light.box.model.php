@@ -3,6 +3,7 @@
 function lightBoxModel($item, $count)
 {
     $lightBox = '';
+    $lightBox .= '<div class="light"><img src="img/src/accueil.jpg" alt=""></div>';
     $lightBox .= '<div class="light-box">';
     $lightBox .= '<div class="box">';
 
@@ -14,10 +15,10 @@ function lightBoxModel($item, $count)
 
     if ($count > 1) {
         $lightBox .= '<a class="prev" onclick="sliderBox(-1)">';
-        $lightBox .= '<span>' . CARET_DOWN . '</span>';
+        $lightBox .= '<span>' . CARET_RIGHT . '</span>';
         $lightBox .= '</a>';
         $lightBox .= '<a class="next" onclick="sliderBox(1)">';
-        $lightBox .= '<span>' . CARET_UP . '</span>';
+        $lightBox .= '<span>' . CARET_LEFT . '</span>';
         $lightBox .= '</a>';
 
         $lightBox .= '<div class="view-slide">';

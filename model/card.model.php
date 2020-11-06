@@ -28,7 +28,7 @@ function cardModel($item)
     }
 
     $card .= '</div>';
-    $card .= '<a class="link-pay" href="">ADD TO CARD</a>';
+    $card .= '<a class="link-pay">ADD TO CARD</a>';
     $card .= '<div class="img">';
     $img = explode('|_|', $item['group_name_img']);
     $card .= '<img class="img2" src="img/original/' . $img[0] . '">';

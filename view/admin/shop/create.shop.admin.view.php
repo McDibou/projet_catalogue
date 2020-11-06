@@ -1,4 +1,4 @@
-
+<div class="p-5"></div><div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
     <p><?= !empty($error_shop) ? $error_shop : '' ?></p>
@@ -85,7 +85,7 @@
                         <tbody>
                         <tr>
                             <th class="align-middle"><?= $item['name_shop'] ?></th>
-                            <th class="align-middle"><?= $item['localisation_shop'] ?></th>
+                            <th class="align-middle"><a class="text-reset" href="?p=create.shop.admin&loc=<?= $item['localisation_shop'] ?>"><?= $item['localisation_shop'] ?><sup><?= SVG_LINK ?></sup></a></th>
                             <th class="align-middle"><?= $item['ville_shop'] ?></th>
                             <th class="align-middle"><?= $item['desc_shop'] ?></th>
 

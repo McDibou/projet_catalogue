@@ -6,7 +6,7 @@
             <a href="?p=catalog.public">CATALOG</a>
             <div class="dropdown-catalog">
                 <?php foreach ($category_home as $item) { ?>
-                    <a href="?p=catalog.public&&category=<?= $item['name_category'] ?>"><?= $item['name_category'] ?></a>
+                    <a href="?p=catalog.public&category=<?= $item['name_category'] ?>"><?= $item['name_category'] ?></a>
                 <?php } ?>
             </div>
         </div>
@@ -26,16 +26,23 @@
                     <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=create.category.admin">create.category</a>
                     <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=create.shop.admin">create.shop</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="./">acceuil.public</a>
+                    <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=aboutus.public">aboutus.public</a>
+                    <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=catalog.public">catalog.public</a>
+                    <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=contact.public">contact.public</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item py-2 px-5 text-uppercase font-weight-bold" href="?p=disconnect.admin">disconnect</a>
                 </div>
             </div>
         </div>
 
+        <div id="indicator"></div>
+
     <?php } else { ?>
 
         <div class="admin-menu">
             <a class="text-white" href="?p=connect.public">
-               <span><?= SVG_LOCK ?></span>
+                <span><?= SVG_LOCK ?></span>
             </a>
         </div>
     <?php } ?>

@@ -61,9 +61,9 @@
 </div>
 
 <div class="social-network">
-    <div><a href=""><span><?= SVG_GITHUB ?></span></a><p>GITHUB</p></div>
-    <div><a href=""><span><?= SVG_LINKEDIN ?></span></a><p>LINKEDIN</p></div>
-    <div><a href=""><span><?= SVG_GOOGLE ?></span></a><p>GOOGLE +</p></div>
-    <div><a href=""><span><?= SVG_SLACK ?></span></a><p>SLACK</p></div>
-    <div><a href=""><span><?= SVG_DISCORD ?></span></a><p>DISCORD</p></div>
+    <div><a><span><?= SVG_GITHUB ?></span></a><p>GITHUB</p></div>
+    <div><a><span><?= SVG_LINKEDIN ?></span></a><p>LINKEDIN</p></div>
+    <div><a><span><?= SVG_GOOGLE ?></span></a><p>GOOGLE +</p></div>
+    <div><a><span><?= SVG_SLACK ?></span></a><p>SLACK</p></div>
+    <div><a><span><?= SVG_DISCORD ?></span></a><p>DISCORD</p></div>
 </div>

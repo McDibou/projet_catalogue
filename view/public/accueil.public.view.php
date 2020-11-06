@@ -1,3 +1,8 @@
+<div class="overlay"></div>
+<div class="overlay bg1"></div>
+<div class="overlay bg2"></div>
+<div class="overlay bg3"></div>
+
 <div class="body-accueil">
     <img src="img/src/accueil.jpg" alt="">
 </div>
@@ -15,17 +20,23 @@
 
     <?php if ($countPromo !== 0) { ?>
         <div class="card-accueil">
-            <a class="next" onclick="sliderMove(1)">
-                <span><?= CARET_UP ?></span>
-            </a>
-            <?php foreach ($promo as $item) { ?>
-                <div id="article" class="card slide">
-                    <?= cardModel($item) ?>
-                </div>
+            <?php if ($countPromo > 1) { ?>
+                <a class="next" onclick="sliderMove(1)">
+                    <span><?= CARET_UP ?></span>
+                </a>
             <?php } ?>
-            <a class="prev" onclick="sliderMove(-1)">
-                <span><?= CARET_DOWN ?></span>
-            </a>
+            <div class="animated">
+                <?php foreach ($promo as $item) { ?>
+                    <div id="article" class="card slide">
+                        <?= cardModel($item) ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <?php if ($countPromo > 1) { ?>
+                <a class="prev" onclick="sliderMove(-1)">
+                    <span><?= CARET_DOWN ?></span>
+                </a>
+            <?php } ?>
         </div>
     <?php } ?>
 </div>

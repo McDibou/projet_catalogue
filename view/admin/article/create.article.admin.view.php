@@ -1,4 +1,4 @@
-
+<div class="p-5"></div><div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= (!empty($error_create_article)) ? $error_create_article : '' ?>

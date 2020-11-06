@@ -16,6 +16,10 @@ function resizeThumb($new_name_img, $imgWidth, $imgHeight, $extend)
     $whiteBackground = imagecolorallocate($background, 255, 255, 255);
     imagefill($background, 0, 0, $whiteBackground);
 
+    if (!is_dir('img/thumb')) {
+        mkdir('img/thumb', 0777, true);
+    }
+
     if ($extend == ".jpg" || $extend == ".jpeg") {
 
         $copy = imagecreatefromjpeg('img/original/' . $new_name_img);
@@ -44,6 +48,10 @@ function uploadImg(array $name_file)
 
                 if ($imgWidth < 800 && $imgHeight < 600) {
                     $new_name_img = date('U') . '_' . mt_rand(10000, 99999) . strtolower(strrchr($name_file['name'], "."));
+
+                    if (!is_dir('img/original')) {
+                        mkdir('img/original', 0777, true);
+                    }
 
                     if (move_uploaded_file($name_file['tmp_name'], 'img/original/' . $new_name_img)) {
 

@@ -6,14 +6,15 @@ let myloc = L.icon({
     iconUrl: 'img/src/icon.loc.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 35],
-    popupAnchor: [0, -40]
+    popupAnchor: [0, -40],
 })
 
 let myicon = L.icon({
     iconUrl: 'img/src/icon.here.svg',
     iconSize: [30, 40],
     iconAnchor: [15, 35],
-    popupAnchor: [0, -40]
+    popupAnchor: [0, -40],
+    className: 'icon-map'
 })
 
 
@@ -33,11 +34,16 @@ function readShop(position) {
     }
 }
 
-if (position[2] != null) {
+if (position[2] != null && position[1].split('&')[0] === 'contact.public') {
 
     loc = position[2].split(',');
     mymap.setView([loc[0], loc[1]], 12);
     L.marker([loc[0], loc[1]], {icon: myicon}).addTo(mymap).bindPopup(readShop(position[2])).openPopup();
+
+} else if ((position[2] != null && position[1].split('&')[0] === 'create.shop.admin')) {
+
+    loc = position[2].split(',');
+    mymap.setView([loc[0], loc[1]], 12);
 
 } else {
 

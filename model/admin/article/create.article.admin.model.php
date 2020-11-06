@@ -62,21 +62,26 @@ function switchArticle($countArticle, $currentPage, $ndrArticle)
 
     $outRead .= "<ul class='pagination'>";
 
-    for ($i = 1; $i <= $numberPage; $i++) {
-        if ($i == 1) {
-            if ($i != $currentPage) {
-                $outRead .= "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage - 1) . "'><span aria-hidden='true'>&laquo;</span></a></li>";
-            }
-        };
-        $outRead .= ($i == $currentPage) ? "<li class='page-item disabled'><a class='page-link'>$i</a></li>" : "<a class='page-link' href='?p=create.article.admin&switch=$i'>$i</a>";
+    $outRead .= ($currentPage == 1) ? "<li class='page-item disabled'><a class='page-link'>&laquo;</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage - 1) . "'><span aria-hidden='true'>&laquo;</span></a></li>";
+    $outRead .= ($currentPage == 1) ? "<li class='page-item disabled'><a class='page-link'>1</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=1'><span aria-hidden='true'>1</span></a></li>";
 
-        if ($numberPage == $i) {
+    $i = max(2, $currentPage - 2);
 
-            if ($currentPage != $i) {
-                $outRead .= "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage + 1) . "'><span aria-hidden='true'>&raquo;</span></a></li>";
-            }
-        }
+    if ($i > 2) {
+        $outRead .= "<li class='page-item disabled'><a class='page-link'>...</a></li>";
     }
+
+    for (; $i < min($currentPage + 3, $numberPage); $i++) {
+        $outRead .= ($i == $currentPage) ? "<li class='page-item disabled'><a class='page-link'>$i</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=$i'>$i</a></li>";
+    }
+
+    if ($i < $numberPage) {
+        $outRead .= "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+    }
+
+    $outRead .= ($currentPage == $numberPage) ? "<li class='page-item disabled'><a class='page-link'>" . $numberPage . "</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . $numberPage . "'><span aria-hidden='true'>" . $numberPage . "</span></a></li>";
+    $outRead .= ($currentPage == $numberPage) ? "<li class='page-item disabled'><a class='page-link'>&raquo;</a></li>" : "<li class='page-item'><a class='page-link' href='?p=create.article.admin&switch=" . ($currentPage + 1) . "'><span aria-hidden='true'>&raquo;</span></a></li>";
+
 
     $outRead .= "</div>";
     return $outRead;

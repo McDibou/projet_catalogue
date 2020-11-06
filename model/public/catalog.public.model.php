@@ -88,15 +88,25 @@ function switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min
 
     $out .= "<div class='switch-number'>";
 
-    for ($i = 1; $i <= $numberPage; $i++) {
-        if ($i == 1) {
-            $out .= ($i == $currentPage) ? "<a class='switch-left-not'>" . CARET_RIGHT . "</a>" : "<a class='switch-left' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'>" . CARET_RIGHT . "</a>";
-        }
-        $out .= ($i == $currentPage) ? "<a class='switch-number-current'>$i</a> " : "<a class='switch-number-not' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a>";
-        if ($numberPage == $i) {
-            $out .= ($currentPage == $i) ? "<a class='switch-right-not'>" . CARET_LEFT . "</a>" : "<a class='switch-right' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'>" . CARET_LEFT . "</a>";
-        }
+    $out .= ($currentPage == 1) ? "<a class='switch-left-not'>" . CARET_RIGHT . "</a>" : "<a class='switch-left' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage - 1) . "'>" . CARET_RIGHT . "</a>";
+    $out .= ($currentPage == 1) ?  "<a class='switch-number-current'>1</a>" : "<a class='switch-number-not' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=1'>1</a>";
+
+    $i = max(2, $currentPage - 2);
+
+    if ($i > 2) {
+        $out .= "<a class='switch-number-current'>..</a>";
     }
+
+    for (; $i < min($currentPage + 3, $numberPage); $i++) {
+        $out .= ($i == $currentPage) ? "<a class='switch-number-current'>$i</a> " : "<a class='switch-number-not' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=$i'>$i</a>";
+    }
+
+    if ($i < $numberPage) {
+        $out .= "<a class='switch-number-current'>..</a>";
+    }
+
+    $out .= ($currentPage == $numberPage) ? "<a class='switch-number-current'>" . $numberPage . "</a>" : "<a class='switch-number-not' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . $numberPage . "'>" . $numberPage . "</a>";
+    $out .= ($currentPage == $numberPage) ? "<a class='switch-right-not'>" . CARET_LEFT . "</a>" : "<a class='switch-right' href='?p=catalog.public&category=$category&min=$min&max=$max&switch=" . ($currentPage + 1) . "'>" . CARET_LEFT . "</a>";
 
     $out .= "</div>";
     return $out;
