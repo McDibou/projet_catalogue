@@ -1,3 +1,5 @@
+<title>Guit.dev - Contact</title>
+
 <div class="contact">
     <div class="form-contact">
         <form method="post">
@@ -32,11 +34,11 @@
                           placeholder="max : 255"
                           required><?= (!empty($content_mail)) ? $content_mail : null; ?></textarea>
             </div>
+
             <button name="contact_mail" type="submit">ENVOYER</button>
         </form>
-
-        <?= !empty($succes) ? $succes : '' ?>
-        <?= !empty($error) ? $error : '' ?>
+        <?= !empty($succes) ? '<div class="success-mail">' . $succes . '</div>' : '' ?>
+        <?= !empty($error) ? '<div class="error-mail">' . $error . '</div>' : '' ?>
     </div>
 
     <div id="mapid" class="map"></div>
@@ -61,9 +63,19 @@
 </div>
 
 <div class="social-network">
-    <div><a><span><?= SVG_GITHUB ?></span></a><p>GITHUB</p></div>
-    <div><a><span><?= SVG_LINKEDIN ?></span></a><p>LINKEDIN</p></div>
-    <div><a><span><?= SVG_GOOGLE ?></span></a><p>GOOGLE +</p></div>
-    <div><a><span><?= SVG_SLACK ?></span></a><p>SLACK</p></div>
-    <div><a><span><?= SVG_DISCORD ?></span></a><p>DISCORD</p></div>
+    <div><a><span><?= SVG_GITHUB ?></span></a>
+        <p>GITHUB</p></div>
+    <div><a><span><?= SVG_LINKEDIN ?></span></a>
+        <p>LINKEDIN</p></div>
+    <div><a><span><?= SVG_GOOGLE ?></span></a>
+        <p>GOOGLE +</p></div>
+    <div><a><span><?= SVG_SLACK ?></span></a>
+        <p>SLACK</p></div>
+    <div><a><span><?= SVG_DISCORD ?></span></a>
+        <p>DISCORD</p></div>
 </div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<script src="js/map.js"></script>

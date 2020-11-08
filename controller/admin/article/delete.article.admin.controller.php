@@ -19,11 +19,12 @@ if (!empty($id)) {
 
     }
 
-    deleteArticle($id, $db);
-    header('Location: ?p=create.article.admin');
+    if (deleteArticle($id, $db)) {
+        header('Location: ?p=create.article.admin');
+    } else {
+        header('Location: ?p=create.article.admin&error=2');
+    }
 
 } else {
-
-    header('Location: ?p=create.article.admin');
-
+    header('Location: ?p=create.article.admin&error=4');
 }

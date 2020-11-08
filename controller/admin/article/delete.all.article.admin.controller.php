@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'delete.article.admin.model.php';
+require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'delete.article.admin.model.php';
 
 if (!empty($_POST['article_all_id'])) {
 
@@ -26,25 +26,20 @@ if (!empty($_POST['article_all_id'])) {
                 if (file_exists('img/original/' . $img) && file_exists('img/thumb/' . $img)) {
                     unlink('img/original/' . $img);
                     unlink('img/thumb/' . $img);
+                } else {
+                    header('Location: ?p=create.article.admin&error=1');
                 }
 
             }
 
-            deleteArticle($id, $db);
-
-        } else {
-
-            header('Location: ?p=create.article.admin');
-
+            if (deleteArticle($id, $db)) {
+                header('Location: ?p=create.article.admin');
+            } else {
+                header('Location: ?p=create.article.admin&error=2');
+            }
         }
-
     }
 
-    header('Location: ?p=create.article.admin');
-
-
 } else {
-
-    header('Location: ?p=create.article.admin');
-
+    header('Location: ?p=create.article.admin&error=3');
 }

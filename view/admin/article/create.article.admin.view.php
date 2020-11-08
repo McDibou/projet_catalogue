@@ -1,7 +1,11 @@
-<div class="p-5"></div><div class="p-5"></div>
+<title>Guit.dev - CRUD Article</title>
+
+<div class="p-5"></div>
+<div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= (!empty($error_create_article)) ? $error_create_article : '' ?>
+        <?= (!empty($error_message)) ? $error_message : '' ?>
     </p>
 </div>
 
@@ -80,7 +84,8 @@
 Frets : 24
 Color body : none
 Size : 1/2
-Wood : rosewood"
+Wood : rosewood
+Pick : none"
                                   required><?= !empty($content_article) ? $content_article : ''; ?></textarea>
                     </div>
 
@@ -132,7 +137,6 @@ Wood : rosewood"
                     </thead>
                     <tbody>
                     <?php foreach ($article as $item) { ?>
-
                         <tr>
                             <?php if ($countArticle > 1) { ?>
                                 <th class="align-middle"><input type="checkbox" name="article_all_id[]"

@@ -1,3 +1,5 @@
+<title>Guit.dev - Catalog</title>
+
 <div class="overlay"></div>
 <div class="body-accueil img-catalog">
     <img src="img/src/accueil.jpg" alt="">
@@ -62,16 +64,21 @@
     </form>
 </div>
 
-<div class="block-catalog">
-    <div class="catalog">
-        <?php foreach ($article as $item) { ?>
-            <div id="article" class="card">
-                <?= cardModel($item) ?>
-            </div>
-        <?php } ?>
+<?php if ($countArticle !== 0) { ?>
+    <div class="block-catalog">
+        <div class="catalog">
+            <?php foreach ($article as $item) { ?>
+                <div id="article" class="card">
+                    <?= cardModel($item) ?>
+                </div>
+            <?php } ?>
 
+        </div>
+        <?= $switch ?>
     </div>
-    <?= $switch ?>
-</div>
+<?php } else { ?>
+    <div class="message-catalog">NOT FOUND !</div>
+<?php } ?>
 
-<div class="message-catalog"><?= !empty($message) ? $message : '' ?></div>
+<script src="js/date.js"></script>
+<script src="js/slider.js"></script>

@@ -7,6 +7,10 @@ fetch('src/date.public.controller.php')
         calcPromo(data)
         setInterval(promoUpdateDate, 1000, data);
 
+    })
+
+    .catch(function(error) {
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });
 
 let idArticle = document.querySelectorAll('#id-article');

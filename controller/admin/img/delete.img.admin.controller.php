@@ -14,11 +14,12 @@ if (!empty($id)) {
         unlink('img/thumb/' . $img);
     }
 
-    deleteImg($id, $db);
-    header("Location: ?p=create.img.admin&id=$id_article");
+    if(deleteImg($id, $db)) {
+        header("Location: ?p=create.img.admin&id=$id_article");
+    } else {
+        header("Location: ?p=create.img.admin&id=$id_article&error=1");
+    }
 
 } else {
-
-    header("Location: ?p=create.img.admin&id=$id_article");
-
+    header("Location: ?p=create.img.admin&id=$id_article&error=2");
 }

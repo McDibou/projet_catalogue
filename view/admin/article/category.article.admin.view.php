@@ -1,7 +1,10 @@
+<title>Guit.dev - CRUD Article</title>
+
 <div class="p-5"></div><div class="p-5"></div><div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
-    <?= !empty($error_category_article) ? $error_category_article : ''; ?></p>
+    <?= !empty($not_field) ? $not_field : ''; ?>
+    <?= !empty($error) ? $error : ''; ?></p>
 </div>
 
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">

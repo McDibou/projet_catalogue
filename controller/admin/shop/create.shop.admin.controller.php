@@ -12,15 +12,29 @@ if (isset($_POST['create_shop'])) {
     $desc_shop = analyseData($_POST['desc_shop']);
 
 
-    if (!empty($name_shop) && !empty($localisation_shop) && !empty($ville_shop) && !empty($desc_shop) ) {
+    if (!empty($name_shop) && !empty($localisation_shop) && !empty($ville_shop) && !empty($desc_shop)) {
 
-        createShop($db, $name_shop, $localisation_shop, $ville_shop, $desc_shop );
-        header('Location: ?p=create.shop.admin');
+        if (createShop($db, $name_shop, $localisation_shop, $ville_shop, $desc_shop)) {
+            header('Location: ?p=create.shop.admin');
+        } else {
+            $error_shop = 'the shop could not be created';
+        }
 
     } else {
 
-        $error_shop = 'error_shop';
+        $error_shop = 'An error has occurred';
 
+    }
+}
+
+if (!empty($_GET['error'])) {
+    switch ($_GET['error']) {
+        case 1 :
+            $error_message = 'The shop could not be deleted';
+            break;
+        case 2 :
+            $error_message = 'An error has occurred';
+            break;
     }
 }
 

@@ -18,14 +18,27 @@ if (isset($_POST['create_promo'])) {
 
     if (!empty($date_promo) && !empty($promo_article)) {
 
-        createPromo($db, $date_promo, $promo_article, $id);
-        header('Location: ?p=create.article.admin');
+        if(createPromo($db, $date_promo, $promo_article, $id)) {
+            header('Location: ?p=create.article.admin');
+        } else {
+            $error_create_promo = 'The promotion could not be created';
+        }
 
     } else {
-
-        $error_create_promo = 'error_create_promo';
-
+        $error_create_promo = 'An error has occurred';
     }
 }
+
+if (!empty($_GET['error'])) {
+    switch ($_GET['error']) {
+        case 1 :
+            $error_create_img = 'The promotion could not be deleted';
+            break;
+        case 2 :
+            $error_create_img = 'An error has occurred';
+            break;
+    }
+}
+
 
 require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.view.php';

@@ -1,3 +1,4 @@
+<title>Guit.dev - Article <?= $item['title_article'] ?></title>
 <div class="body-accueil img-catalog">
     <img src="img/src/accueil.jpg" alt="">
 </div>
@@ -8,3 +9,5 @@
         <a class="back-box" href="./"><span> <?= SVG_CLOSE ?></span></a>
     </div>
 </div>
+
+<script src="js/date.js"></script>

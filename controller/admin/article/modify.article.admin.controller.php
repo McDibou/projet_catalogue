@@ -28,7 +28,7 @@ if (isset($_POST['modify_article'])) {
 
     } else {
 
-        $error_modify_article = 'error_modify_article';
+        $error_modify_article = 'Please fill in all fields correctly';
 
     }
 

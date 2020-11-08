@@ -17,7 +17,7 @@ USE `catalogue` ;
 -- -----------------------------------------------------
 -- Table `catalogue`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`user` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.user` (
   `id_user` INT NOT NULL AUTO_INCREMENT,
   `name_user` VARCHAR(60) NOT NULL,
   `password_user` VARCHAR(255) NOT NULL,
@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `catalogue`.`article`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`article` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.article` (
   `id_article` INT NOT NULL AUTO_INCREMENT,
   `title_article` VARCHAR(80) NOT NULL,
   `price_article` DECIMAL(10,2) NOT NULL,
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `catalogue`.`img`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`img` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.img` (
   `id_img` INT NOT NULL AUTO_INCREMENT,
   `name_img` VARCHAR(80) NOT NULL,
   `desc_img` TINYTEXT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`img` (
   INDEX `fk_img_article_idx` (`fkey_id_article` ASC) VISIBLE,
   CONSTRAINT `fk_img_article`
     FOREIGN KEY (`fkey_id_article`)
-    REFERENCES `catalogue`.`article` (`id_article`)
+    REFERENCES `catalogue`.`catalog.article` (`id_article`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `catalogue`.`category`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`category` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.category` (
   `id_category` INT NOT NULL AUTO_INCREMENT,
   `name_category` VARCHAR(80) NOT NULL,
   `desc_category` TINYTEXT NULL,
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `catalogue`.`shop`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`shop` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.shop` (
   `id_shop` INT NOT NULL AUTO_INCREMENT,
   `name_shop` VARCHAR(80) NOT NULL,
   `localisation_shop` VARCHAR(255) NOT NULL,
@@ -88,7 +88,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `catalogue`.`category_has_article`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `catalogue`.`category_has_article` (
+CREATE TABLE IF NOT EXISTS `catalogue`.`catalog.category_has_article` (
   `fkey_id_category` INT NOT NULL,
   `fkey_id_article` INT NOT NULL,
   PRIMARY KEY (`fkey_id_category`, `fkey_id_article`),
@@ -96,12 +96,12 @@ CREATE TABLE IF NOT EXISTS `catalogue`.`category_has_article` (
   INDEX `fk_category_has_article_category1_idx` (`fkey_id_category` ASC) VISIBLE,
   CONSTRAINT `fk_category_has_article_category1`
     FOREIGN KEY (`fkey_id_category`)
-    REFERENCES `catalogue`.`category` (`id_category`)
+    REFERENCES `catalogue`.`catalog.category` (`id_category`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_category_has_article_article1`
     FOREIGN KEY (`fkey_id_article`)
-    REFERENCES `catalogue`.`article` (`id_article`)
+    REFERENCES `catalogue`.`catalog.article` (`id_article`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

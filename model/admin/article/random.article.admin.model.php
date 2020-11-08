@@ -31,7 +31,7 @@ function randomCreateArticle($nbrArticle, $db)
 
     for ($i = 0; $i < $nbrArticle; $i++) {
 
-        $category = mysqli_query($db, "SELECT * FROM `category` ORDER BY `name_category` ASC");
+        $category = mysqli_query($db, "SELECT * FROM `catalog.category` ORDER BY `name_category` ASC");
 
         $tab_category = [];
         foreach ($category as $cat) {
@@ -100,17 +100,17 @@ Pick : ' . $text_pick;
 
         mysqli_begin_transaction($db, MYSQLI_TRANS_START_READ_WRITE);
 
-        $article = mysqli_query($db, "INSERT INTO `article` ( `title_article`, `price_article`, `promo_article`, `show_article`, `date_article`, `date_promo_article`, `content_article` ) VALUES ('$title_article', '$price_article', '$promo_article','$show_article', NOW(), '$date_promo_article', '$content_article');");
+        $article = mysqli_query($db, "INSERT INTO `catalog.article` ( `title_article`, `price_article`, `promo_article`, `show_article`, `date_article`, `date_promo_article`, `content_article` ) VALUES ('$title_article', '$price_article', '$promo_article','$show_article', NOW(), '$date_promo_article', '$content_article');");
 
         $id_article = mysqli_insert_id($db);
 
-        $img = mysqli_query($db, "INSERT INTO `img` ( `name_img`, `fkey_id_article`) VALUES ( '$new_name_img', '$id_article');");
+        $img = mysqli_query($db, "INSERT INTO `catalog.img` ( `name_img`, `fkey_id_article`) VALUES ( '$new_name_img', '$id_article');");
 
         if (!empty($new_name_pick)) {
-            mysqli_query($db, "INSERT INTO `img` ( `name_img`, `fkey_id_article`) VALUES ( '$new_name_pick', '$id_article');");
+            mysqli_query($db, "INSERT INTO `catalog.img` ( `name_img`, `fkey_id_article`) VALUES ( '$new_name_pick', '$id_article');");
         }
 
-        $category = mysqli_query($db, "INSERT INTO `category_has_article` ( `fkey_id_category` , `fkey_id_article` ) VALUES ('$id_category', '$id_article')");
+        $category = mysqli_query($db, "INSERT INTO `catalog.category_has_article` ( `fkey_id_category` , `fkey_id_article` ) VALUES ('$id_category', '$id_article')");
 
         if ($article && $img && $category) {
             mysqli_commit($db);

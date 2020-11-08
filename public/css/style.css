@@ -403,7 +403,7 @@
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
     bottom: 15%;
-    left: -10%;
+    left: -13rem;
     background-color: white;
     box-shadow: 0 0 0.3rem 0.1rem #222222;
     transition: all .2s;
@@ -1017,6 +1017,19 @@
     width: 1.7rem;
 }
 
+.success-mail, .error-mail {
+    align-items: center;
+    font-weight: 700;
+}
+
+.success-mail {
+    color: #005b22;
+}
+
+.error-mail {
+    color: #6e0000;
+}
+
 /* ---------- LIGHT BOX ---------- */
 
 .light-box {
@@ -1124,6 +1137,7 @@
     transform: scale(0.8);
 }
 
+
 @media screen and (max-width: 1300px) {
 
     .box .card {
@@ -1153,8 +1167,7 @@
     }
 
     .show-art {
-        transform: scale(0.9);
-        left: -15%;
+        left: -13rem;
     }
 
     /* ---------- ABOUT US---------- */
@@ -1266,8 +1279,9 @@
     }
 
     .show-art {
-        left: -24%;
-        top: 33%;
+        left: -13rem;
+        top: 30%;
+        position: fixed;
     }
 
     .card-accueil .card:hover {
@@ -1671,7 +1685,7 @@
 
 .search select {
     animation: scaleButton .1s;
- }
+}
 
 #lower, #upper {
     animation: scaleButton .3s;

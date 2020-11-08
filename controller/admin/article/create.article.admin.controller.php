@@ -11,12 +11,13 @@ if (isset($_GET['switch']) && ctype_digit($_GET['switch'])) {
 $ndrArticle = 10;
 $limit = ($currentPage - 1) * $ndrArticle;
 
-$category = readOptionCategory($db);
 $totArticle = readCountArticle($db);
-$article = readArticle($db, $limit, $ndrArticle);
 
-$countArticle = mysqli_num_rows($article);
-$countCategory = mysqli_num_rows($category);
+$article = readArticle($db, $limit, $ndrArticle);
+$category = readOptionCategory($db);
+
+$countArticle = ($article !== false) ? mysqli_num_rows($article) : 0;
+$countCategory = ($category !== false) ? mysqli_num_rows($category) : 0;
 
 $switchArticle = switchArticle($totArticle, $currentPage, $ndrArticle);
 
@@ -43,20 +44,36 @@ if (isset($_POST['create_article'])) {
 
             if (is_array($img_article)) {
                 createArticle($title_article, $price_article, $category_id, $content_article, $img_article[0], $db);
+                header('Location: ?p=create.article.admin');
             } else {
                 $error_create_article = $img_article;
             }
 
         } else {
-            $error_create_article = 'error_create_article';
+            $error_create_article = 'An error has occurred';
         }
 
-        header('Location: ?p=create.article.admin');
-
     } else {
-        $error_create_article = 'error_create_article';
+        $error_create_article = 'Please fill in all fields correctly';
     }
 
+}
+
+if (!empty($_GET['error'])) {
+    switch ($_GET['error']) {
+        case 1 :
+            $error_message = 'The deletion of failed images';
+            break;
+        case 2 :
+            $error_message = 'Deletion has failed';
+            break;
+        case 3 :
+            $error_message = 'Please select multiple fields';
+            break;
+        case 4 :
+            $error_message = 'An error has occurred';
+            break;
+    }
 }
 
 require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'create.article.admin.view.php';

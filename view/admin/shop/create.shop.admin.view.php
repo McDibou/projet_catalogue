@@ -1,4 +1,7 @@
-<div class="p-5"></div><div class="p-5"></div>
+<title>Guit.dev - CRUD Shop</title>
+
+<div class="p-5"></div>
+<div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
     <p><?= !empty($error_shop) ? $error_shop : '' ?></p>
@@ -85,7 +88,9 @@
                         <tbody>
                         <tr>
                             <th class="align-middle"><?= $item['name_shop'] ?></th>
-                            <th class="align-middle"><a class="text-reset" href="?p=create.shop.admin&loc=<?= $item['localisation_shop'] ?>"><?= $item['localisation_shop'] ?><sup><?= SVG_LINK ?></sup></a></th>
+                            <th class="align-middle"><a class="text-reset"
+                                                        href="?p=create.shop.admin&loc=<?= $item['localisation_shop'] ?>"><?= $item['localisation_shop'] ?>
+                                    <sup><?= SVG_LINK ?></sup></a></th>
                             <th class="align-middle"><?= $item['ville_shop'] ?></th>
                             <th class="align-middle"><?= $item['desc_shop'] ?></th>
 
@@ -112,3 +117,8 @@
     <div class="text-center mx-auto font-weight-bold">No shop, please add one</div>
 <?php } ?>
 <div class="py-3"></div>
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+<script src="js/map.js"></script>

@@ -11,5 +11,7 @@ function connectToDB()
     }
 
     mysqli_set_charset($db, DB_CHARSET);
+    mysqli_query($db, 'SET NAMES ' . DB_CHARSET );
+
     return $db;
 }

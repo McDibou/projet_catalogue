@@ -3,6 +3,7 @@ let slideBox = document.querySelectorAll('.slidebox');
 slideBox[0].style.display = 'block';
 let directionBox = "right";
 
+
 function sliderBox(value) {
 
     idSlideBox += value;

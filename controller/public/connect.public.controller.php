@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'connect.public.model.php';
+require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'connect.public.model.php';
 
 if (isset($_POST['connect_user'])) {
 
@@ -11,9 +11,9 @@ if (isset($_POST['connect_user'])) {
 
         $user = readUser($name_user, $db);
 
-        if(empty($user)) {
+        if (empty($user)) {
 
-            $error_input =  'nom non valide';
+            $error_input = 'Invalid name';
 
         } elseif (password_verify($password_user, $user['password_user']) && $user['key_user'] === '7f76997b1a2f5d5d5a6439430d7f6fdd') {
 
@@ -22,10 +22,10 @@ if (isset($_POST['connect_user'])) {
 
         } else {
 
-            $error_input =  'mot de passe non valide';
+            $error_input = 'Invalid password';
 
         }
     }
 }
 
-require_once dirname(__DIR__,2) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'connect.public.view.php';
+require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'connect.public.view.php';
