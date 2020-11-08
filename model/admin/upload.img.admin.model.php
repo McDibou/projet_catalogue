@@ -59,18 +59,18 @@ function uploadImg(array $name_file)
 
                         return [$new_name_img];
                     } else {
-                        return 'echec upload';
+                        return 'The image could not be copied';
                     }
                 } else {
-                    return 'echec echelle';
+                    return 'The image is too big, max height : 600px and max width : 800px';
                 }
             } else {
-                return 'echec size';
+                return 'The weight of the image is too heavy, max: 10mo';
             }
         } else {
-            return 'echec type';
+            return 'Image type is not allowed ( allowed: jpeg, jpg, png )';
         }
     } else {
-        return 'echec error';
+        return 'An error has occurred';
     }
 }

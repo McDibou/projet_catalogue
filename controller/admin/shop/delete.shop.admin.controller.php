@@ -5,11 +5,14 @@ $id = isset($_GET['id']) && ctype_digit($_GET['id']) ? $_GET['id'] : '';
 
 if (!empty($id)) {
 
-    deleteShop($id, $db);
-    header('Location: ?p=create.shop.admin');
+    if (deleteShop($id, $db)) {
+        header('Location: ?p=create.shop.admin');
+    } else {
+        header('Location: ?p=create.shop.&error=1');
+    }
 
 } else {
 
-    header('Location: ?p=create.shop.admin');
+    header('Location: ?p=create.shop.admin&error=2');
 
 }

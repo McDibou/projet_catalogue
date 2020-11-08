@@ -9,11 +9,17 @@ if (empty($id) || empty($show)) {
 }
 
 if ($show === '1') {
-    updateShowArticle('0', $id, $db);
-    header('Location: ?p=create.article.admin');
+    if(updateShowArticle('0', $id, $db)) {
+        header('Location: ?p=create.article.admin');
+    } else {
+        header('Location: ?p=create.article.admin&error=4');
+    }
 }
 
 if ($show === '0') {
-    updateShowArticle('1', $id, $db);
-    header('Location: ?p=create.article.admin');
+    if(updateShowArticle('1', $id, $db)) {
+        header('Location: ?p=create.article.admin');
+    } else {
+        header('Location: ?p=create.article.admin&error=4');
+    }
 }

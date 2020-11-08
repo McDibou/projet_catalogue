@@ -1,4 +1,8 @@
-<div class="p-5"></div><div class="p-5"></div><div class="p-5"></div>
+<title>Guit.dev - CRUD Promotion</title>
+
+<div class="p-5"></div>
+<div class="p-5"></div>
+<div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= !empty($error_create_promo) ? $error_create_promo : '' ?>
@@ -26,6 +30,7 @@
                                value="<?= !empty($readPromo['promo_article']) ? $readPromo['promo_article'] : '' ?>"
                                name="promo_article"
                                type="text"
+                               pattern="[0-9]+$"
                                placeholder="promo" required>
                         <div class="input-group-prepend">
                             <span class="input-group-text">%</span>
@@ -35,7 +40,7 @@
                         <label class="m-2"
                                for="date_promo">
                             <em><?= ($readPromo['promo_article'] !== '0') ? 'END OF PROMOTION : ' . $readPromo['date_promo_article'] : '' ?></em></label>
-                        <input class="form-control" id="date_promo" name="date_promo" type="text"
+                        <input pattern="[0-9]+$" class="form-control" id="date_promo" name="date_promo" type="text"
                                placeholder="nbr date promo" required>
                     </div>
                     <div class="d-flex">
@@ -60,4 +65,3 @@
         </div>
     </div>
 </div>
-

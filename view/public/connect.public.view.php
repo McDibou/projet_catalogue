@@ -1,3 +1,4 @@
+<title>Guit.dev - Login</title>
 <?php
 if (isset($_SESSION['id_session'])) {
     header('Location: ?p=create.article.admin');

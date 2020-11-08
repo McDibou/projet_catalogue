@@ -5,4 +5,4 @@ require_once dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'model' . DIRECTO
 $db = connectToDB();
 
 $shop = selectShop($db);
-echo JSON_encode($shop);
+echo json_encode($shop);

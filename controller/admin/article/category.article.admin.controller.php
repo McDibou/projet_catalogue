@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'category.article.admin.model.php';
+require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'category.article.admin.model.php';
 
 $id = isset($_GET['id']) && ctype_digit($_GET['id']) ? $_GET['id'] : '';
 
@@ -22,12 +22,15 @@ if (isset($_POST['modify_catalog'])) {
     }
 
     if (!empty($category_id)) {
-        updateCategory($category_id, $id, $db);
-        header("Location: ?p=category.article.admin&id=$id");
+        if (updateCategory($category_id, $id, $db)) {
+            header("Location: ?p=category.article.admin&id=$id");
+        } else {
+            $error = 'An error has occurred';
+        }
+    } else {
+        $not_field = 'Please select at minimum one field';
     }
-
-    $error_category_article = 'error_category_article';
 
 }
 
-require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'category.article.admin.view.php';
+require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'category.article.admin.view.php';

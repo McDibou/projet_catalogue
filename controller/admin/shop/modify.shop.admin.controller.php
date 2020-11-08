@@ -23,7 +23,7 @@ if (isset($_POST['modify_shop'])) {
 
     } else {
 
-        $error_modify_shop = 'error_modify_shop';
+        $error_modify_shop = 'An error has occurred';
 
     }
 

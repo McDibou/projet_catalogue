@@ -1,6 +1,6 @@
-let position = location.href.split('?')[1].split('=');
-let mymap = L.map('mapid');
+let position = (location.href.split('?').length > 1) ? location.href.split('?')[1].split('=') : '';
 
+let mymap = L.map('mapid');
 
 let myloc = L.icon({
     iconUrl: 'img/src/icon.loc.svg',
@@ -25,10 +25,10 @@ function readShop(position) {
     for (let i = 0; i < shop.length; i++) {
         if (position === shop[i].querySelector('#loc').value) {
             return `
-                            <img id="img" src="./img/src/logo.black.mini.png" alt="">
-                            <h4 id="name">${shop[i].querySelector('#name').innerHTML}</h4>
-                            <p id="desc">${shop[i].querySelector('#desc').innerHTML}</p>
-                            <em id="ville">${shop[i].querySelector('#ville').innerHTML}</em>
+                    <img id="img" src="./img/src/logo.black.mini.png" alt="">
+                    <h4 id="name">${shop[i].querySelector('#name').innerHTML}</h4>
+                    <p id="desc">${shop[i].querySelector('#desc').innerHTML}</p>
+                    <em id="ville">${shop[i].querySelector('#ville').innerHTML}</em>
                     `
         }
     }
@@ -74,7 +74,12 @@ fetch('src/map.public.controller.php')
                             <em id="ville">${data[i][3]}</em>
                     `);
         }
+    })
+
+    .catch(function(error) {
+        console.log('Il y a eu un problème avec l\'opération fetch: ' + error.message);
     });
+
 
 document.querySelector('#here').addEventListener("click", localisationHere);
 

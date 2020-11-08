@@ -4,7 +4,7 @@ require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEP
 
 
 $item = readArticle($_GET['id'], $db);
-
+var_dump($item);
 if (isset($_POST['lightbox'])) {
 
     $id = isset($_POST['id_article']) && ctype_digit($_POST['id_article']) ? $_POST['id_article'] : '';

@@ -1,4 +1,8 @@
-<div class="p-5"></div><div class="p-5"></div><div class="p-5"></div>
+<title>Guit.dev - CRUD Article</title>
+
+<div class="p-5"></div>
+<div class="p-5"></div>
+<div class="p-5"></div>
 <div class="py-3"></div>
 
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">
@@ -55,3 +59,5 @@
         </div>
     </div>
 </div>
+
+<script src="js/date.js"></script>

@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Déchargement des données de la table `category`
 --
 
-INSERT INTO `category` (`id_category`, `name_category`, `desc_category`) VALUES
+INSERT INTO `catalog.category` (`id_category`, `name_category`, `desc_category`) VALUES
 (1, 'acoustic', NULL),
 (2, 'electro acoustic', NULL),
 (3, 'folk', NULL),
@@ -37,7 +37,7 @@ INSERT INTO `category` (`id_category`, `name_category`, `desc_category`) VALUES
 -- Déchargement des données de la table `shop`
 --
 
-INSERT INTO `shop` (`id_shop`, `name_shop`, `localisation_shop`, `ville_shop`, `desc_shop`) VALUES
+INSERT INTO `catalog.shop` (`id_shop`, `name_shop`, `localisation_shop`, `ville_shop`, `desc_shop`) VALUES
 (1, 'Magasin 01', '50.8509228,4.3504093', 'Brussels', 'Rue de la Vierge Noire, 1000 Brussels, Belgium'),
 (2, 'Magasin 02', '50.82500633807064,4.306120664746107', 'Brussels', 'Quai de Biestebroeck, 1070 Anderlecht, Belgium'),
 (3, 'Magasin 03', '50.90484876883606,4.338049680859388', 'Grimbergen', 'Treft 62, 1853 Grimbergen, Belgium'),
@@ -52,7 +52,7 @@ INSERT INTO `shop` (`id_shop`, `name_shop`, `localisation_shop`, `ville_shop`, `
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id_user`, `name_user`, `password_user`, `key_user`) VALUES
+INSERT INTO `catalog.user` (`id_user`, `name_user`, `password_user`, `key_user`) VALUES
 (1, 'McDibou', '$2y$10$iGRNnkJvw.APx.Q3INMgoOFUKgqk.HjPhGlduAt3QvkO3z/w3V0qW', '7f76997b1a2f5d5d5a6439430d7f6fdd');
 COMMIT;
 

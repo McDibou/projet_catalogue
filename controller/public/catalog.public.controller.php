@@ -68,11 +68,6 @@ if (!empty($category)) {
     $countArticle = countArticle($db, $where);
 }
 
-if ($countArticle === 0) {
-    $message = 'NOT FOUND !';
-}
-
-
 $switch = switchArticle($countArticle, $currentPage, $ndrArticle, $category, $min, $max);
 
 

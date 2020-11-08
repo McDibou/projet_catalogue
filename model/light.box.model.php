@@ -34,6 +34,7 @@ function lightBoxModel($item, $count)
 
     $lightBox .= '</div>';
     $lightBox .= '</div>';
+    $lightBox .= '<script src="js/light.box.js"></script>';
 
     return $lightBox;
 }

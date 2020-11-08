@@ -1,9 +1,11 @@
-<div class="p-5"></div><div class="p-5"></div>
+<title>Guit.dev - CRUD Category</title>
+
+<div class="p-5"></div>
+<div class="p-5"></div>
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
-    <p>
         <?= !empty($error_create_category) ? $error_create_category : '' ?>
-        <?= !empty($error_delete_category) ? $error_delete_category : '' ?>
+        <?= (!empty($error_message)) ? $error_message : '' ?>
     </p>
 </div>
 

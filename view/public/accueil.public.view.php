@@ -1,3 +1,5 @@
+<title>Guit.dev - Home</title>
+
 <div class="overlay"></div>
 <div class="overlay bg1"></div>
 <div class="overlay bg2"></div>
@@ -66,3 +68,6 @@
         </div>
     </div>
 <?php } ?>
+
+<script src="js/date.js"></script>
+<script src="js/carousel.js"></script>

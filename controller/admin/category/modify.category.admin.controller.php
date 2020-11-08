@@ -16,12 +16,15 @@ if (isset($_POST['modify_category'])) {
 
     if (!empty($id) && !empty($name_category)) {
 
-        modifyCategory($id, $name_category, $db);
-        header("Location: ?p=create.category.admin");
+        if(modifyCategory($id, $name_category, $db)) {
+            header("Location: ?p=create.category.admin");
+        } else {
+            $error_modify_category = 'The category could not be modified';
+        }
 
     } else {
 
-        $error_modify_category = 'error_modify_category';
+        $error_modify_category = 'An error has occurred';
 
     }
 

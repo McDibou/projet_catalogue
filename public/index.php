@@ -14,7 +14,7 @@ ob_start();
 
 $db = connectToDB();
 
-if(!$db){
+if (!$db) {
     require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . '404.view.php';
     exit();
 }
