@@ -92,7 +92,3 @@ if (!isset($_GET['p'])) {
 
     }
 }
-
-$content = ob_get_clean();
-
-require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'default.php';

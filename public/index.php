@@ -10,7 +10,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'cons
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'card.model.php';
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'light.box.model.php';
 
-ob_start();
 
 $db = connectToDB();
 
@@ -19,6 +18,7 @@ if (!$db) {
     exit();
 }
 
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'header.php';
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'menu.controller.php';
 
 if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) {
@@ -30,3 +30,5 @@ if (isset($_SESSION['id_session']) && $_SESSION['id_session'] === session_id()) 
     require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'public.controller.php';
 
 }
+
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'footer.php';

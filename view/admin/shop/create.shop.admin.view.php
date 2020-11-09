@@ -99,7 +99,7 @@
                                    href="?p=modify.shop.admin&id=<?= $item['id_shop'] ?>">
                                     MODIFY
                                 </a>
-                                <a class="btn btn-outline-danger"
+                                <a id="delete-confirm" class="btn btn-outline-danger"
                                    href="?p=delete.shop.admin&id=<?= $item['id_shop'] ?>">
                                     DELETE
                                 </a>

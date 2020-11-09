@@ -9,17 +9,17 @@ if (empty($id) || empty($show)) {
 }
 
 if ($show === '1') {
-    if(updateShowArticle('0', $id, $db)) {
-        header('Location: ?p=create.article.admin');
+    if (updateShowArticle('0', $id, $db)) {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        header('Location: ?p=create.article.admin&error=4');
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '&error=4');
     }
 }
 
 if ($show === '0') {
-    if(updateShowArticle('1', $id, $db)) {
-        header('Location: ?p=create.article.admin');
+    if (updateShowArticle('1', $id, $db)) {
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     } else {
-        header('Location: ?p=create.article.admin&error=4');
+        header('Location: ' . $_SERVER['HTTP_REFERER'].'&error=4');
     }
 }

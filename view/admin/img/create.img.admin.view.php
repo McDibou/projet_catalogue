@@ -44,10 +44,12 @@
     <?php foreach ($img as $item) { ?>
         <div class="d-flex flex-column m-3">
             <img class="img-thumbnail" src="img/original/<?= $item['name_img'] ?>" alt="">
-            <a class="btn btn-outline-danger mx-auto  my-3 btn-lg font-weight-bold"
+            <a id="delete-confirm" class="btn btn-outline-danger mx-auto  my-3 btn-lg font-weight-bold"
                href="?p=delete.img.admin&id=<?= $item['id_img'] ?>">
                 DELETE
             </a>
         </div>
     <?php } ?>
 </div>
+
+<script src="js/name.file.js"></script>

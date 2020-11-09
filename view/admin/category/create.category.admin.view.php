@@ -54,7 +54,7 @@
                                    href="?p=modify.category.admin&id=<?= $item['id_category'] ?>">
                                     MODIFY
                                 </a>
-                                <a class="btn btn-outline-danger"
+                                <a id="delete-confirm" class="btn btn-outline-danger"
                                    href="?p=delete.category.admin&id=<?= $item['id_category'] ?>">
                                     DELETE
                                 </a>

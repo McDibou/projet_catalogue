@@ -54,7 +54,7 @@
                                     type="submit" name="create_promo">
                                 MODIFY
                             </button>
-                            <a class="btn btn-outline-danger col-4 mx-auto my-3 btn-lg btn-block font-weight-bold"
+                            <a id="delete-confirm" class="btn btn-outline-danger col-4 mx-auto my-3 btn-lg btn-block font-weight-bold"
                                href="?p=delete.promo.admin&id=<?= $readPromo['id_article'] ?>">
                                 DELETE
                             </a>

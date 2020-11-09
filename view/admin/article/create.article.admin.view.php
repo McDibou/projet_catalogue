@@ -123,7 +123,7 @@ Pick : none"
                     <thead>
                     <tr>
                         <?php if ($countArticle > 1) { ?>
-                            <th></th>
+                            <th><input type="checkbox" class="check-all"></th>
                         <?php } ?>
                         <th>ID</th>
                         <th>TITLE</th>
@@ -139,7 +139,7 @@ Pick : none"
                     <?php foreach ($article as $item) { ?>
                         <tr>
                             <?php if ($countArticle > 1) { ?>
-                                <th class="align-middle"><input type="checkbox" name="article_all_id[]"
+                                <th class="align-middle"><input onclick="noneCheckedAll()" type="checkbox" class="check" name="article_all_id[]"
                                                                 value="<?= $item['id_article'] ?>"></th>
                             <?php } ?>
                             <th class="align-middle"><?= $item['id_article'] ?></th>
@@ -207,15 +207,15 @@ Pick : none"
                             <th class="align-middle">
                                 <a class="btn btn-outline-success font-weight-bold"
                                    href="?p=read.article.admin&id=<?= $item['id_article'] ?>">
-                                    READ
+                                    <span>READ</span>
                                 </a>
                                 <a class="btn btn-outline-warning font-weight-bold"
                                    href="?p=modify.article.admin&id=<?= $item['id_article'] ?>">
-                                    MODIFY
+                                    <span>MODIFY</span>
                                 </a>
-                                <a class="btn btn-outline-danger font-weight-bold"
+                                <a id="delete-confirm" class="btn btn-outline-danger font-weight-bold"
                                    href="?p=delete.article.admin&id=<?= $item['id_article'] ?>">
-                                    DELETE
+                                    <span>DELETE</span>
                                 </a>
                             </th>
                         </tr>
@@ -226,9 +226,9 @@ Pick : none"
 
                 <div class="d-flex justify-content-between" style="height: 2.5rem">
                     <?php if ($countArticle > 1) { ?>
-                        <button class="btn btn-outline-danger col-2 ml-5 font-weight-bold" type="submit"
+                        <button id="delete-confirm" class="btn btn-outline-danger col-2 ml-5 font-weight-bold" type="submit"
                                 name="article_all">
-                            DELETE ALL
+                            <span>DELETE ALL</span>
                         </button>
                     <?php } ?>
                     <div class="d-inline mr-5"><?= $switchArticle ?></div>
@@ -240,3 +240,6 @@ Pick : none"
 <?php } else { ?>
     <div class="text-center mx-auto font-weight-bold">No article, please add one</div>
 <?php } ?>
+
+<script src="js/checked.js"></script>
+<script src="js/name.file.js"></script>
