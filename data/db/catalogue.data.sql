@@ -45,15 +45,16 @@ INSERT INTO `catalog.shop` (`id_shop`, `name_shop`, `localisation_shop`, `ville_
 (5, 'Magasin 05', '51.21835101078604,4.411520750195326', 'Antwerp', 'Meir 105, 2000 Antwerp, Belgium'),
 (6, 'Magasin 06', '51.178005872414154,4.3946979352539195', 'Antwerp', 'Pastoor De Conincklaan 54, 2610 Wilrijk, Belgium'),
 (7, 'Magasin 07', '50.463242209583036,4.855780393750013', 'Namur', 'Rue Bosret 23, 5000 Namur, Belgium'),
-(8, 'Magasin 08', '50.64318791498003,5.589804441601576', 'Liege', 'Rue de la Forêt 63, 4670 Blegny, Belgium'),
-(9, 'Magasin 09', '50.628918004180214,5.569548399121107', 'Liege', 'Carrefour, N671A, 4000 Liège, Belgium');
+(8, 'Magasin 08', '50.64318791498003,5.589804441601576', 'Li&egrave;ge', 'Rue de la For&ecirc;t 63, 4670 Blegny, Belgium'),
+(9, 'Magasin 09', '50.628918004180214,5.569548399121107', 'Li&egrave;ge', 'Carrefour, N671A, 4000 Li&egrave;ge, Belgium');
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `catalog.user` (`id_user`, `name_user`, `password_user`, `key_user`) VALUES
-(1, 'McDibou', '$2y$10$iGRNnkJvw.APx.Q3INMgoOFUKgqk.HjPhGlduAt3QvkO3z/w3V0qW', '7f76997b1a2f5d5d5a6439430d7f6fdd');
+(1, 'McDibou', '$2y$10$iGRNnkJvw.APx.Q3INMgoOFUKgqk.HjPhGlduAt3QvkO3z/w3V0qW', '7f76997b1a2f5d5d5a6439430d7f6fdd'),
+(2, 'Formateur', '$2y$10$swRb912eV105dOErFO6Nt.TTOYU63YJ6nIglA0mMWq4e9lH9AOLK6', '7f76997b1a2f5d5d5a6439430d7f6fdd');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

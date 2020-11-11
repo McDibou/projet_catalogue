@@ -1,6 +1,8 @@
+<!-- public contact view page -->
 <title>Guit.dev - Contact</title>
 
 <div class="contact">
+    <!-- contact form -->
     <div class="form-contact">
         <form method="post">
             <div>
@@ -37,16 +39,20 @@
 
             <button name="contact_mail" type="submit">ENVOYER</button>
         </form>
+        <!-- error or success if available -->
         <?= !empty($succes) ? '<div class="success-mail">' . $succes . '</div>' : '' ?>
         <?= !empty($error) ? '<div class="error-mail">' . $error . '</div>' : '' ?>
     </div>
 
+    <!-- div with an id map used by the leaflet library -->
     <div id="mapid" class="map"></div>
 
+    <!-- button use to display the local position on the map -->
     <button id="here">
         <?= SVG_MAP_HERE ?>
     </button>
 
+    <!-- loop that retrieves the shops from the database -->
     <div class="position">
         <?php foreach ($readShop as $item) { ?>
             <div id="shop">
@@ -62,6 +68,7 @@
     </div>
 </div>
 
+<!-- buttons for social networks -->
 <div class="social-network">
     <div><a><span><?= SVG_GITHUB ?></span></a>
         <p>GITHUB</p></div>
@@ -75,7 +82,9 @@
         <p>DISCORD</p></div>
 </div>
 
+<!-- call of the the js script for leaflet library -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+<!-- call of the js script for features related to the leaflet library -->
 <script src="js/map.js"></script>

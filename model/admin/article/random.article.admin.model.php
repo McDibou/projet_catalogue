@@ -72,6 +72,10 @@ function randomCreateArticle($nbrArticle, $db)
         $name_img = $tab_category[$key_category][2];
         $new_name_img = date('U') . '_' . mt_rand(10000, 99999) . '.png';
 
+        if (!is_dir('img/original')) {
+            mkdir('img/original', 0777, true);
+        }
+
         copy('img/src/' . $name_img, 'img/original/' . $name_img);
         rename('img/original/' . $name_img, 'img/original/' . $new_name_img);
         resizeThumb($new_name_img, $imgWidth = 267, $imgHeight = 400, '.png');

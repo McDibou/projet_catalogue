@@ -1,5 +1,11 @@
 <?php
 
+
+/**
+ * create a template for articles cards
+ * @param mixed $item : table with the current article
+ * @return string
+ */
 function cardModel($item)
 {
     $card = '';

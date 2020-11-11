@@ -1,13 +1,17 @@
 <?php
+// admin front controller
 
+// if element get `p` does not exist
 if (!isset($_GET['p'])) {
 
     include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'accueil.public.controller.php';
 
 } else {
 
+    // else create `switch` to create navigation
     switch ($_GET['p']) {
 
+        // part navigation main page
         case 'catalog.public':
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'catalog.public.controller.php';
             break;
@@ -24,6 +28,7 @@ if (!isset($_GET['p'])) {
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'read.article.public.controller.php';
             break;
 
+        // part CRUD article
         case 'create.article.admin':
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'create.article.admin.controller.php';
             break;
@@ -49,6 +54,7 @@ if (!isset($_GET['p'])) {
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . 'random.article.admin.controller.php';
             break;
 
+        // part CRUD category
         case 'create.category.admin':
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'category' . DIRECTORY_SEPARATOR . 'create.category.admin.controller.php';
             break;
@@ -66,6 +72,7 @@ if (!isset($_GET['p'])) {
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'delete.img.admin.controller.php';
             break;
 
+        // part CRUD promotion
         case 'create.promo.admin':
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.controller.php';
             break;
@@ -73,6 +80,7 @@ if (!isset($_GET['p'])) {
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'delete.promo.admin.controller.php';
             break;
 
+        // part CRUD shop
         case 'create.shop.admin':
             include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'shop' . DIRECTORY_SEPARATOR . 'create.shop.admin.controller.php';
             break;

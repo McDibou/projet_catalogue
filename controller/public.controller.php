@@ -1,11 +1,14 @@
 <?php
+// public front controller
 
+// if element get `p` does not exist
 if (!isset($_GET['p'])) {
 
     include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'accueil.public.controller.php';
 
 } else {
 
+    // else create `switch` to create navigation
     switch ($_GET['p']) {
 
         case 'catalog.public':

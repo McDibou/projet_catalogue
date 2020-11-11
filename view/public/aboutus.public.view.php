@@ -1,10 +1,16 @@
+<!-- public about-us view page -->
+
 <title>Guit.dev - About us</title>
+
+
+<!-- div with the css for entry -->
 <div class="overlay overlay-about"></div>
+<!-- div with the video for the background page -->
 <video poster="img/src/poster.video.aboutus.png" autoplay muted loop id="video">
     <source src="video/video.aboutus.public.mp4" type="video/mp4">
 </video>
 
-
+<!-- div with the logo, images and presentation text of the site -->
 <div class="block-about-us">
     <div class="about-us-img">
         <img class="about-us-logo" src="img/src/logo.white.png">

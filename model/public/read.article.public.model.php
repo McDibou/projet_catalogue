@@ -1,10 +1,22 @@
 <?php
 
+/**
+ * select the images in relation to the current item
+ * @param number $id
+ * @param mysqli|false $db
+ * @return bool|mysqli_result
+ */
 function readImg($id, $db)
 {
     return mysqli_query($db, "SELECT * FROM `catalog.img` WHERE `fkey_id_article` = '$id'");
 }
 
+/**
+ * select all the information of an article
+ * @param number $id
+ * @param mysqli|false $db
+ * @return string[]|null
+ */
 function readArticle($id, $db)
 {
     return mysqli_fetch_assoc(mysqli_query($db, "SELECT

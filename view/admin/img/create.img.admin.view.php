@@ -1,18 +1,20 @@
+<!-- admin add images view page -->
 <title>Guit.dev - CRUD Image</title>
 
+<!-- div used to offset the content -->
 <div class="p-5"></div>
 <div class="p-5"></div>
+
+<!-- div with error if available -->
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= !empty($error_create_img) ? $error_create_img : '' ?></p>
 </div>
 
+<!-- redirection button to the create article page -->
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">
     <a class="btn btn-outline-dark" href="?p=create.article.admin">
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-left-fill" fill="currentColor"
-             xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
-        </svg>
+        <?= SVG_BACK_CRUD ?>
     </a>
 </div>
 
@@ -20,6 +22,7 @@
     <div class="row justify-content-center">
         <div class="col-6">
 
+            <!-- images add form-->
             <form method="post" enctype="multipart/form-data">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -36,10 +39,12 @@
                     ADD IMAGE
                 </button>
             </form>
+
         </div>
     </div>
 </div>
 
+<!-- loop that recovers the images related to the current article and add button delete for current images -->
 <div class="d-flex justify-content-center">
     <?php foreach ($img as $item) { ?>
         <div class="d-flex flex-column m-3">
@@ -52,4 +57,5 @@
     <?php } ?>
 </div>
 
+<!-- call of the the js script for display the file name in the input file -->
 <script src="js/name.file.js"></script>

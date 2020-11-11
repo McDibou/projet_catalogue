@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * select a the information of an article with `group concat`
+ * @param number $id
+ * @param mysqli|false $db
+ * @return string[]|null
+ */
 function readArticle($id, $db)
 {
     return mysqli_fetch_assoc(mysqli_query($db, "SELECT
@@ -32,6 +38,12 @@ JOIN `catalog.category` ON `fkey_id_category` = `id_category`
 WHERE `id_article` = '$id'"));
 }
 
+/**
+ * select a image with a article
+ * @param number $id
+ * @param mysqli|false $db
+ * @return bool|mysqli_result
+ */
 function readImg($id, $db)
 {
     return mysqli_query($db, "SELECT * FROM `catalog.img` JOIN `catalog.article` ON `id_article` = `fkey_id_article` WHERE `id_article` = $id ");

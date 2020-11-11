@@ -1,21 +1,26 @@
 <?php
 
+// call model of the current page
 require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'contact.public.model.php';
 
+// read shop used view page
 $readShop = readShop($db);
 
+// send mail
 if (isset($_POST['contact_mail'])) {
 
+    // analyse datas
     $name_mail = analyseData($_POST['name_mail']);
     $subject_mail = analyseData($_POST['subject_mail']);
     $url_mail = analyseData($_POST['url_mail']);
     $content_mail = analyseData($_POST['content_mail']);
 
+    // if no field is empty
     if (!empty($name_mail) && !empty($subject_mail) && !empty($url_mail) && !empty($content_mail)) {
 
+        // prepare to mail
         $to = 'web2020.adrien@gmail.com';
         $subject = $subject_mail;
-
 
         $message = '
             <html lang="fr">
@@ -35,8 +40,10 @@ if (isset($_POST['contact_mail'])) {
         $header[] = 'From: ROBOT.CONTACT <robot.catalogue@gmail.com>';
         $header[] = 'X-Mailer: PHP/' . phpversion();
 
+        // if send mail, return true
         if (mail($to, $subject, $message, implode("\r\n", $header))) {
 
+            // prepare second mail
             $toRecp = $url_mail;
             $subjectRecp = $subject_mail;
 
@@ -58,9 +65,13 @@ if (isset($_POST['contact_mail'])) {
             $headerRecp[] = 'From: ROBOT.CONTACT <robot.catalogue@gmail.com>';
             $headerRecp[] = 'X-Mailer: PHP/' . phpversion();
 
+            // if send mail, return true
             if (mail($toRecp, $subjectRecp, $messageRecp, implode("\r\n", $headerRecp))) {
 
+                // message success
                 $succes = 'Your message has been sent';
+
+                // unset variable
                 $name_mail = $subject_mail = $url_mail = $content_mail = '';
 
             } else {
@@ -68,17 +79,13 @@ if (isset($_POST['contact_mail'])) {
             }
 
         } else {
-
             $error = 'We could not receive your message';
-
         }
 
     } else {
-
         $error = 'Please fill in all fields correctly';
-
     }
 }
 
-
+// call view of the current page
 require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'contact.public.view.php';

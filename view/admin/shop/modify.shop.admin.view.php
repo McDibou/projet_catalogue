@@ -1,25 +1,29 @@
+<!-- admin modify shop view page -->
 <title>Guit.dev - CRUD Shop</title>
 
+<!-- div used to offset the content -->
 <div class="p-5"></div>
 <div class="p-5"></div>
+
+<!-- div with error if available -->
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
         <?= !empty($error_modify_article) ? $error_modify_article : ''; ?>
     </p>
 </div>
 
+<!-- redirection button to the create shop page -->
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">
     <a class="btn btn-outline-dark" href="?p=create.shop.admin">
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-left-fill" fill="currentColor"
-             xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
-        </svg>
+        <?= SVG_BACK_CRUD ?>
     </a>
 </div>
 
 <div class="container-fluid">
     <div class="row row-col-2 d-flex justify-content-center ">
         <div class="col-4 m-5">
+
+            <!-- shop modify form-->
             <form method="post">
 
                 <div class="form-group">

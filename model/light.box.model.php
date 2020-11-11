@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * create a lightbox template
+ * @param mixed $item : table of images link to the current article
+ * @param number $count : if there are multiple images
+ * @return string
+ */
 function lightBoxModel($item, $count)
 {
     $lightBox = '';

@@ -1,14 +1,24 @@
+<!-- admin create shop view page -->
 <title>Guit.dev - CRUD Shop</title>
 
+<!-- div used to offset the content -->
 <div class="p-5"></div>
 <div class="p-5"></div>
+
+<!-- div with error if available -->
 <div class="py-3">
     <p class="text-center mx-auto font-weight-bold text-danger">
     <p><?= !empty($error_shop) ? $error_shop : '' ?></p>
 </div>
+
+<!-- div used to offset the content -->
+<div class="py-3"></div>
+
 <div class="container-fluid">
     <div class="row row-col-2 d-flex justify-content-center ">
         <div class="col-4 m-5">
+
+            <!-- shop create form-->
             <form method="post">
 
                 <div class="form-group">
@@ -68,11 +78,12 @@
     </div>
 </div>
 
-<div class="py-3"></div>
+<!-- if there are many shop in the database -->
 <?php if ($countShop !== 0) { ?>
     <div class="container-fluid my-5">
         <div class="row justify-content-center">
             <div class="col-10">
+
                 <table class="table table-bordered text-center bg-light">
                     <thead>
                     <tr>
@@ -84,6 +95,7 @@
                     </tr>
                     </thead>
 
+                    <!-- loop that recovers the shop from the database with their modify and delete buttons -->
                     <?php foreach ($shop as $item) { ?>
                         <tbody>
                         <tr>
@@ -110,15 +122,21 @@
                     <?php } ?>
 
                 </table>
+
             </div>
         </div>
     </div>
+    <!-- else displays a message -->
 <?php } else { ?>
     <div class="text-center mx-auto font-weight-bold">No shop, please add one</div>
 <?php } ?>
+
+<!-- div used to offset the content -->
 <div class="py-3"></div>
 
+<!-- call of the the js script for leaflet library -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+<!-- call of the js script for features related to the leaflet library -->
 <script src="js/map.js"></script>
