@@ -15,7 +15,7 @@
 
 <!-- redirection button to the create shop page -->
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">
-    <a class="btn btn-outline-dark" href="?p=create.article.admin">
+    <a class="btn btn-outline-dark" href="?p=read.article.admin&id=<?= $_GET['id'] ?>">
         <?= SVG_BACK_CRUD ?>
     </a>
 </div>
@@ -39,8 +39,9 @@
                                             type="checkbox"
                                             name="category[]"
                                             value="<?= $item['id_category'] ?>"
-                                            <!-- loop that assigns `checked` to the checkbox if the category is linked to the current article -->
+
                                         <?php foreach ($checked as $checkout) {
+                                            // loop that assigns `checked` to the checkbox if the category is linked to the current article
                                             echo ($item['id_category'] == $checkout['id_category']) ? 'checked' : '';
                                         } ?>
                                     >

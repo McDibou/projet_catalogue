@@ -23,7 +23,7 @@
 
         <!-- the admin menu -->
         <div class="fixed-top m-4" style="z-index: 1000">
-            <div class="dropdown">
+            <div class="dropdown d-inline">
                 <a class="btn btn-secondary dropdown-toggle" id="dropdownAdmin" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     ADMIN

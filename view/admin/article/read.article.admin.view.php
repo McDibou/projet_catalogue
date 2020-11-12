@@ -15,8 +15,10 @@
 </div>
 
 <!-- display of the current article with the `cardModel()` function defined in the page `card.model.php` -->
-<div id="article" class="card" style="z-index: 1;">
-    <?= cardModel($article) ?>
+<div class="admin-card">
+    <div id="article" class="card" style="z-index: 1;">
+        <?= cardModel($article) ?>
+    </div>
 </div>
 
 <!-- div with CRUD button of the current article -->

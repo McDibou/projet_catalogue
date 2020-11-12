@@ -394,6 +394,10 @@
 
 }
 
+.admin-card #promo {
+    transform: scale(.95);
+ }
+
 /* ---------- CARD SHOW ---------- */
 
 .show-art {

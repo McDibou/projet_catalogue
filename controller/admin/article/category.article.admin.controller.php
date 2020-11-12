@@ -15,7 +15,7 @@ if (empty($id)) {
 $category = readCategory($db);
 $checked = checkedCategory($id, $db);
 
-// modify article
+// modify category of an article
 if (isset($_POST['modify_catalog'])) {
 
     // create a table of category ids

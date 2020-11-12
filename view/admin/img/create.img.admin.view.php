@@ -13,7 +13,7 @@
 
 <!-- redirection button to the create article page -->
 <div class="position-fixed" style="top: 1.55rem; left: 8rem; z-index: 1000">
-    <a class="btn btn-outline-dark" href="?p=create.article.admin">
+    <a class="btn btn-outline-dark" href="?p=read.article.admin&id=<?= $_GET['id'] ?>">
         <?= SVG_BACK_CRUD ?>
     </a>
 </div>

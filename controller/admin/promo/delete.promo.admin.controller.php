@@ -11,7 +11,7 @@ if (!empty($id)) {
 
     // delete shop, return bool. if false return `get error` used create controller
     if (deletePromo($id, $db)) {
-        header('Location: ?p=create.article.admin');
+        header('Location: ?p=read.article.admin&id=' . $id);
     } else {
         header('Location: ?p=create.article.admin&error=1');
     }

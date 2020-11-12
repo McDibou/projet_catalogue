@@ -25,8 +25,6 @@ if (!$db) {
     exit();
 }
 
-var_dump(ini_get("session.use_cookies"));
-
 // call the header page containing the doctype and the head
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'header.php';
 

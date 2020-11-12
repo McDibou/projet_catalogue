@@ -1,7 +1,7 @@
 <?php
 
 // call model of the current page
-require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.model.php';
+require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.model.php';
 
 // check if the get id is an integer else the empty space
 $id = isset($_GET['id']) && ctype_digit($_GET['id']) ? $_GET['id'] : '';
@@ -26,8 +26,8 @@ if (isset($_POST['create_promo'])) {
     if (!empty($date_promo) && !empty($promo_article)) {
 
         // create promotion, return bool. if false return message error
-        if(createPromo($db, $date_promo, $promo_article, $id)) {
-            header('Location: ?p=create.article.admin');
+        if (createPromo($db, $date_promo, $promo_article, $id)) {
+            header('Location: ?p=read.article.admin&id=' . $id);
         } else {
             $error_create_promo = 'The promotion could not be created';
         }
@@ -41,13 +41,13 @@ if (isset($_POST['create_promo'])) {
 if (!empty($_GET['error'])) {
     switch ($_GET['error']) {
         case 1 :
-            $error_create_img = 'The promotion could not be deleted';
+            $error_create_promo = 'The promotion could not be deleted';
             break;
         case 2 :
-            $error_create_img = 'An error has occurred';
+            $error_create_promo = 'An error has occurred';
             break;
     }
 }
 
 // call view of the current page
-require_once dirname(__DIR__,3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.view.php';
+require_once dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'promo' . DIRECTORY_SEPARATOR . 'create.promo.admin.view.php';

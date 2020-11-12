@@ -30,7 +30,7 @@ if (isset($_POST['modify_article'])) {
 
         // modify article and redirection read article page
         modifyArticle($id, $title_article, $price_article, $content_article, $db);
-        header("Location: ?p=read.article.admin&id=$id");
+        header("Location: ?p=modify.article.admin&id=$id");
 
         // else return message error
     } else {

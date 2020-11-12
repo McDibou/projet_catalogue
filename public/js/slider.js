@@ -6,9 +6,10 @@ let upperSlider = document.querySelector('#upper');
 
 /**
  * function that regulates the behavior of the other slide in relation to it
+ * @param e
  * @param {int} offset : value that limits the slider sliders in a range
  */
-function updateMin( offset = 100) {
+function updateMin(e, offset = 100) {
 
     // retrieves the values of the div
     let lowerVal = parseInt(lowerSlider.value);
@@ -42,9 +43,10 @@ function updateMin( offset = 100) {
 
 /**
  * function that regulates the behavior of the other slide in relation to it
+ * @param e
  * @param {int} offset
  */
-function updateMax(offset = 100) {
+function updateMax(e, offset = 100) {
 
     // retrieves the values of the div
     let lowerVal = parseInt(lowerSlider.value);
