@@ -5,7 +5,7 @@
 >It's a guitar catalog with a search and pagination site.
 
 <img src="https://github.com/McDibou/projet_catalogue/blob/master/public/img/src/logo.black.png" height="100">
--
+
 
 http://adrien.webdev-cf2m.be/projet_catalog/
 
@@ -49,7 +49,7 @@ _website charter :_ [PDF](https://github.com/McDibou/projet_catalogue/blob/maste
 #### Database schema
 
 <img src="https://github.com/McDibou/projet_catalogue/blob/master/data/db/catalogue.png">
--
+
 
 >to develop on PHPStorm
 
