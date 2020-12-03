@@ -58,7 +58,12 @@ if (isset($_POST['create_article'])) {
 
             // create images to databases, if false, return message error
             if (is_array($img_article)) {
-                createArticle($title_article, $price_article, $category_id, $content_article, $img_article[0], $db);
+
+                // defines the default values for promotions, for db in mariaDB
+                $promo_article = 0;
+                $date_promo_article = date("Y-m-d H:i:s",time());
+
+                createArticle($title_article, $price_article, $category_id, $content_article, $img_article[0],$promo_article,$date_promo_article, $db);
                 header('Location: ?p=create.article.admin');
             } else {
                 $error_create_article = $img_article;

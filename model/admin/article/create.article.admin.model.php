@@ -72,15 +72,17 @@ function readCategoryArticle($id, $db)
  * @param array $category_id
  * @param string $content_article
  * @param string $img_article
+ * @param number $promo_article
+ * @param number $date_promo_article
  * @param mysqli|false $db
  * @return bool
  */
-function createArticle(string $title_article, string $price_article, array $category_id, string $content_article, string $img_article, $db)
+function createArticle(string $title_article, string $price_article, array $category_id, string $content_article, string $img_article, $promo_article, $date_promo_article, $db)
 {
 
     mysqli_begin_transaction($db, MYSQLI_TRANS_START_READ_WRITE);
 
-    $article = mysqli_query($db, "INSERT INTO `catalog.article` ( `title_article`, `price_article`, `show_article`, `date_article`, `content_article` ) VALUES ( '$title_article', '$price_article', '0', NOW(), '$content_article');");
+    $article = mysqli_query($db, "INSERT INTO `catalog.article` ( `title_article`, `price_article`, `show_article`, `date_article`, `content_article`, `promo_article`, `date_promo_article` ) VALUES ( '$title_article', '$price_article', '0', NOW(), '$content_article','$promo_article','$date_promo_article');");
 
     $id_article = mysqli_insert_id($db);
 

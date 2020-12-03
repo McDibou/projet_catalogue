@@ -78,8 +78,8 @@ function randomCreateArticle($nbrArticle, $db)
         $price_article = mt_rand(TAILLE[$key_taille][1][0], TAILLE[$key_taille][1][1]) . '.99';
 
         // set the variable for the promotion and the date of promotion of the article
-        $promo_article = '';
-        $date_promo_article = '';
+        $promo_article = 0;
+        $date_promo_article = date("Y-m-d H:i:s",time());
 
         // gives the article a chance to get a promotion
         $luck_promo = mt_rand(1, 10);
