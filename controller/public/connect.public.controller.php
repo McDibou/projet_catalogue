@@ -22,7 +22,7 @@ if (isset($_POST['connect_user'])) {
             $error_input = 'Invalid name';
 
             // else if verify password and key user return true
-        } elseif (password_verify($password_user, $user['password_user']) && $user['key_user'] === '7f76997b1a2f5d5d5a6439430d7f6fdd') {
+        } elseif (password_verify($password_user, $user['password_user']) && $user['key_user'] === KEY_ADMIN) {
 
             // insert session id to table $_SESSION
             $_SESSION['id_session'] = session_id();

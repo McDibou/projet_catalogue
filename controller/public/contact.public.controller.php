@@ -54,7 +54,7 @@ if (isset($_POST['contact_mail'])) {
                     <div>
                         <h3>Hello ' . $name_mail . '</h3>
                         <p>Thank you for your mail. We will answer you as soon as possible.</p>
-                        <em><a href="http://adrien.webdev-cf2m.be/projet_catalog/"></a>adrien.webdev-cf2m.be/catalog</em>
+                        <em><a href="http://adrien.webdev-cf2m.be/projet_catalog/">adrien.webdev-cf2m.be/catalog</a></em>
                     </div>
                 </body>
             </html>

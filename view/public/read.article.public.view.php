@@ -8,7 +8,7 @@
 
 <!-- article cards in light box -->
 <div class="light-box" style="z-index: 3">
-    <div class="box">
+    <div class="admin-card box">
         <div id="article" class="card"> <?= cardModel($item) ?></div>
         <a class="back-box" href="./"><span> <?= SVG_CLOSE ?></span></a>
     </div>

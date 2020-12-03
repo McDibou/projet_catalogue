@@ -8,3 +8,5 @@ const DB_PASSWORD = '';
 const DB_NAME = 'catalogue';
 const DB_PORT = '3308';
 const DB_CHARSET = 'UTF-8';
+
+const KEY_ADMIN = '7f76997b1a2f5d5d5a6439430d7f6fdd';

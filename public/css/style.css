@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+/* for presentation */
+/** {*/
+/*    cursor: url('../img/src/cursor.cur'), crosshair !important;*/
+/*}*/
+
 ::placeholder, .placeholder {
     color: #838383;
     font-style: italic;

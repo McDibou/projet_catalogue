@@ -118,7 +118,8 @@ function randomCreateArticle($nbrArticle, $db)
 
         // defined that the item does not have piks includes for the description
         $text_pick = 'none';
-
+        
+        $new_name_pick = '';
         // defines the chance to have a picks
         $luck_pick = mt_rand(1, 3);
         if ($luck_pick === 1) {

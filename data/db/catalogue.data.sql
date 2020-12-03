@@ -53,7 +53,6 @@ INSERT INTO `catalog.shop` (`id_shop`, `name_shop`, `localisation_shop`, `ville_
 --
 
 INSERT INTO `catalog.user` (`id_user`, `name_user`, `password_user`, `key_user`) VALUES
-(1, 'McDibou', '$2y$10$iGRNnkJvw.APx.Q3INMgoOFUKgqk.HjPhGlduAt3QvkO3z/w3V0qW', '7f76997b1a2f5d5d5a6439430d7f6fdd'),
 (2, 'Formateur', '$2y$10$swRb912eV105dOErFO6Nt.TTOYU63YJ6nIglA0mMWq4e9lH9AOLK6', '7f76997b1a2f5d5d5a6439430d7f6fdd');
 COMMIT;
 
