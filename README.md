@@ -11,16 +11,16 @@ http://adrien.webdev-cf2m.be/projet_catalog/
 
 _website charter :_ [PDF](https://github.com/McDibou/projet_catalogue/blob/master/SiteCatalogue.pdf)
 
-#### Required
+## Required
 
 - built for google chrome
 - responsive : DVD, HD, FULL HD and SMARTPHONE
 
-#### Cautionary note 
+## Cautionary note 
 
 - the site is designed as a demonstration of functionality so some functionality may be a bit cumbersome for some systems.
 
-#### Addition of personal features
+## Addition of personal features
 
 - All site :
     * animation to enter on each page
@@ -46,7 +46,7 @@ _website charter :_ [PDF](https://github.com/McDibou/projet_catalogue/blob/maste
 - Javascript page :
     * functionality built entirely in javascript for practical use
     
-#### Database schema
+## Database schema
 
 <img src="https://github.com/McDibou/projet_catalogue/blob/master/data/db/catalogue.png">
 
