@@ -1,4 +1,4 @@
-## CATALOG PROJECT
+# CATALOG PROJECT
 
 >Project created during the web developer training at CF2M.
 >
